@@ -1086,6 +1086,54 @@ button { cursor: pointer; background: none; border: none; }
   line-height: 1.5;
 }
 
+a.cert-item--link {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-4) var(--space-5);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  position: relative;
+  transition: border-color var(--transition-interactive),
+              box-shadow var(--transition-interactive),
+              background var(--transition-interactive),
+              transform var(--transition-interactive);
+}
+
+a.cert-item--link:hover {
+  border-color: var(--color-primary);
+  background: var(--color-primary-dim);
+  box-shadow: 0 0 16px rgba(0, 212, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+a.cert-item--link .cert-item__name {
+  color: var(--color-text);
+  padding-right: var(--space-6);
+}
+
+a.cert-item--link:hover .cert-item__name {
+  color: var(--color-primary);
+}
+
+.cert-item__icon {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  color: var(--color-text-faint);
+  opacity: 0.6;
+  transition: opacity var(--transition-interactive),
+              color var(--transition-interactive),
+              transform var(--transition-interactive);
+}
+
+a.cert-item--link:hover .cert-item__icon {
+  color: var(--color-primary);
+  opacity: 1;
+  transform: translate(1px, -1px);
+}
+
 .cert-item__date {
   font-family: var(--font-mono);
   font-size: var(--text-xs);

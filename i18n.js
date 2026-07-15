@@ -156,6 +156,7 @@
     'certs.heading': 'Certifications',
     'awards.heading': 'Awards',
     'pubs.heading': 'Publications',
+    'aria.pubs.mdpi': 'Open MDPI Land 2022 paper (DOI link, new tab)',
 
     /* Contact */
     'contact.heading': 'Contact',
