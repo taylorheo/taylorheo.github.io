@@ -67,6 +67,7 @@
     'career.tab.company': 'By Company',
     'career.tab.project': 'By Project',
     'career.tab.tech': 'By Tech (Mindmap)',
+    'career.prompt': 'How would you like to view the career?',
     'career.sub.company': 'Experience by company',
     'career.sub.project': 'Featured projects',
     'career.sub.tech': 'Technology mindmap',

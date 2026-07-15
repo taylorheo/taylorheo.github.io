@@ -173,30 +173,30 @@
         <span class="section__number" aria-hidden="true">02</span>
         <span data-i18n="skills.heading">스킬</span>
       </h2>
-      <div class="skills__grid">
+<div class="skills__grid">
         <div class="skills__category">
           <h3 class="skills__category-title" data-i18n="skills.cat.languages">언어</h3>
           <div class="skills__tags">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">SQL</span>
-            <span class="skill-tag">PySpark</span>
+            <span class="skill-tag" data-skill="python" title="경력 마인드맵에서 보기">Python</span>
+            <span class="skill-tag" data-skill="sql" title="경력 마인드맵에서 보기">SQL</span>
+            <span class="skill-tag" data-skill="spark" title="경력 마인드맵에서 보기">PySpark</span>
             <span class="skill-tag">Bash / Shell</span>
-            <span class="skill-tag">Terraform (HCL)</span>
+            <span class="skill-tag" data-skill="terraform" title="경력 마인드맵에서 보기">Terraform (HCL)</span>
             <span class="skill-tag">R</span>
           </div>
         </div>
         <div class="skills__category">
           <h3 class="skills__category-title" data-i18n="skills.cat.dataEng">데이터 엔지니어링</h3>
           <div class="skills__tags">
-            <span class="skill-tag">Apache Airflow</span>
-            <span class="skill-tag">Apache Spark</span>
-            <span class="skill-tag">Databricks</span>
-            <span class="skill-tag">Delta Lake</span>
-            <span class="skill-tag">Unity Catalog</span>
+            <span class="skill-tag" data-skill="airflow" title="경력 마인드맵에서 보기">Apache Airflow</span>
+            <span class="skill-tag" data-skill="spark" title="경력 마인드맵에서 보기">Apache Spark</span>
+            <span class="skill-tag" data-skill="databricks" title="경력 마인드맵에서 보기">Databricks</span>
+            <span class="skill-tag" data-skill="deltalake" title="경력 마인드맵에서 보기">Delta Lake</span>
+            <span class="skill-tag" data-skill="unitycatalog" title="경력 마인드맵에서 보기">Unity Catalog</span>
             <span class="skill-tag">ETL / ELT</span>
             <span class="skill-tag" data-i18n="skills.tag.dataModeling">데이터 모델링</span>
             <span class="skill-tag" data-i18n="skills.tag.customOperators">Custom Operators</span>
-            <span class="skill-tag">Grafana / Webhook 알림</span>
+            <span class="skill-tag" data-skill="grafana" title="경력 마인드맵에서 보기">Grafana / Webhook 알림</span>
           </div>
         </div>
         <div class="skills__category">
@@ -206,7 +206,7 @@
             <span class="skill-tag" data-i18n="skills.tag.marketData">마켓 데이터 파이프라인</span>
             <span class="skill-tag">GA4 / Appsflyer</span>
             <span class="skill-tag">Braze / CRM 푸시</span>
-            <span class="skill-tag" data-i18n="skills.tag.ismsp">ISMS-P 컴플라이언스</span>
+            <span class="skill-tag" data-skill="ismsp" data-i18n="skills.tag.ismsp" title="경력 마인드맵에서 보기">ISMS-P 컴플라이언스</span>
             <span class="skill-tag" data-i18n="skills.tag.cspm">CSPM / 보안 리뷰</span>
             <span class="skill-tag" data-i18n="skills.tag.piiEnc">PII 암호화 (SHA-256)</span>
             <span class="skill-tag">DR (재해복구)</span>
@@ -215,15 +215,15 @@
         <div class="skills__category">
           <h3 class="skills__category-title" data-i18n="skills.cat.cloud">클라우드 & 플랫폼</h3>
           <div class="skills__tags">
-            <span class="skill-tag">AWS</span>
-            <span class="skill-tag">Redshift</span>
-            <span class="skill-tag">S3 / Glue / Athena</span>
-            <span class="skill-tag">Lambda / EventBridge</span>
-            <span class="skill-tag">EMR</span>
+            <span class="skill-tag" data-skill="aws" title="경력 마인드맵에서 보기">AWS</span>
+            <span class="skill-tag" data-skill="redshift" title="경력 마인드맵에서 보기">Redshift</span>
+            <span class="skill-tag" data-skill="s3" title="경력 마인드맵에서 보기">S3 / Glue / Athena</span>
+            <span class="skill-tag" data-skill="lambda" title="경력 마인드맵에서 보기">Lambda / EventBridge</span>
+            <span class="skill-tag" data-skill="emr" title="경력 마인드맵에서 보기">EMR</span>
             <span class="skill-tag">MWAA (Managed Airflow)</span>
-            <span class="skill-tag">SageMaker</span>
-            <span class="skill-tag">Step Functions</span>
-            <span class="skill-tag">PrivateLink / VPC</span>
+            <span class="skill-tag" data-skill="sagemaker" title="경력 마인드맵에서 보기">SageMaker</span>
+            <span class="skill-tag" data-skill="stepfunctions" title="경력 마인드맵에서 보기">Step Functions</span>
+            <span class="skill-tag" data-skill="privatelink" title="경력 마인드맵에서 보기">PrivateLink / VPC</span>
             <span class="skill-tag">Vertica</span>
             <span class="skill-tag">Aurora MySQL / Oracle</span>
             <span class="skill-tag">BI MATRIX</span>
@@ -255,6 +255,8 @@
         <span class="section__number" aria-hidden="true">03</span>
         <span data-i18n="career.heading">경력</span>
       </h2>
+
+      <p class="career__prompt" data-i18n="career.prompt">어떤 기준으로 경력을 보시겠어요?</p>
 
       <!-- View tab switcher -->
       <div class="career__tabs" role="tablist" aria-label="Career view selector">

@@ -736,6 +736,39 @@ button { cursor: pointer; background: none; border: none; }
   border-color: rgba(0, 212, 255, 0.3);
 }
 
+.skill-tag[data-skill] {
+  cursor: pointer;
+  position: relative;
+}
+
+.skill-tag[data-skill]:hover {
+  background: rgba(0, 212, 255, 0.28);
+  border-color: var(--color-primary);
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+.skill-tag[data-skill]:active {
+  transform: translateY(0);
+  background: rgba(0, 212, 255, 0.4);
+}
+
+.skill-tag[data-skill]::after {
+  content: '→';
+  display: inline-block;
+  margin-left: 0.35em;
+  opacity: 0.45;
+  font-family: var(--font-mono);
+  transition: opacity var(--transition-interactive),
+              transform var(--transition-interactive);
+}
+
+.skill-tag[data-skill]:hover::after {
+  opacity: 1;
+  transform: translateX(2px);
+}
+
 @media (max-width: 600px) {
   .skills__grid {
     grid-template-columns: 1fr;
@@ -921,15 +954,24 @@ button { cursor: pointer; background: none; border: none; }
 
 .project-tag {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--color-text-muted);
-  letter-spacing: 0.02em;
+  font-size: var(--text-xs);
+  color: var(--color-text);
+  background: var(--color-primary-dim);
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  transition: background var(--transition-interactive),
+              border-color var(--transition-interactive);
+}
+
+.project-tag:hover {
+  background: rgba(0, 212, 255, 0.2);
+  border-color: rgba(0, 212, 255, 0.35);
 }
 
 .project-tag + .project-tag::before {
-  content: '·';
-  margin-right: var(--space-2);
-  color: var(--color-text-faint);
+  content: none;
 }
 
 @media (max-width: 900px) {
@@ -1208,31 +1250,46 @@ button { cursor: pointer; background: none; border: none; }
    CAREER — 3-VIEW TAB SWITCHER
    ========================================================================== */
 
+.career__prompt {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: var(--space-6);
+  text-align: center;
+}
+
 .career__tabs {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2);
-  margin-bottom: var(--space-10);
-  padding-bottom: var(--space-4);
-  border-bottom: 1px solid var(--color-border);
+  justify-content: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-12);
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
 }
 
 .career__tab {
   font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: 0.06em;
+  font-size: var(--text-sm);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-text-muted);
-  padding: var(--space-2) var(--space-5);
+  padding: var(--space-3) var(--space-8);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   background: transparent;
   cursor: pointer;
   position: relative;
+  min-width: 140px;
+  text-align: center;
   transition: color var(--transition-interactive),
               border-color var(--transition-interactive),
               background var(--transition-interactive),
-              box-shadow var(--transition-interactive);
+              box-shadow var(--transition-interactive),
+              transform var(--transition-interactive);
 }
 
 .career__tab:hover {
@@ -1240,11 +1297,19 @@ button { cursor: pointer; background: none; border: none; }
   border-color: rgba(0, 212, 255, 0.2);
 }
 
+.career__tab:hover {
+  color: var(--color-text);
+  border-color: rgba(0, 212, 255, 0.2);
+  transform: translateY(-1px);
+}
+
 .career__tab--active {
   color: var(--color-primary);
   border-color: var(--color-primary);
   background: var(--color-primary-dim);
-  box-shadow: 0 0 16px rgba(0, 212, 255, 0.08);
+  font-weight: 700;
+  box-shadow: 0 0 24px rgba(0, 212, 255, 0.12);
+  transform: translateY(-1px);
 }
 
 .career__view {

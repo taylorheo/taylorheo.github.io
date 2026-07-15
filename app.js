@@ -131,6 +131,7 @@
   var careerTabs = document.querySelectorAll('.career__tab');
   var careerViews = document.querySelectorAll('.career__view');
   var techGraphInited = false;
+  var lockedNode = null;
 
   function switchCareerView(view) {
     careerTabs.forEach(function (tab) {
@@ -147,11 +148,42 @@
         panel.setAttribute('hidden', '');
       }
     });
-    if (view === 'tech' && !techGraphInited) {
+    if (view === 'tech') {
+      /* Re-init graph every time to ensure DOM nodes are fresh and match current lang */
       initTechGraph();
       techGraphInited = true;
+      lockedNode = null;
     }
   }
+
+  /* --- Skill tag → tech mindmap node jump --- */
+  function jumpToTech(techId) {
+    var target = document.getElementById('experience');
+    if (!target) return;
+    /* Smooth scroll to career section */
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    /* Switch to tech view (this re-renders the mindmap) */
+    switchCareerView('tech');
+    /* Wait for graph DOM to be created, then click the node */
+    requestAnimationFrame(function () {
+      setTimeout(function () {
+        var nodeEl = document.querySelector(
+          '.tech-graph .node-group[data-node="' + techId + '"]'
+        );
+        if (nodeEl) {
+          nodeEl.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+        }
+      }, 80);
+    });
+  }
+
+  /* Bind skill tags with data-skill */
+  document.querySelectorAll('.skill-tag[data-skill]').forEach(function (tag) {
+    tag.addEventListener('click', function () {
+      var techId = tag.getAttribute('data-skill');
+      if (techId) jumpToTech(techId);
+    });
+  });
 
   careerTabs.forEach(function (tab) {
     tab.addEventListener('click', function () {
@@ -397,7 +429,6 @@
     applyFocus(container, node.id, nodeEls, edgeEls);
   }
 
-  var lockedNode = null;
   function toggleFocus(container, node, nodeEls, edgeEls) {
     if (lockedNode && lockedNode.id === node.id) {
       lockedNode = null;
