@@ -956,20 +956,20 @@ button { cursor: pointer; background: none; border: none; }
   color: #f58220;
 }
 
-/* Company-themed colors — JobKorea (green) */
+/* Company-themed colors — JobKorea/Worxphere (dark navy) */
 .experience__item--jobkorea .experience__marker {
-  background: #00b336;
-  box-shadow: 0 0 8px rgba(0, 179, 54, 0.4);
+  background: #4B7FA6;
+  box-shadow: 0 0 8px rgba(75, 127, 166, 0.4);
 }
 .experience__item--jobkorea .experience__card:hover {
-  border-color: rgba(0, 179, 54, 0.3);
-  box-shadow: 0 0 20px rgba(0, 179, 54, 0.1);
+  border-color: rgba(75, 127, 166, 0.3);
+  box-shadow: 0 0 20px rgba(75, 127, 166, 0.1);
 }
 .experience__item--jobkorea .experience__date {
-  color: #00b336;
+  color: #4B7FA6;
 }
 .experience__item--jobkorea .experience__list li::before {
-  color: #00b336;
+  color: #4B7FA6;
 }
 
 /* Company-themed colors — Bespin Global (blue) */
