@@ -7,13 +7,14 @@
 
   /* --- Nav: hide on scroll down, show on scroll up --- */
   const nav = document.getElementById('nav');
+  const hero = document.getElementById('hero');
   let lastScroll = 0;
-  const SCROLL_THRESHOLD = 60;
 
   function handleNavScroll() {
-    const currentScroll = window.scrollY;
+    var currentScroll = window.scrollY;
+    var heroBottom = hero ? hero.offsetHeight : 400;
 
-    if (currentScroll > SCROLL_THRESHOLD) {
+    if (currentScroll > heroBottom - 80) {
       nav.classList.add('nav--scrolled');
     } else {
       nav.classList.remove('nav--scrolled');

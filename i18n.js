@@ -35,6 +35,8 @@
     'hero.experience': '4 years 4 months',
     'hero.ctaContact': 'Get in Touch',
     'hero.scroll': 'scroll',
+    'hero.brand.company': 'Bithumb',
+    'hero.brand.role': 'Data Platform Engineer',
 
     /* About */
     'about.heading': 'About',
