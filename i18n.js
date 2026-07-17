@@ -40,7 +40,7 @@
 
     /* About */
     'about.heading': 'About',
-    'about.text': "Data Platform Engineer at Bithumb, Korea's leading cryptocurrency exchange, where I design and operate IDC + AWS data platforms under financial-regulatory and ISMS-P compliance. My focus sits at the intersection of data infrastructure, security, and FinOps — migrating legacy systems to modern lakehouses (Databricks, Redshift), cutting compute costs by 30–70% through workload optimization, and building secure landing zones that pass financial-grade security audits. Previously shipped data platforms at JobKorea and Bespin Global.",
+    'about.text': "Data Platform Engineer at Bithumb, Korea's leading cryptocurrency exchange, where I design and operate IDC + AWS data platforms under financial-regulatory and ISMS-P compliance. My focus sits at the intersection of data infrastructure, security, and FinOps — migrating legacy systems to modern lakehouses (Databricks, Redshift), cutting compute costs by 30–70% through workload optimization, and building secure landing zones that pass financial-grade security audits. Previously shipped data platforms at Worxphere (ex-JobKorea) and Bespin Global.",
     'about.stat.years': 'Total Experience',
     'about.stat.savings': 'Avg ETL Cost Savings',
     'about.stat.companies': 'Companies Shipped',
@@ -92,7 +92,7 @@
     'exp.bithumb.b7': 'Operate core data assets across VERTICA, Redshift, Airflow, Aurora MySQL, EMR, and BI MATRIX — including ingestion pipelines for exchange trading data (Oracle, Aurora MySQL), GA4, and Appsflyer.',
 
     'exp.jk.role': 'Data Engineer, Manager',
-    'exp.jk.company': 'JobKorea — Data & AI Division, Data Platform Team · Seoul, KR',
+    'exp.jk.company': 'Worxphere (ex-JobKorea) — Data & AI Division, Data Platform Team · Seoul, KR',
     'exp.jk.date': 'Jul 2022 — Sep 2024',
     'exp.jk.b1': 'Built Self-Insight Data Mart — a company-wide self-serve analytics platform — cutting mart runtimes 5–20% via SparkSQL optimization and eliminating duplicated profile data. Built hybrid On-Prem Airflow + Databricks Workflow pipeline.',
     'exp.jk.b2': 'Designed Airflow custom operators extending Astro + Databricks providers, migrating ETL from All-Purpose to Job Compute clusters. Cut ETL cost 60–70%, SageMaker-Databricks cost 50–60%. Added auto-retry and Jinja2 template rendering.',
@@ -104,7 +104,7 @@
     'exp.bespin.role': 'Cloud Data Engineer',
     'exp.bespin.company': 'Bespin Global — DataOps Division, Data Analytics Team · Seoul, KR',
     'exp.bespin.date': 'Jul 2021 — Jul 2022',
-    'exp.bespin.b1': "Delivered JOBIA — JobKorea's AWS-based data/AI platform — migrating on-prem MSSQL SSIS warehouse and marts to Redshift + S3 data lake and reducing pipeline runtime by 15%+.",
+    'exp.bespin.b1': "Delivered JOBIA — Worxphere (ex-JobKorea)'s AWS-based data/AI platform — migrating on-prem MSSQL SSIS warehouse and marts to Redshift + S3 data lake and reducing pipeline runtime by 15%+.",
     'exp.bespin.b2': 'Consolidated external data (GA360, SAP via AWS Transfer Family, Appsflyer via S3 event-triggered Lambda micro-ETL) into a single Glue Catalog / Athena analytical environment.',
     'exp.bespin.b3': 'Authored batch pipeline development guides and trained client teams on AWS Step Functions + Glue + Spark ETL patterns during PoC.',
     'exp.bespin.b4': 'Improved AWS resource governance with a Lambda + CloudTrail–based asset management system.',
@@ -133,10 +133,10 @@
     'proj.p2.desc': "Consolidating Bithumb's dual IDC + AWS analytics/information platforms — new AWS account IaC transition (Terraform), VPC/Subnet design, Prefect+EMR → Airflow+Glue pipeline migration (PySpark), SageMaker Unified Studio & Redshift Serverless PoC, multi-cluster isolation cutting Redshift node cost 33%.",
 
     'proj.p3.title': 'Airflow × Databricks Custom Operator',
-    'proj.p3.desc': "Extended Astro + Databricks providers to run ETL on Job Compute instead of All-Purpose clusters. Added auto-retry and Jinja2 template rendering, eliminated Databricks Workflow dual-development burden. Cut Databricks ETL cost 60–70%, SageMaker-Databricks cost 50–60% across JobKorea pipelines. Developed SQL Warehouse module cutting ML costs avg 50%+.",
+    'proj.p3.desc': "Extended Astro + Databricks providers to run ETL on Job Compute instead of All-Purpose clusters. Added auto-retry and Jinja2 template rendering, eliminated Databricks Workflow dual-development burden. Cut Databricks ETL cost 60–70%, SageMaker-Databricks cost 50–60% across Worxphere (ex-JobKorea) pipelines. Developed SQL Warehouse module cutting ML costs avg 50%+.",
 
     'proj.p4.title': 'Self-Insight Data Mart',
-    'proj.p4.desc': 'Company-wide self-serve data mart at JobKorea absorbing ad-hoc statistical requests from planning, operations, and marketing teams. SparkSQL optimization cut mart runtimes 5–20%. Databricks API module enabled Unity Catalog read/write without Compute. Hybrid On-Prem Airflow + Databricks Workflow pipeline removed cloud single-point-of-failure risk.',
+    'proj.p4.desc': 'Company-wide self-serve data mart at Worxphere (ex-JobKorea) absorbing ad-hoc statistical requests from planning, operations, and marketing teams. SparkSQL optimization cut mart runtimes 5–20%. Databricks API module enabled Unity Catalog read/write without Compute. Hybrid On-Prem Airflow + Databricks Workflow pipeline removed cloud single-point-of-failure risk.',
 
     'proj.p5.title': 'Onepick — AI Talent Recommendation',
     'proj.p5.desc': 'End-to-end ML pipeline for AI-driven job-to-candidate matching. Python Deferrable operator for SageMaker reduced Airflow worker resource usage avg 20% without additional scaling. Webhook-based performance/error monitoring and Grafana dashboard.',
@@ -145,7 +145,7 @@
     'proj.coverage.desc': 'Transitioned On-Prem BI dashboards to cloud-based Power BI. Automated unmanaged analyst data marts and data quality check pipelines. Migrated Presto report queries to PySpark, 5–10% performance improvement per table.',
 
     'proj.p6.title': 'JOBIA — Data & AI Platform',
-    'proj.p6.desc': "JobKorea's AWS-native data platform built at Bespin Global — migrated on-prem MSSQL SSIS warehouse to Redshift + S3. Integrated GA360 (BigQuery Connector) / SAP / Appsflyer through Transfer Family (SFTP), EventBridge, and Lambda micro-ETL. Provided Glue Catalog + Athena analytics environment. 15%+ pipeline speedup over legacy.",
+    'proj.p6.desc': "Worxphere (ex-JobKorea)'s AWS-native data platform built at Bespin Global — migrated on-prem MSSQL SSIS warehouse to Redshift + S3. Integrated GA360 (BigQuery Connector) / SAP / Appsflyer through Transfer Family (SFTP), EventBridge, and Lambda micro-ETL. Provided Glue Catalog + Athena analytics environment. 15%+ pipeline speedup over legacy.",
 
     /* Education */
     'education.heading': 'Education & Certifications',
