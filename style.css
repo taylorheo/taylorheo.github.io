@@ -923,6 +923,71 @@ button { cursor: pointer; background: none; border: none; }
   font-size: var(--text-sm);
 }
 
+/* Experience — header layout with logo */
+.experience__header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.experience__logo {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+/* Company-themed colors — Bithumb (orange) */
+.experience__item--bithumb .experience__marker {
+  background: #f58220;
+  box-shadow: 0 0 8px rgba(245, 130, 32, 0.4);
+}
+.experience__item--bithumb .experience__card:hover {
+  border-color: rgba(245, 130, 32, 0.3);
+  box-shadow: 0 0 20px rgba(245, 130, 32, 0.1);
+}
+.experience__item--bithumb .experience__date {
+  color: #f58220;
+}
+.experience__item--bithumb .experience__list li::before {
+  color: #f58220;
+}
+
+/* Company-themed colors — JobKorea (green) */
+.experience__item--jobkorea .experience__marker {
+  background: #00b336;
+  box-shadow: 0 0 8px rgba(0, 179, 54, 0.4);
+}
+.experience__item--jobkorea .experience__card:hover {
+  border-color: rgba(0, 179, 54, 0.3);
+  box-shadow: 0 0 20px rgba(0, 179, 54, 0.1);
+}
+.experience__item--jobkorea .experience__date {
+  color: #00b336;
+}
+.experience__item--jobkorea .experience__list li::before {
+  color: #00b336;
+}
+
+/* Company-themed colors — Bespin Global (blue) */
+.experience__item--bespin .experience__marker {
+  background: #0078d4;
+  box-shadow: 0 0 8px rgba(0, 120, 212, 0.4);
+}
+.experience__item--bespin .experience__card:hover {
+  border-color: rgba(0, 120, 212, 0.3);
+  box-shadow: 0 0 20px rgba(0, 120, 212, 0.1);
+}
+.experience__item--bespin .experience__date {
+  color: #0078d4;
+}
+.experience__item--bespin .experience__list li::before {
+  color: #0078d4;
+}
+
 /* ==========================================================================
    PROJECTS
    ========================================================================== */
