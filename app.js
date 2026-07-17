@@ -13,14 +13,19 @@
   function handleNavScroll() {
     var currentScroll = window.scrollY;
     var heroBottom = hero ? hero.offsetHeight : 400;
+    var pastHero = currentScroll > heroBottom - 80;
 
-    if (currentScroll > heroBottom - 80) {
+    if (pastHero) {
       nav.classList.add('nav--scrolled');
     } else {
       nav.classList.remove('nav--scrolled');
     }
 
-    if (currentScroll > lastScroll && currentScroll > 200) {
+    /* Only hide nav while user is still inside the hero region.
+       Once they've scrolled past, the nav must always remain visible. */
+    if (pastHero) {
+      nav.classList.remove('nav--hidden');
+    } else if (currentScroll > lastScroll && currentScroll > 200) {
       nav.classList.add('nav--hidden');
     } else {
       nav.classList.remove('nav--hidden');
