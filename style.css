@@ -215,6 +215,17 @@ button { cursor: pointer; background: none; border: none; }
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity 0.5s var(--ease-out-expo),
+              transform 0.5s var(--ease-out-expo);
+  pointer-events: none;
+}
+
+.nav--scrolled .nav__brand {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
 }
 
 .nav__brand-name {
