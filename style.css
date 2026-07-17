@@ -174,7 +174,6 @@ button { cursor: pointer; background: none; border: none; }
               box-shadow 0.3s var(--ease-out-expo);
 }
 
-.nav--hidden { transform: translateY(-100%); }
 .nav--scrolled { box-shadow: var(--shadow-md); }
 
 .nav__inner {

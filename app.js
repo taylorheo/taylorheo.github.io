@@ -8,22 +8,13 @@
   /* --- Nav: hide on scroll down, show on scroll up --- */
   const nav = document.getElementById('nav');
   const hero = document.getElementById('hero');
-  let lastScroll = 0;
   var pastHero = false;
 
   function updateNavState() {
     if (pastHero) {
       nav.classList.add('nav--scrolled');
-      nav.classList.remove('nav--hidden');
     } else {
       nav.classList.remove('nav--scrolled');
-      var currentScroll = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
-      if (currentScroll > lastScroll && currentScroll > 200) {
-        nav.classList.add('nav--hidden');
-      } else {
-        nav.classList.remove('nav--hidden');
-      }
-      lastScroll = currentScroll;
     }
   }
 
