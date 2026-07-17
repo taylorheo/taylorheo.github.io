@@ -9,32 +9,39 @@
   const nav = document.getElementById('nav');
   const hero = document.getElementById('hero');
   let lastScroll = 0;
+  var pastHero = false;
 
-  function handleNavScroll() {
-    var currentScroll = window.scrollY;
-    var heroBottom = hero ? hero.offsetHeight : 400;
-    var pastHero = currentScroll > heroBottom - 80;
-
+  function updateNavState() {
     if (pastHero) {
       nav.classList.add('nav--scrolled');
+      nav.classList.remove('nav--hidden');
     } else {
       nav.classList.remove('nav--scrolled');
+      var currentScroll = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      if (currentScroll > lastScroll && currentScroll > 200) {
+        nav.classList.add('nav--hidden');
+      } else {
+        nav.classList.remove('nav--hidden');
+      }
+      lastScroll = currentScroll;
     }
-
-    /* Only hide nav while user is still inside the hero region.
-       Once they've scrolled past, the nav must always remain visible. */
-    if (pastHero) {
-      nav.classList.remove('nav--hidden');
-    } else if (currentScroll > lastScroll && currentScroll > 200) {
-      nav.classList.add('nav--hidden');
-    } else {
-      nav.classList.remove('nav--hidden');
-    }
-
-    lastScroll = currentScroll;
   }
 
-  window.addEventListener('scroll', handleNavScroll, { passive: true });
+  if ('IntersectionObserver' in window && hero) {
+    var heroObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          pastHero = entry.intersectionRatio < 0.15;
+          updateNavState();
+        });
+      },
+      { threshold: [0, 0.15, 0.5, 1] }
+    );
+    heroObserver.observe(hero);
+  }
+
+  window.addEventListener('scroll', updateNavState, { passive: true });
+  updateNavState();
 
   /* --- Mobile nav toggle --- */
   const navToggle = document.getElementById('navToggle');
