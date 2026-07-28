@@ -2010,6 +2010,9 @@ body.modal-open {
     max-height: 92dvh;
     border-radius: var(--radius-xl) var(--radius-xl) 0 0;
     transform: translateY(100%);
+    /* Override desktop initial state — keep dialog fully opaque so
+       the slide-up animation is visible on mobile. */
+    opacity: 1;
   }
 
   .modal--open .modal__dialog {

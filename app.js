@@ -63,9 +63,38 @@
 
   /* --- Intersection Observer for reveal animations --- */
   const revealElements = document.querySelectorAll('.section, .about__stat, .skills__category, .experience__item, .project-card, .education__card, .contact__link');
+  let revealObserver = null;
+
+  function forceRevealInView(scope) {
+    /* Make all .reveal elements in `scope` (or document) that are in the
+       viewport immediately visible, and re-observe the rest. Used when a
+       hidden panel becomes visible (e.g. tab switch). */
+    var root = scope || document;
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    var pending = [];
+    root.querySelectorAll('.reveal:not(.reveal--visible)').forEach(function (el) {
+      var rect = el.getBoundingClientRect();
+      if (rect.top < vh && rect.bottom > 0) {
+        el.classList.add('reveal--visible');
+        if (revealObserver) {
+          try { revealObserver.unobserve(el); } catch (e) { /* ignore */ }
+        }
+      } else {
+        pending.push(el);
+      }
+    });
+    if (revealObserver) {
+      pending.forEach(function (el) {
+        try { revealObserver.observe(el); } catch (e) { /* ignore */ }
+      });
+    }
+  }
 
   if ('IntersectionObserver' in window) {
-    const revealObserver = new IntersectionObserver(
+    // Generous bottom rootMargin so elements that are within a viewport
+    // of being visible get revealed early — critical on mobile where
+    // the viewport is small and the user can scroll quickly.
+    revealObserver = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
@@ -78,12 +107,22 @@
           }
         });
       },
-      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+      { threshold: 0, rootMargin: '0px 0px 10% 0px' }
     );
 
     revealElements.forEach(function (el) {
       el.classList.add('reveal');
-      revealObserver.observe(el);
+      /* If the element is already in or above the viewport at load time,
+         mark it visible immediately — IO sometimes doesn't fire for
+         elements that are already fully visible on initial layout, and
+         we don't want the user to see invisible content. */
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      if (rect.top < vh && rect.bottom > 0) {
+        el.classList.add('reveal--visible');
+      } else {
+        revealObserver.observe(el);
+      }
     });
   } else {
     /* Fallback: show everything if no IO support */
@@ -152,6 +191,14 @@
         panel.setAttribute('hidden', '');
       }
     });
+    /* When a panel becomes visible after being hidden, its child reveal
+       elements are still opacity:0 from the .reveal class. Force-reveal
+       anything in the now-active panel that is already in the viewport,
+       and re-observe the rest so IO can fire on scroll. */
+    var activePanel = document.querySelector('.career__view--active');
+    if (activePanel && typeof forceRevealInView === 'function') {
+      forceRevealInView(activePanel);
+    }
     if (view === 'tech') {
       /* Re-init graph every time to ensure DOM nodes are fresh and match current lang */
       initTechGraph();
