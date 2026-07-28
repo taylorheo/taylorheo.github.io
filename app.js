@@ -474,4 +474,186 @@
     var display = el.querySelector('[data-email-display]');
     if (display) display.textContent = email;
   });
+
+  /* ========================================================================
+     PROJECT DETAIL MODAL
+     Click a project card to open a floating modal with full project details.
+     Data is read from the inline #projectDetails JSON (i18n-keyed by language).
+     Supports keyboard (Esc), backdrop click, X button. Re-renders body when
+     language changes while open.
+     ======================================================================== */
+
+  var modal = document.getElementById('projectModal');
+  var modalTitle = document.getElementById('projectModalTitle');
+  var modalBadge = document.getElementById('projectModalBadge');
+  var modalOwner = document.getElementById('projectModalOwner');
+  var modalBody = document.getElementById('projectModalBody');
+
+  /* Parse the embedded project details JSON */
+  var PROJECT_DETAILS = {};
+  (function loadProjectDetails() {
+    var el = document.getElementById('projectDetails');
+    if (!el) return;
+    try {
+      PROJECT_DETAILS = JSON.parse(el.textContent);
+    } catch (err) {
+      console.error('Failed to parse #projectDetails JSON:', err);
+    }
+  })();
+
+  var lastFocus = null;
+  var keydownHandler = null;
+  var currentProjectId = null;
+
+  function getLang() {
+    return (window.__i18n && window.__i18n.getLang && window.__i18n.getLang()) || 'ko';
+  }
+
+  function escapeHtml(s) {
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function renderProjectModal() {
+    if (!currentProjectId) return;
+    var data = PROJECT_DETAILS[currentProjectId];
+    if (!data) return;
+    var lang = getLang();
+    var content = data[lang] || data.ko || {};
+
+    /* Header fields from the card itself (translated by the i18n system) */
+    var card = document.querySelector('.project-card[data-project="' + currentProjectId + '"]');
+    var cardTitle = card ? card.querySelector('.project-card__title') : null;
+    var cardBadge = card ? card.querySelector('.project-card__badge') : null;
+    modalTitle.textContent = (cardTitle ? cardTitle.textContent : '').trim();
+    modalBadge.textContent = (cardBadge ? cardBadge.textContent : '').trim();
+    /* Owner label: prefer JSON entry, fall back to data-owner attribute */
+    var ownerText = content.owner || '';
+    if (!ownerText && card) {
+      var ownerMap = { bithumb: '빗썸', jk: '웍스피어 (구 잡코리아)', bespin: '베스핀글로벌' };
+      ownerText = ownerMap[card.getAttribute('data-owner')] || '';
+    }
+    modalOwner.textContent = ownerText;
+
+    /* Body */
+    var html = '';
+    if (content.summary) {
+      html += '<p>' + escapeHtml(content.summary) + '</p>';
+    }
+    if (content.role) {
+      html += '<h4>역할</h4><p><em>' + escapeHtml(content.role) + '</em></p>';
+    }
+    (content.sections || []).forEach(function (section) {
+      html += '<h4>' + escapeHtml(section.heading) + '</h4>';
+      html += '<ul>';
+      (section.items || []).forEach(function (item) {
+        html += '<li>' + escapeHtml(item) + '</li>';
+      });
+      html += '</ul>';
+    });
+    modalBody.innerHTML = html;
+
+    /* Scroll modal body to top so users see the summary first */
+    modalBody.scrollTop = 0;
+  }
+
+  function openProjectModal(projectId) {
+    if (!modal) return;
+    currentProjectId = projectId;
+    lastFocus = document.activeElement;
+    renderProjectModal();
+    modal.hidden = false;
+    /* Force reflow so the CSS transition runs from its initial state */
+    // eslint-disable-next-line no-unused-expressions
+    modal.offsetHeight;
+    modal.classList.add('modal--open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+
+    /* Move focus to the close button for keyboard users */
+    var closeBtn = modal.querySelector('.modal__close');
+    if (closeBtn) closeBtn.focus();
+
+    /* Keyboard handlers: Esc to close, Tab to trap focus */
+    if (keydownHandler) document.removeEventListener('keydown', keydownHandler);
+    keydownHandler = function (e) {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeProjectModal();
+        return;
+      }
+      if (e.key === 'Tab') {
+        var focusables = modal.querySelectorAll(
+          'button:not([disabled]), [href], [tabindex]:not([tabindex="-1"])'
+        );
+        if (!focusables.length) return;
+        var first = focusables[0];
+        var last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    };
+    document.addEventListener('keydown', keydownHandler);
+  }
+
+  function closeProjectModal() {
+    if (!modal || modal.hidden) return;
+    modal.classList.remove('modal--open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+    if (keydownHandler) {
+      document.removeEventListener('keydown', keydownHandler);
+      keydownHandler = null;
+    }
+    /* Wait for the close transition to finish before fully hiding */
+    setTimeout(function () {
+      modal.hidden = true;
+      currentProjectId = null;
+      if (lastFocus && typeof lastFocus.focus === 'function') {
+        lastFocus.focus();
+      }
+    }, 250);
+  }
+
+  /* Wire up project cards (click + keyboard) */
+  document.querySelectorAll('.project-card[data-project]').forEach(function (card) {
+    var projectId = card.getAttribute('data-project');
+    card.addEventListener('click', function () {
+      openProjectModal(projectId);
+    });
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openProjectModal(projectId);
+      }
+    });
+  });
+
+  /* Wire up close controls (backdrop + X button) */
+  if (modal) {
+    modal.querySelectorAll('[data-modal-close]').forEach(function (el) {
+      el.addEventListener('click', closeProjectModal);
+    });
+  }
+
+  /* Re-render the open modal when the user toggles language */
+  document.querySelectorAll('.lang-toggle__btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      /* Wait for i18n to finish its DOM updates before re-rendering */
+      setTimeout(function () {
+        if (modal && !modal.hidden && currentProjectId) {
+          renderProjectModal();
+        }
+      }, 0);
+    });
+  });
 })();

@@ -166,7 +166,11 @@
     'contact.note': 'For direct email, please reach out via LinkedIn or GitHub first.',
 
     /* Footer */
-    'footer.copy': '© 2026 Youngdae Heo. All rights reserved.'
+    'footer.copy': '© 2026 Youngdae Heo. All rights reserved.',
+
+    /* Project detail modal — UI chrome */
+    'modal.close': 'Close',
+    'modal.role': 'Role'
   };
 
   /* Korean defaults are captured from the initial HTML (first paint) */
@@ -257,6 +261,8 @@
   }
 
   /* --- Init on DOM ready --- */
+  let currentLang = DEFAULT_LANG;
+
   function init() {
     captureKoreanDefaults();
 
@@ -267,12 +273,15 @@
       if (s === 'ko' || s === 'en') saved = s;
     } catch (e) { /* ignore */ }
 
+    currentLang = saved;
     applyLang(saved);
 
     // Wire up toggle buttons
     document.querySelectorAll('.lang-toggle__btn').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        applyLang(btn.getAttribute('data-lang'));
+        const next = btn.getAttribute('data-lang');
+        currentLang = next;
+        applyLang(next);
       });
     });
   }
@@ -282,4 +291,14 @@
   } else {
     init();
   }
+
+  /* --- Public API (exposed for app.js to read the active language) --- */
+  window.__i18n = {
+    getLang: function () { return currentLang; },
+    t: function (key, fallback) {
+      const v = (DICT[currentLang] && DICT[currentLang][key]);
+      if (v === undefined) return fallback !== undefined ? fallback : key;
+      return v;
+    }
+  };
 })();
