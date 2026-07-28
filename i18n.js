@@ -199,10 +199,13 @@
     if (now.getDate() < CAREER_START.getDate()) months -= 1;
     if (months < 0) { years -= 1; months += 12; }
     if (lang === 'en') {
-      return years + ' year' + (years === 1 ? '' : 's') + ' ' +
-             months + ' month' + (months === 1 ? '' : 's');
+      var yearStr = years + ' year' + (years === 1 ? '' : 's');
+      if (months === 0) return yearStr;
+      return yearStr + ' ' + months + ' month' + (months === 1 ? '' : 's');
     }
-    return years + '년 ' + months + '개월';
+    var koStr = years + '년';
+    if (months > 0) koStr += ' ' + months + '개월';
+    return koStr;
   }
 
   function resolveTenure(value, lang) {
