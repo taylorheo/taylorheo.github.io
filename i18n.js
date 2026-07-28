@@ -30,9 +30,9 @@
     'hero.tag': 'Data Platform Engineer · Bithumb',
     'hero.name': 'Youngdae Heo',
     'hero.title': 'Data Engineer',
-    'hero.subtitle': "Building secure, cost-efficient data platforms for Korea's cryptocurrency exchange. 4 years 4 months engineering ETL pipelines, AWS infrastructure, and Databricks lakehouses under financial-grade compliance.",
+    'hero.subtitle': "Building secure, cost-efficient data platforms for Korea's cryptocurrency exchange. {{tenure}} engineering ETL pipelines, AWS infrastructure, and Databricks lakehouses under financial-grade compliance.",
     'hero.location': 'Seoul, KR',
-    'hero.experience': '4 years 4 months',
+    'hero.experience': '{{tenure}}',
     'hero.ctaContact': 'Get in Touch',
     'hero.scroll': 'scroll',
     'hero.brand.company': 'Bithumb',
@@ -186,6 +186,30 @@
 
   const DICT = { ko: KO, en: EN };
 
+  /* --- Dynamic tenure calculation ---
+     Computes the years/months since the start of the data engineering
+     career (Bespin Global, 2021-07-01) and substitutes the {{tenure}}
+     placeholder in any translated or data-dynamic value. */
+  const CAREER_START = new Date(2021, 6, 1); // 2021-07-01 (Bespin Global start)
+
+  function formatTenure(lang) {
+    var now = new Date();
+    var years = now.getFullYear() - CAREER_START.getFullYear();
+    var months = now.getMonth() - CAREER_START.getMonth();
+    if (now.getDate() < CAREER_START.getDate()) months -= 1;
+    if (months < 0) { years -= 1; months += 12; }
+    if (lang === 'en') {
+      return years + ' year' + (years === 1 ? '' : 's') + ' ' +
+             months + ' month' + (months === 1 ? '' : 's');
+    }
+    return years + '년 ' + months + '개월';
+  }
+
+  function resolveTenure(value, lang) {
+    if (typeof value !== 'string' || value.indexOf('{{tenure}}') === -1) return value;
+    return value.replace(/\{\{tenure\}\}/g, formatTenure(lang));
+  }
+
   /* --- Apply a language across the page --- */
   function applyLang(lang) {
     if (lang !== 'ko' && lang !== 'en') lang = DEFAULT_LANG;
@@ -200,11 +224,18 @@
       const attr = el.getAttribute('data-i18n-attr');
       const value = DICT[lang][key];
       if (value === undefined) return; // fall back to existing content
+      const resolved = resolveTenure(value, lang);
       if (attr) {
-        el.setAttribute(attr, value);
+        el.setAttribute(attr, resolved);
       } else {
-        el.innerHTML = value;
+        el.innerHTML = resolved;
       }
+    });
+
+    // Dynamic-only nodes (not in i18n)
+    document.querySelectorAll('[data-dynamic="tenure"]').forEach(function (el) {
+      if (el.hasAttribute('data-i18n')) return;
+      el.textContent = formatTenure(lang);
     });
 
     // Update <title> if present

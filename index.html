@@ -115,7 +115,7 @@
     </div>
     <h1 class="hero__name" data-i18n="hero.name">허영대</h1>
     <p class="hero__title" data-i18n="hero.title">데이터 엔지니어</p>
-    <p class="hero__subtitle" data-i18n="hero.subtitle">국내 대표 암호화폐 거래소를 위한 안전하고 비용 효율적인 데이터 플랫폼을 설계합니다. 4년 4개월간 금융권 수준의 컴플라이언스 아래에서 ETL 파이프라인, AWS 인프라, Databricks 레이크하우스를 운영해 왔습니다.</p>
+    <p class="hero__subtitle" data-i18n="hero.subtitle">국내 대표 암호화폐 거래소를 위한 안전하고 비용 효율적인 데이터 플랫폼을 설계합니다. {{tenure}}간 금융권 수준의 컴플라이언스 아래에서 ETL 파이프라인, AWS 인프라, Databricks 레이크하우스를 운영해 왔습니다.</p>
     <div class="hero__meta">
       <span class="hero__meta-item">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -123,7 +123,7 @@
       </span>
       <span class="hero__meta-item">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/></svg>
-        <span data-i18n="hero.experience">4년 4개월</span>
+        <span data-i18n="hero.experience">{{tenure}}</span>
       </span>
     </div>
     <div class="hero__actions">
@@ -156,7 +156,7 @@
         </p>
         <div class="about__stats">
           <div class="about__stat">
-            <span class="about__stat-value">4년 4개월</span>
+            <span class="about__stat-value" data-dynamic="tenure">{{tenure}}</span>
             <span class="about__stat-label" data-i18n="about.stat.years">총 경력</span>
           </div>
           <div class="about__stat">
