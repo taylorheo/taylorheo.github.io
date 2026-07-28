@@ -1,7 +1,3 @@
-# Block all crawlers and AI agents
-User-agent: *
-Disallow: /
-
 # Explicitly block known AI crawlers and agents
 User-agent: GPTBot
 Disallow: /
