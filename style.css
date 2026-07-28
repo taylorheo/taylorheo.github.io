@@ -245,7 +245,26 @@ button { cursor: pointer; background: none; border: none; }
 }
 
 @media (max-width: 768px) {
+  /* Keep nav__brand visible on scroll just like desktop — show name + company
+     so users can identify the site once they've scrolled past the hero. */
   .nav__brand {
+    display: inline-flex;
+    font-size: 10px;
+    gap: var(--space-1);
+    max-width: 60vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Hide the role on narrow screens to keep the nav compact. */
+  .nav__brand-role {
+    display: none;
+  }
+}
+
+@media (max-width: 375px) {
+  /* Very narrow screens: show only the name + company initial. */
+  .nav__brand-sep:not(:last-of-type) {
     display: none;
   }
 }

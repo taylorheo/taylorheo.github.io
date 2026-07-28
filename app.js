@@ -591,9 +591,6 @@
     if (content.summary) {
       html += '<p>' + escapeHtml(content.summary) + '</p>';
     }
-    if (content.role) {
-      html += '<h4>역할</h4><p><em>' + escapeHtml(content.role) + '</em></p>';
-    }
     (content.sections || []).forEach(function (section) {
       html += '<h4>' + escapeHtml(section.heading) + '</h4>';
       html += '<ul>';

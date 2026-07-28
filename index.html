@@ -658,31 +658,23 @@
   "p-braze": {
     "ko": {
       "summary": "고객 앱 푸시 자동화 및 개인화 마케팅을 위한 Braze 도입 프로젝트. 현업의 마케팅 활용 목적에 맞는 고객 집계 속성 마트를 신규 설계하고, 운영 환경에서 개인정보가 외부로 반출되지 않는 안전한 아키텍처와 운영 프로세스를 함께 구축했습니다.",
-      "role": "데이터 엔지니어",
       "owner": "빗썸",
       "sections": [
-        { "heading": "주요 역할", "items": [
-          "고객 앱 푸시 자동화를 위한 CRM 솔루션 내 현업 활용 목적의 고객 대상 집계 속성 마트 설계 및 파이프라인 개발",
+        { "heading": "프로젝트 요약", "items": [
+          "고객 앱 푸시 자동화 및 개인화된 마케팅 제공을 위한 Braze 도입",
           "Redshift + S3 기반 운영 환경 개인정보 반출 아키텍처 및 프로세스 설계·구성",
-          "캠페인 결과 및 고객 임프레션 데이터 수집을 위한 Redshift Spectrum 기반 데이터 조회 환경 구성"
-        ]},
-        { "heading": "기술 스택", "items": [
-          "Redshift · S3 · Redshift Spectrum · Braze · Airflow"
+          "Redshift Spectrum 기반 캠페인 결과·고객 임프레션 데이터 조회 환경 구축"
         ]}
       ]
     },
     "en": {
       "summary": "Braze adoption for customer push automation and personalized marketing. Designed a new customer aggregation attribute mart aligned with marketing-team use cases and built a secure architecture and operational process that prevents PII from leaving the production environment.",
-      "role": "Data Engineer",
       "owner": "Bithumb",
       "sections": [
-        { "heading": "Key Responsibilities", "items": [
-          "Designed and built customer aggregation attribute marts and pipelines for Braze-driven CRM push automation",
+        { "heading": "Project Summary", "items": [
+          "Braze adoption for CRM push automation and personalized marketing",
           "Designed Redshift + S3 architecture and operational process for PII-safe data extraction",
           "Built Redshift Spectrum query environment for campaign results and customer impression data"
-        ]},
-        { "heading": "Tech Stack", "items": [
-          "Redshift · S3 · Redshift Spectrum · Braze · Airflow"
         ]}
       ]
     }
@@ -691,29 +683,25 @@
   "p1": {
     "ko": {
       "summary": "빗썸에서 Databricks 기반 AI Agent 플랫폼을 전사적으로 확산하는 프로젝트. Text-to-SQL, 데이터 분석, Insight Agent 등 현업 업무 환경에 맞는 AI Agent를 개발·교육하고, 프로덕션 도입을 위한 망분리 설계와 보안 부문 협의, 실사 검증을 단독으로 리딩했습니다.",
-      "role": "데이터 엔지니어",
       "owner": "빗썸",
       "sections": [
-        { "heading": "상세", "items": [
-          "Databricks 플랫폼의 프로덕션 도입을 위한 망분리 설계와 보안 부문 검토 협의, 실사 검증을 통해 개인정보 및 신용정보처리 시스템 요건 충족 증명",
-          "보완 요구사항 반영 및 취약점 개선을 통한 플랫폼·인프라 운영 환경 도입",
-          "셀프 서빙 환경 제공을 위한 워크스페이스 분리, 비용 추적·관리를 위한 워크스페이스 및 태깅 정책 수립",
-          "개인정보·신용정보를 다룰 수 있는 Text-to-SQL 서비스를 위한 카탈로그 및 데이터 거버넌스 프로세스 구축",
-          "데이터 플랫폼 인프라의 보안 취약점 조치 완수 및 규정별 준수 여부에 대한 실사 검증"
+        { "heading": "프로젝트 요약", "items": [
+          "Databricks 기반 AI Agent 플랫폼의 전사 확산을 위한 Agent 개발 및 운영",
+          "Text-to-SQL, 데이터 분석, Insight Agent 등 현업 업무환경에 맞는 AI Agent 개발 및 교육, 전사 확산",
+          "보안부문 요구사항 실사 검증 및 취약점 보완, 프로세스 협의",
+          "망분리 설계, 워크스페이스 분리, 비용 추적·관리를 위한 태깅 정책 수립"
         ]}
       ]
     },
     "en": {
       "summary": "Company-wide rollout of the Databricks-based AI Agent platform at Bithumb. Led network-segregation design, security review, due-diligence verification, and built Text-to-SQL, analytics, and Insight agents tailored to in-house workflows.",
-      "role": "Data Engineer",
       "owner": "Bithumb",
       "sections": [
-        { "heading": "Details", "items": [
-          "Led network-segregation design, security review and due-diligence verification to satisfy PII and credit-information system requirements",
-          "Incorporated security feedback and remediated vulnerabilities to bring the platform into production",
-          "Defined workspace separation and tagging policies for self-service provisioning and cost tracking",
-          "Built the catalog and data governance process powering PII/credit-aware Text-to-SQL services",
-          "Completed security vulnerability remediation and regulatory compliance due-diligence"
+        { "heading": "Project Summary", "items": [
+          "Built Text-to-SQL, data analytics, and Insight Agents on Databricks for company-wide rollout",
+          "User training and enablement across business teams",
+          "Led network-segregation design, security due-diligence, and process alignment",
+          "Defined workspace isolation and tagging policies for cost tracking and self-service"
         ]}
       ]
     }
@@ -722,43 +710,31 @@
   "p-poc": {
     "ko": {
       "summary": "AI Agent 플랫폼 도입 선정을 위한 AWS 기반 Databricks PoC. 전사 핵심 과제인 AI Agent 플랫폼으로 Databricks가 선정되어, 금융 규제를 준수한 보안 요건을 만족하는 인프라를 설계·구축하고 Databricks Genie 기반 Text-to-SQL Agent의 정확도와 성능을 검증했습니다.",
-      "role": "데이터 엔지니어",
       "owner": "빗썸",
       "sections": [
         { "heading": "핵심 성과", "items": [
-          "Databricks Genie 기반 Text-to-SQL Agent 구축, 벤치마크 쿼리에서 90% 정확도 달성"
+          "Databricks Genie 기반 Text-to-SQL Agent 구축, 정확도 및 성능 검증에서 90% 정확도 달성"
         ]},
-        { "heading": "주요 역할", "items": [
+        { "heading": "프로젝트 요약", "items": [
+          "AI Agent 플랫폼 도입 선정을 위한 AWS 기반 Databricks 플랫폼 구축",
           "AWS PrivateLink 기반 인프라 물리적 설계, 보안 규정 준수를 위한 Databricks 계정 및 Workspace 직접 구축",
-          "플랫폼 아키텍처 및 데이터 정책 보안 검토 및 협의",
-          "Databricks Genie 기반 Text-to-SQL Agent 시멘틱 레이어 데이터 격리 아키텍처 구성 및 이관"
-        ]},
-        { "heading": "상세", "items": [
-          "이전 직장에서의 경험을 살려 Databricks 플랫폼을 사내 보안 요건을 만족하는 인프라로 설계 및 구축",
-          "AWS PrivateLink 기반으로 Workspace 및 Databricks Control Plane과 통신하는 환경 구성",
-          "인프라 내 서비스 동작에 따른 데이터 흐름을 보안 담당 부서와 협의하여 금융 규제 준수 보안 검토 통과",
-          "PoC 프로젝트의 빠른 완수 및 보안 검증에 기여"
+          "플랫폼 아키텍처 및 데이터 정책 보안 검토 및 협의 후 금융 규제 준수 보안 검토 통과",
+          "Text-to-SQL Agent 시멘틱 레이어 데이터 격리 아키텍처 구성 및 이관"
         ]}
       ]
     },
     "en": {
       "summary": "AWS-based Databricks PoC for AI Agent platform selection. Designed and built infrastructure that satisfied financial-sector security requirements and validated the Databricks Genie Text-to-SQL Agent for accuracy and performance.",
-      "role": "Data Engineer",
       "owner": "Bithumb",
       "sections": [
         { "heading": "Key Outcome", "items": [
-          "Built Databricks Genie Text-to-SQL Agent, achieved 90% accuracy on benchmark queries"
+          "Built Databricks Genie Text-to-SQL Agent — 90% accuracy on benchmark queries"
         ]},
-        { "heading": "Key Responsibilities", "items": [
-          "AWS PrivateLink-based physical infrastructure design; directly provisioned Databricks account and Workspace to meet security requirements",
-          "Conducted security review and coordination for platform architecture and data policy",
-          "Designed and migrated the data isolation architecture powering the Text-to-SQL Agent semantic layer"
-        ]},
-        { "heading": "Details", "items": [
-          "Applied prior experience to design and build a Databricks platform that satisfied in-house security requirements",
-          "Configured environment for Workspace and Databricks Control Plane communication over AWS PrivateLink",
-          "Passed financial-regulatory security review by aligning data flow with security team requirements",
-          "Contributed to fast PoC completion and security verification"
+        { "heading": "Project Summary", "items": [
+          "Built AWS-based Databricks platform for AI Agent platform selection",
+          "AWS PrivateLink-based physical infrastructure design with direct Databricks account & Workspace provisioning",
+          "Passed financial-regulatory security review through platform architecture and data policy alignment",
+          "Configured data-isolation architecture for the Text-to-SQL Agent semantic layer"
         ]}
       ]
     }
@@ -767,39 +743,33 @@
   "p2": {
     "ko": {
       "summary": "빗썸의 IDC + AWS로 이원화되어 운영 중인 분석·정보계 데이터 플랫폼을 AWS 단일 플랫폼으로 통합하는 지속 프로젝트. 신규 서비스 도입과 기존 플랫폼 마이그레이션 과정에서 VPC/서브넷 단위 설계와 서비스 단위 보안 검토·취약점 조치를 단독으로 주도하고 있습니다.",
-      "role": "데이터 플랫폼 엔지니어 (담당)",
       "owner": "빗썸",
       "sections": [
         { "heading": "핵심 성과 (진행중)", "items": [
-          "AWS 신규 계정 내 기존 플랫폼 자원 IaC 전환 및 VPC·Subnet 등 네트워크 설계·배포 (Terraform)",
-          "기존 Prefect + Amazon EMR 기반 데이터 파이프라인을 Airflow + AWS Glue(PySpark) 기반으로 전환",
-          "SageMaker Unified Studio, Amazon Redshift Serverless 등 신규 서비스 도입 PoC 및 보안 요구사항 충족을 위한 감사 로그 등 프로세스 구축",
-          "멀티 클러스터 분리 설계 및 Reserved Node 비용 안 설계를 통한 노드 비용 33% 절감"
+          "멀티 클러스터 분리 설계 및 Reserved Node 비용 안 설계를 통해 Redshift 노드 비용 33% 절감"
         ]},
-        { "heading": "상세", "items": [
-          "IDC와 AWS에서 별도로 구축되어 정보계+분석계로 이원화된 데이터 플랫폼을 AWS 기반 단일 플랫폼으로 통합 진행",
-          "팀 내 AWS 기반 플랫폼 인프라 이해도가 가장 높아 신규 서비스 도입·기존 플랫폼 마이그레이션 시 보안 부서 요건 충족을 위한 VPC/서브넷 단위 설계 담당",
-          "조직 확장에 따른 계정 분리 단계에서 IaC 기반 인프라 전환을 주도",
-          "멀티 클러스터 전략으로 이해관계가 다양해진 데이터 플랫폼의 안정성과 운영 복잡도를 줄이며 편의성을 보장하는 환경 설계·구축 중"
+        { "heading": "프로젝트 요약", "items": [
+          "IDC + AWS 이원화 데이터 플랫폼을 AWS 기반 단일 플랫폼으로 통합",
+          "AWS 신규 계정 내 기존 플랫폼 자원 IaC 전환 및 VPC·Subnet 네트워크 설계·배포 (Terraform)",
+          "Prefect + Amazon EMR 기반 파이프라인을 Airflow + AWS Glue(PySpark) 기반으로 전환",
+          "SageMaker Unified Studio, Redshift Serverless 등 신규 서비스 도입 PoC 및 보안 요구사항 충족을 위한 감사 로그 프로세스 구축",
+          "팀 내 AWS 인프라 이해도가 가장 높아 VPC/서브넷 단위 설계와 서비스 단위 보안 검토·취약점 조치 담당"
         ]}
       ]
     },
     "en": {
       "summary": "Ongoing consolidation of Bithumb's dual IDC + AWS analytics and information systems into a single AWS-based platform. Leads VPC/subnet-level design, per-service security review, and vulnerability remediation for all new service introductions and migrations.",
-      "role": "Data Platform Engineer (Lead)",
       "owner": "Bithumb",
       "sections": [
-        { "heading": "Key Outcomes (in progress)", "items": [
+        { "heading": "Key Outcome (in progress)", "items": [
+          "33% Redshift node cost reduction via multi-cluster isolation and Reserved Node design"
+        ]},
+        { "heading": "Project Summary", "items": [
+          "Consolidating information and analytics systems split between IDC and AWS into a single AWS platform",
           "IaC transition of existing platform resources into the new AWS account with VPC/Subnet design (Terraform)",
           "Migrated Prefect + Amazon EMR data pipelines to Airflow + AWS Glue (PySpark)",
-          "PoC for SageMaker Unified Studio and Amazon Redshift Serverless; built audit-log and compliance processes",
-          "Multi-cluster isolation and Reserved Node design cut node cost 33%"
-        ]},
-        { "heading": "Details", "items": [
-          "Consolidating information and analytics systems split between IDC and AWS into a single AWS platform",
-          "Owns VPC/subnet-level design and per-service security review to meet security-team requirements",
-          "Drives IaC-based infrastructure transition for org-scaling account splits",
-          "Designing multi-cluster architecture to reduce operational complexity while ensuring stability for diverse stakeholder data platforms"
+          "PoC for SageMaker Unified Studio and Redshift Serverless with audit-log and compliance processes",
+          "Owns VPC/subnet-level design and per-service security review across the team"
         ]}
       ]
     }
@@ -807,46 +777,40 @@
 
   "p3": {
     "ko": {
-      "summary": "Astro + Databricks 프로바이더 확장과 Airflow 커스텀 오퍼레이터 설계를 통해 All-Purpose Compute → Job Compute 마이그레이션을 수행한 프로젝트. 웍스피어(구 잡코리아) 전사 파이프라인에서 ETL 비용 60~70%, SageMaker-Databricks 비용 50~60%를 절감했습니다.",
-      "role": "데이터 엔지니어, 매니저",
+      "summary": "Astro + Databricks 프로바이더 확장과 Airflow 커스텀 오퍼레이터 설계를 통해 All-Purpose Compute → Job Compute 마이그레이션을 수행한 프로젝트. 웍스피어(구 잡코리아) 전사 파이프라인에서 막대한 ETL 비용을 절감했습니다.",
       "owner": "웍스피어 (구 잡코리아)",
       "sections": [
         { "heading": "핵심 성과", "items": [
-          "Databricks All-Purpose Compute 기반 개별 spark-submit → Job Compute 기반 Databricks Workflow 연속 spark-submit으로 ETL 비용 60~70%, SageMaker-Databricks 비용 50~60% 절감",
-          "자동 Retry 및 Jinja2 Template 렌더링 기능 추가로 Airflow 운영 리스크 해소",
-          "Databricks Workflow 기반 파이프라인 개발·운영을 통한 이중 개발·관리 부담 해소",
-          "SQL Warehouse 모듈 개발로 ML 업무에서 Databricks 비용 평균 50% 이상 절감"
-        ]},
-        { "heading": "주요 역할", "items": [
-          "Databricks 및 Astro Operator 기반 Airflow 커스텀 오퍼레이터 설계 및 개발",
-          "Amazon SageMaker Training Job 및 SageMaker Notebook에서 Databricks SQL Warehouse를 통해 데이터 읽기 수행하는 Pandas 모듈 개발"
-        ]},
-        { "heading": "상세", "items": [
-          "Astro Operator의 Retry 불가·Jinja Template 사용 불가 문제를 해결하는 Custom operator 설계·개발",
+          "Databricks All-Purpose → Job Compute 마이그레이션으로 ETL 비용 60~70% 절감",
+          "SageMaker에서 Databricks 사용 시 발생하는 비용 50~60% 절감",
+          "SQL Warehouse 모듈 개발로 ML 업무 Databricks 비용 평균 50% 이상 절감",
           "당시 Airflow 기반의 모든 파이프라인을 재마이그레이션하여 ETL 비용을 약 1/3로 절감",
-          "SageMaker에서 Databricks Unity Catalog 조회 시 Job Cluster 대체가 불가능한 All-Purpose 클러스터 비용 문제를 SQL Warehouse 모듈로 해결"
+          "자동 Retry 및 Jinja2 Template 렌더링 기능 추가로 Airflow 운영 리스크 해소"
+        ]},
+        { "heading": "프로젝트 요약", "items": [
+          "Astro + Databricks 프로바이더 확장으로 All-Purpose → Job Compute 마이그레이션",
+          "Astro Operator의 Retry 불가·Jinja Template 사용 불가 문제를 해결하는 Custom Operator 설계·개발",
+          "Databricks Workflow 이중 개발 부담 해소",
+          "SageMaker Notebook/Training Job에서 Databricks SQL Warehouse로 데이터 라우팅하는 Pandas 모듈 개발"
         ]}
       ]
     },
     "en": {
       "summary": "Designed Airflow custom operators extending Astro + Databricks providers to migrate ETL from All-Purpose to Job Compute clusters. Cut ETL cost 60–70% and SageMaker-Databricks cost 50–60% across all Worxphere (ex-JobKorea) pipelines.",
-      "role": "Data Engineer, Manager",
       "owner": "Worxphere (ex-JobKorea)",
       "sections": [
         { "heading": "Key Outcomes", "items": [
-          "60–70% ETL cost reduction and 50–60% SageMaker-Databricks cost reduction via Job Compute migration",
-          "Eliminated Astro Operator's Retry / Jinja Template limitations with a custom operator",
-          "Removed dual-development burden by using Databricks Workflow as the source of truth",
-          "SQL Warehouse module cut ML workload Databricks cost avg 50%+"
+          "60–70% ETL cost reduction via All-Purpose → Job Compute migration",
+          "50–60% SageMaker-Databricks cost reduction",
+          "Avg 50%+ ML workload Databricks cost reduction via SQL Warehouse module",
+          "Re-migrated all Airflow-based pipelines, cutting ETL cost to ~1/3",
+          "Eliminated Astro Operator's Retry / Jinja Template limitations with a custom operator"
         ]},
-        { "heading": "Key Responsibilities", "items": [
-          "Designed and built Airflow custom operators extending Astro + Databricks providers",
-          "Built a Pandas module that routes SageMaker Training Job / Notebook data access through Databricks SQL Warehouse"
-        ]},
-        { "heading": "Details", "items": [
-          "Resolved Astro Operator's no-Retry / no-Jinja-Template limitations with a custom operator",
-          "Re-migrated all Airflow-based pipelines and cut ETL cost to ~1/3",
-          "Solved All-Purpose cluster cost issue in SageMaker→Databricks Unity Catalog access with a SQL Warehouse module"
+        { "heading": "Project Summary", "items": [
+          "Extended Astro + Databricks providers to run ETL on Job Compute clusters",
+          "Built a custom operator resolving Astro Operator's no-Retry / no-Jinja-Template limitations",
+          "Removed Databricks Workflow dual-development burden",
+          "Built a Pandas module that routes SageMaker Notebook/Training Job data access through Databricks SQL Warehouse"
         ]}
       ]
     }
@@ -855,30 +819,22 @@
   "p4": {
     "ko": {
       "summary": "웍스피어(구 잡코리아)에서 전사 대상 범용 데이터 마트 및 분석 플랫폼을 제공하여, 기획·운영·마케팅 부서의 애드혹 통계 요청 업무 부담을 해소한 데이터 민주화 프로젝트.",
-      "role": "데이터 엔지니어, 매니저",
       "owner": "웍스피어 (구 잡코리아)",
       "sections": [
         { "heading": "핵심 성과", "items": [
           "데이터 분석가가 개발한 SparkSQL 쿼리 최적화로 각 데이터 마트별 수행시간 5~20% 단축",
-          "Databricks API 기반 모듈 개발로 Compute 없이 Unity Catalog 읽기·쓰기 가능, 컴퓨팅 비용 절감 및 클러스터 준비 시간 제거",
-          "데이터 마트 개발 및 ML에서 사용되는 프로파일 데이터 통합·중간 마트 구축으로 중복 데이터 제거"
+          "Databricks API 기반 모듈로 Compute 없이 Unity Catalog 읽기·쓰기 가능 — 컴퓨팅 비용 절감 및 클러스터 준비 시간 제거",
+          "프로파일 데이터 통합 및 중간 마트 구축으로 중복 데이터 제거"
         ]},
-        { "heading": "주요 역할", "items": [
-          "데이터 분석가가 개발한 SparkSQL 코드 최적화",
-          "클라우드 장애 대비를 위한 On-Premise Airflow + Databricks Workflow 하이브리드 파이프라인 구축 및 관련 모듈 개발",
-          "Databricks API 기반 모듈로 Databricks Compute 없는 Unity Catalog 테이블 접근 및 AWS Glue Catalog 연동",
-          "ISMS-P 심사 대응을 위한 개인정보 컬럼 SHA-256 암호화 모듈 및 Databricks↔AWS Glue Catalog 자동화 모듈 개발"
-        ]},
-        { "heading": "상세", "items": [
-          "코드 최적화·효율 향상을 위한 최적화 작업과 벤치마킹 테스트 진행으로 성능 향상 코드 작성 가이드를 주도",
-          "안정적인 데이터 제공을 위한 하이브리드 파이프라인 및 Databricks Unity Catalog 관련 모듈 개발",
-          "데이터 분석가들의 반복 작업 개선 수요를 파악해 Databricks↔AWS Glue Catalog 간 연동 함수 제공"
+        { "heading": "프로젝트 요약", "items": [
+          "전사 대상의 범용 데이터 마트 및 분석 플랫폼 제공 — 기획·운영·마케팅 부서의 애드혹 통계 요청 흡수",
+          "On-Premise Airflow + Databricks Workflow 하이브리드 파이프라인으로 클라우드 단일 장애점 리스크 제거",
+          "ISMS-P 심사 대응을 위한 SHA-256 PII 암호화 모듈 및 Databricks↔AWS Glue Catalog 자동화 모듈 개발"
         ]}
       ]
     },
     "en": {
       "summary": "Company-wide self-serve data mart and analytics platform at Worxphere (ex-JobKorea) that absorbed ad-hoc statistical requests from planning, operations, and marketing teams — a data-democratization project.",
-      "role": "Data Engineer, Manager",
       "owner": "Worxphere (ex-JobKorea)",
       "sections": [
         { "heading": "Key Outcomes", "items": [
@@ -886,16 +842,10 @@
           "Databricks API module enabled Unity Catalog read/write without Compute clusters — saving compute cost and removing cluster provisioning time",
           "Integrated and de-duplicated profile data used in marts and ML via intermediate marts"
         ]},
-        { "heading": "Key Responsibilities", "items": [
-          "Optimized analyst-authored SparkSQL code",
-          "Built hybrid On-Prem Airflow + Databricks Workflow pipeline for cloud-failure resilience",
-          "Built Databricks API module for Unity Catalog access without Compute and Glue Catalog integration",
+        { "heading": "Project Summary", "items": [
+          "Company-wide general-purpose data mart and analytics platform — absorbed ad-hoc statistical requests from planning, operations, and marketing",
+          "Hybrid On-Prem Airflow + Databricks Workflow pipeline removed cloud single-point-of-failure risk",
           "Built SHA-256 PII encryption module for ISMS-P audit and Databricks↔Glue Catalog automation module"
-        ]},
-        { "heading": "Details", "items": [
-          "Drove code-quality and benchmarking initiatives; authored performance-optimization guide",
-          "Developed hybrid pipeline and Unity Catalog modules for stable data delivery",
-          "Improved analyst productivity with Databricks↔Glue Catalog integration helpers"
         ]}
       ]
     }
@@ -904,47 +854,35 @@
   "p5": {
     "ko": {
       "summary": "AI 모델 기반 공고 추천 및 매칭을 통해 헤드헌팅 서비스와 결합한 기업 맞춤형 인재 추천 서비스(OnePick)의 엔드투엔드 ML 파이프라인 구축 프로젝트.",
-      "role": "데이터 엔지니어, 매니저",
       "owner": "웍스피어 (구 잡코리아)",
       "sections": [
         { "heading": "핵심 성과", "items": [
-          "추천 서비스 머신러닝 모델 개발을 위한 데이터 및 SageMaker 파이프라인 구축",
           "Python Deferrable Operator를 SageMaker에 적용한 Airflow 커스텀 오퍼레이터 개발로 Airflow Worker 자원 가용률 20% 이상 향상",
-          "파이프라인 성능 및 장애 모니터링을 위한 Webhook 기반 운영 및 MS Teams 알림 개발"
+          "다른 DAG에도 오퍼레이터를 적용하여 자원 점유율 평균 20% 감소 — Worker 추가 확장 없이 문제 해결",
+          "추천 서비스 머신러닝 모델 개발을 위한 데이터 및 SageMaker 파이프라인 구축",
+          "Webhook 기반 성능·장애 모니터링 및 MS Teams 알림 개발, Grafana 대시보드 구축"
         ]},
-        { "heading": "주요 역할", "items": [
-          "PythonOperator 기반 SageMaker 자원 활용 Deferrable Operator 개발",
-          "추천 및 ML 서비스 파이프라인 개발 및 운영 (Airflow / AWS EMR / Spark)",
-          "Webhook 기반 성능 및 장애 모니터링 알림 개발 및 운영"
-        ]},
-        { "heading": "상세", "items": [
-          "장시간 소요되는 ML Task 증가로 Airflow Worker 메모리·CPU 점유율 치솟으며 잦은 장애 발생 → Deferrable Operator로 해결",
-          "오랜 시간 Worker 자원 점유로 다른 DAG에 발생하던 장애 해소",
-          "다른 DAG에도 오퍼레이터를 적용하여 자원 점유율 평균 20% 감소, Worker 추가 확장 없이 문제 해결",
-          "Grafana 기반의 Airflow 서버 및 파이프라인 모니터링 대시보드 구축으로 운영 효율화 프로젝트로 발전"
+        { "heading": "프로젝트 요약", "items": [
+          "AI 모델 기반 공고 추천 및 매칭으로 헤드헌팅 서비스와 결합한 기업 맞춤형 인재 추천 서비스",
+          "장시간 소요되는 ML Task 증가로 인한 Worker 메모리·CPU 점유율 치솟음 문제를 Deferrable Operator로 해결",
+          "Airflow 서버 및 파이프라인 모니터링 대시보드(Grafana) 기반의 운영 효율화 프로젝트로 발전"
         ]}
       ]
     },
     "en": {
       "summary": "End-to-end ML pipeline for AI-driven job-to-candidate matching combined with a headhunting service (OnePick).",
-      "role": "Data Engineer, Manager",
       "owner": "Worxphere (ex-JobKorea)",
       "sections": [
         { "heading": "Key Outcomes", "items": [
-          "Built data and SageMaker pipelines for the recommendation model",
           "SageMaker-applied Python Deferrable Operator improved Airflow Worker resource availability by 20%+",
-          "Webhook-based performance and incident monitoring with MS Teams notifications"
-        ]},
-        { "heading": "Key Responsibilities", "items": [
-          "Built PythonOperator-based Deferrable Operator for SageMaker resources",
-          "Built and operated the recommendation and ML service pipeline (Airflow / AWS EMR / Spark)",
-          "Built and operated Webhook-based performance/incident monitoring"
-        ]},
-        { "heading": "Details", "items": [
-          "Long-running ML Tasks were exhausting Airflow Workers — solved with a Deferrable Operator",
-          "Eliminated cross-DAG resource contention and stopped scaling Workers",
           "Operator reuse across DAGs cut average resource utilization by 20% with zero scaling",
-          "Extended into a Grafana-based Airflow and pipeline monitoring dashboard for the team"
+          "Built data and SageMaker pipelines for the recommendation model",
+          "Webhook-based performance/incident monitoring with MS Teams notifications, plus Grafana dashboard"
+        ]},
+        { "heading": "Project Summary", "items": [
+          "AI-based job recommendation and matching service combined with a headhunting service",
+          "Solved Worker memory/CPU saturation caused by long-running ML Tasks via Deferrable Operator",
+          "Evolved into a Grafana-based Airflow and pipeline monitoring dashboard for the team"
         ]}
       ]
     }
@@ -953,39 +891,33 @@
   "p-coverage": {
     "ko": {
       "summary": "On-Premise 기반의 분석 환경 및 BI 대시보드를 클라우드 기반 Power BI로 전환하기 위한 데이터 파이프라인 구축 및 비즈니스 로직 최적화 프로젝트.",
-      "role": "데이터 엔지니어, 매니저",
       "owner": "웍스피어 (구 잡코리아)",
       "sections": [
         { "heading": "핵심 성과", "items": [
-          "분석가들이 BI 리포트 생성에 사용하던 데이터 마트 생성 파이프라인 개발",
+          "분석가들이 BI 리포트 생성에 사용하는 데이터 마트 생성 파이프라인 개발",
           "데이터 마트 생성 쿼리 분석 후 로직 최적화로 테이블당 약 5~10% 성능 향상"
         ]},
-        { "heading": "주요 역할", "items": [
-          "수동 분석 및 전처리 환경 자동화를 위한 데이터 파이프라인 개발 및 운영 (Airflow)",
-          "Presto 기반 리포트 생성을 위한 쿼리 분석 및 PySpark 마이그레이션"
-        ]},
-        { "heading": "상세", "items": [
-          "분석가·마케터 요구사항을 확인하여 기존 쿼리 자동화, 재적재 및 데이터 정합성 체크 업무를 데이터 파이프라인으로 구현",
-          "플랫폼 관리 효율 향상 및 쿼리 수행 시간 단축"
+        { "heading": "프로젝트 요약", "items": [
+          "On-premise 기반 분석 환경 및 BI 대시보드를 클라우드 기반 Power BI로 전환",
+          "수동 분석 및 전처리 환경 자동화를 위한 데이터 파이프라인 개발 (Airflow)",
+          "Presto 기반 리포트 생성을 위한 쿼리 분석 및 PySpark 마이그레이션",
+          "재적재 및 데이터 정합성 체크 업무를 데이터 파이프라인으로 구현하여 플랫폼 관리 효율 향상"
         ]}
       ]
     },
     "en": {
       "summary": "Data pipeline and business-logic optimization project to transition On-Premise analytics and BI dashboards to cloud-based Power BI.",
-      "role": "Data Engineer, Manager",
       "owner": "Worxphere (ex-JobKorea)",
       "sections": [
         { "heading": "Key Outcomes", "items": [
           "Built data mart generation pipeline used by analysts for BI reports",
           "Optimized mart-generation queries — ~5–10% runtime improvement per table"
         ]},
-        { "heading": "Key Responsibilities", "items": [
-          "Built and operated data pipelines automating manual analysis and preprocessing workflows (Airflow)",
-          "Analyzed Presto-based report queries and migrated to PySpark"
-        ]},
-        { "heading": "Details", "items": [
-          "Automated existing queries, refresh, and data-quality checks based on analyst/marketer requirements",
-          "Improved platform management efficiency and cut query runtimes"
+        { "heading": "Project Summary", "items": [
+          "Transitioned On-Premise analytics and BI dashboards to cloud-based Power BI",
+          "Built pipelines automating manual analysis and preprocessing workflows (Airflow)",
+          "Analyzed Presto-based report queries and migrated to PySpark",
+          "Automated refresh and data-quality check workloads, improving platform management efficiency"
         ]}
       ]
     }
@@ -994,31 +926,25 @@
   "p6": {
     "ko": {
       "summary": "베스핀글로벌에서 구축한 웍스피어(구 잡코리아)의 AWS 네이티브 데이터·AI 플랫폼. 온프레미스 MSSQL SSIS로 구축된 데이터 웨어하우스 및 마트를 AWS Redshift + S3로 마이그레이션하고, 분산되어 있던 외부 데이터를 단일 Glue Catalog / Athena 분석 환경으로 통합했습니다.",
-      "role": "클라우드 데이터 엔지니어",
       "owner": "베스핀글로벌",
       "sections": [
         { "heading": "핵심 성과", "items": [
-          "마이그레이션을 통해 기존 온프레미스 MSSQL SSIS 대비 수행시간 15% 이상 단축",
-          "GA, SAP, MMP 같은 외부 데이터를 AWS Transfer Family·Lambda·EventBridge를 활용해 S3 데이터 레이크로 통합",
-          "Athena 기반 ad-hoc 분석 환경 구성 및 Glue Catalog 테이블·파티션 자동 관리"
+          "온프레미스 MSSQL SSIS 대비 수행시간 15% 이상 단축 (Redshift + S3 마이그레이션)",
+          "GA, SAP, MMP 같은 외부 데이터를 AWS 데이터 레이크로 통합 — Athena 기반 ad-hoc 분석 환경 제공",
+          "Glue Catalog 테이블·파티션 자동 구성으로 분석가 셀프서비스 환경 제공"
         ]},
-        { "heading": "주요 역할", "items": [
-          "AWS Step Functions + AWS Glue 기반 Apache Spark ETL 파이프라인 개발 및 가이드",
+        { "heading": "프로젝트 요약", "items": [
+          "AWS S3 기반 데이터레이크 구축 및 On-Premise 데이터 웨어하우스·마트를 퍼블릭 클라우드로 마이그레이션",
+          "AWS Step Functions + AWS Glue 기반 Apache Spark ETL 파이프라인 개발 및 가이드 배포, 고객사 교육",
           "PostgreSQL 기반 Redshift 데이터 웨어하우스·마트 로직 작성",
-          "S3 이벤트 기반 Lambda Micro ETL로 비용 효율적 파이프라인 구축",
-          "Glue Catalog와 연동한 Athena 분석 환경 제공"
-        ]},
-        { "heading": "상세", "items": [
-          "AWS Step Functions을 워크플로우로 채택하는 PoC 과정에서 배치 파이프라인 개발 가이드 배포 및 고객사 교육 담당",
-          "AWS Transfer Family(SFTP) → MS Azure 기반 SAP 데이터를 플러그인 연동으로 S3 적재 후 ETL 처리",
-          "Appsflyer 데이터는 S3 파일 이벤트 기반으로 EventBridge에서 Lambda 트리거 → 실시간 Micro ETL 구성",
+          "AWS Transfer Family(SFTP) → MS Azure 기반 SAP 데이터 S3 적재 후 배치 ETL 처리",
+          "Appsflyer 데이터는 S3 이벤트 → EventBridge → Lambda 기반 실시간 Micro ETL 구성",
           "GA360은 AWS Glue BigQuery Connector로 BigQuery 적재 후 Glue에서 Spark로 S3 적재"
         ]}
       ]
     },
     "en": {
       "summary": "AWS-native data and AI platform (JOBIA) built at Bespin Global for Worxphere (ex-JobKorea). Migrated on-prem MSSQL SSIS warehouse and marts to AWS Redshift + S3 and consolidated distributed external data into a single Glue Catalog / Athena environment.",
-      "role": "Cloud Data Engineer",
       "owner": "Bespin Global",
       "sections": [
         { "heading": "Key Outcomes", "items": [
@@ -1026,14 +952,10 @@
           "Consolidated external data (GA, SAP, MMP) into S3 data lake using AWS Transfer Family, Lambda, and EventBridge",
           "Athena ad-hoc environment backed by automatically partitioned Glue Catalog"
         ]},
-        { "heading": "Key Responsibilities", "items": [
-          "Built and documented AWS Step Functions + AWS Glue Apache Spark ETL pipeline",
+        { "heading": "Project Summary", "items": [
+          "Built AWS S3 data lake and migrated on-prem warehouse/marts to public cloud",
+          "Built and documented AWS Step Functions + AWS Glue Apache Spark ETL pipeline; trained client team",
           "Wrote PostgreSQL-based Redshift data warehouse and mart logic",
-          "Built cost-effective S3-event Lambda micro-ETL pipeline",
-          "Provided Athena environment integrated with Glue Catalog"
-        ]},
-        { "heading": "Details", "items": [
-          "Authored batch-pipeline development guide and trained client team during Step Functions PoC",
           "Ingested MS Azure-hosted SAP via AWS Transfer Family (SFTP) into S3, then processed in batch ETL",
           "Built real-time micro-ETL for Appsflyer via S3 event → EventBridge → Lambda",
           "GA360 ingested via AWS Glue BigQuery Connector → BigQuery → Glue Spark → S3"
