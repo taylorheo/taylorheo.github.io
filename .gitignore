@@ -1,0 +1,37 @@
+# AI agent / coding assistant artifacts
+# These directories are created by various AI coding tools during sessions
+# and should never be committed to the repo (may contain session metadata,
+# audit logs, PII detection records, or ephemeral state).
+
+# oh-my-opencode (this project's agent system)
+.opencode/
+.omo/
+.sisyphus/
+.playwright-mcp/
+
+# Claude Code
+.claude/
+CLAUDE.md
+
+# OpenAI Codex
+.codex/
+codex.md
+
+# Anthropic / Claude / Generic agent instruction files
+AGENTS.md
+
+# Other AI coding tools
+.aider*
+.cursor/
+.gemini/
+.windsurf/
+.continue/
+.cody/
+
+# MCP / agent config
+.mcp_config*
+.mcp.json
+
+# Audit / session / log artifacts
+audit.log
+*.log

@@ -461,4 +461,17 @@
     initTechGraph();
     techGraphInited = true;
   }
+
+  /* --- Email obfuscation: compose mailto link at runtime from data attributes --- */
+  document.querySelectorAll('.contact__link--email').forEach(function (el) {
+    var user = el.getAttribute('data-email-user');
+    var domain = el.getAttribute('data-email-domain');
+    var tld = el.getAttribute('data-email-tld');
+    if (!user || !domain || !tld) return;
+    var at = String.fromCharCode(64);
+    var email = user + at + domain + '.' + tld;
+    el.setAttribute('href', 'mailto:' + email);
+    var display = el.querySelector('[data-email-display]');
+    if (display) display.textContent = email;
+  });
 })();
