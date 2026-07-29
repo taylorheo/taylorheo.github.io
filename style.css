@@ -298,6 +298,17 @@ button { cursor: pointer; background: none; border: none; }
   .nav__brand-sep:not(:last-of-type) {
     display: none;
   }
+
+  /* Why: backdrop-filter blur forces the GPU to re-sample the scrolled
+     content every frame, which fights iOS Safari's URL bar
+     collapse/expand animation and shows up as a one-frame jitter on
+     the top bar. A near-opaque background needs no blur and removes
+     the per-frame compositing cost. */
+  .nav {
+    background: rgba(10, 14, 26, 0.96);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
 }
 
 .nav__links {
@@ -594,7 +605,15 @@ button { cursor: pointer; background: none; border: none; }
   flex-direction: column;
   align-items: center;
   gap: var(--space-2);
-  animation: fadeInUp 0.6s var(--ease-out-expo) 0.7s both;
+  /* Why: fadeInUp uses transform: translateY(...), which would clobber
+     the static translateX(-50%) and shift the indicator to the right by
+     half its own width. This keyframe preserves the X offset. */
+  animation: fadeInUpCentered 0.6s var(--ease-out-expo) 0.7s both;
+}
+
+@keyframes fadeInUpCentered {
+  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 
 .hero__scroll-indicator span {
