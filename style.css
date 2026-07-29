@@ -166,12 +166,19 @@ button { cursor: pointer; background: none; border: none; }
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(10, 14, 26, 0.85);
+  background: rgba(10, 14, 26, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--color-border);
   transition: transform 0.3s var(--ease-out-expo),
               box-shadow 0.3s var(--ease-out-expo);
+  /* Promote the nav to its own GPU layer to prevent the brief
+     "transparent frame" flash some mobile browsers (iOS Safari in
+     particular) show when re-compositing a fixed element with
+     backdrop-filter on top of scrolling content. */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
 }
 
 .nav--scrolled { box-shadow: var(--shadow-md); }
@@ -259,6 +266,30 @@ button { cursor: pointer; background: none; border: none; }
   /* Hide the role on narrow screens to keep the nav compact. */
   .nav__brand-role {
     display: none;
+  }
+
+  /* Mobile fix: backdrop-filter blur on a position:fixed nav layer causes
+     iOS Safari (and some Android Chromium builds) to flash a transparent
+     frame on scroll. Force a fully opaque background and disable the blur
+     filter on touch devices. */
+  .nav {
+    background: rgba(10, 14, 26, 0.98);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  /* Mobile fix: the hero's animated dot pattern uses mask-image + an
+     infinite transform animation. On mobile GPUs, this occasionally
+     flickers a white frame when the layer re-composites during scroll.
+     Disable the animation and the radial mask on small screens. */
+  .hero__particles {
+    animation: none;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+  .hero__grid-bg {
+    mask-image: none;
+    -webkit-mask-image: none;
   }
 }
 
