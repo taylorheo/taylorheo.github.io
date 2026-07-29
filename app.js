@@ -41,10 +41,18 @@
   if (navToggle && navLinks) {
     navToggle.addEventListener('click', function () {
       const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
-      navToggle.setAttribute('aria-expanded', String(!isOpen));
-      navLinks.classList.toggle('nav__links--open');
+      const willOpen = !isOpen;
+      navToggle.setAttribute('aria-expanded', String(willOpen));
+      navLinks.classList.toggle('nav__links--open', willOpen);
 
-      if (!isOpen) {
+      // Lock body scroll while the mobile menu is open. Without this,
+      // the page underneath the overlay scrolls when the user touches
+      // and drags, and the overlay re-composites on every frame — which
+      // is what makes the underlying hero / footer text appear to bleed
+      // through the menu on iOS Safari and some Android builds.
+      document.body.style.overflow = willOpen ? 'hidden' : '';
+
+      if (willOpen) {
         navToggle.setAttribute('aria-label', 'Close navigation menu');
       } else {
         navToggle.setAttribute('aria-label', 'Open navigation menu');
@@ -57,6 +65,7 @@
         navToggle.setAttribute('aria-expanded', 'false');
         navToggle.setAttribute('aria-label', 'Open navigation menu');
         navLinks.classList.remove('nav__links--open');
+        document.body.style.overflow = '';
       });
     });
   }

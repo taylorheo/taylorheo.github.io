@@ -28,6 +28,9 @@ AGENTS.md
 .continue/
 .cody/
 
+# Local QA / debug artifacts (test screenshots, scratch renders)
+_test_*.png
+
 # MCP / agent config
 .mcp_config*
 .mcp.json
