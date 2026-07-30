@@ -37,35 +37,39 @@
   /* --- Mobile nav toggle --- */
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
+  const navClose = document.getElementById('navClose');
+  const navRoot = document.querySelector('.nav');
+
+  function setMenuOpen(open) {
+    if (!navToggle || !navLinks) return;
+    navToggle.setAttribute('aria-expanded', String(open));
+    navLinks.classList.toggle('nav__links--open', open);
+    if (navRoot) navRoot.classList.toggle('nav--menu-open', open);
+    // Lock body scroll while the mobile menu is open. Without this,
+    // the page underneath the overlay scrolls when the user touches
+    // and drags, and the overlay re-composites on every frame — which
+    // is what makes the underlying hero / footer text appear to bleed
+    // through the menu on iOS Safari and some Android builds.
+    document.body.style.overflow = open ? 'hidden' : '';
+    navToggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+  }
 
   if (navToggle && navLinks) {
     navToggle.addEventListener('click', function () {
       const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
-      const willOpen = !isOpen;
-      navToggle.setAttribute('aria-expanded', String(willOpen));
-      navLinks.classList.toggle('nav__links--open', willOpen);
-
-      // Lock body scroll while the mobile menu is open. Without this,
-      // the page underneath the overlay scrolls when the user touches
-      // and drags, and the overlay re-composites on every frame — which
-      // is what makes the underlying hero / footer text appear to bleed
-      // through the menu on iOS Safari and some Android builds.
-      document.body.style.overflow = willOpen ? 'hidden' : '';
-
-      if (willOpen) {
-        navToggle.setAttribute('aria-label', 'Close navigation menu');
-      } else {
-        navToggle.setAttribute('aria-label', 'Open navigation menu');
-      }
+      setMenuOpen(!isOpen);
     });
+
+    if (navClose) {
+      navClose.addEventListener('click', function () {
+        setMenuOpen(false);
+      });
+    }
 
     /* Close mobile nav when a link is clicked */
     navLinks.querySelectorAll('.nav__link').forEach(function (link) {
       link.addEventListener('click', function () {
-        navToggle.setAttribute('aria-expanded', 'false');
-        navToggle.setAttribute('aria-label', 'Open navigation menu');
-        navLinks.classList.remove('nav__links--open');
-        document.body.style.overflow = '';
+        setMenuOpen(false);
       });
     });
   }
