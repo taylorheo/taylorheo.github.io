@@ -30,7 +30,7 @@
     'hero.tag': 'Data Engineer · Bithumb',
     'hero.name': 'Youngdae Heo',
     'hero.title': 'Data Engineer',
-    'hero.subtitle': "I design and operate secure, cost-efficient cloud-based data platforms for a leading Korean cryptocurrency exchange. For {{tenure}}, I have operated ETL pipelines, AWS infrastructure, and Databricks-based lakehouses under financial-grade compliance.",
+    'hero.subtitle': "I design and operate secure, cost-efficient cloud-based data platforms for a leading Korean cryptocurrency exchange.<br>For {{tenure}}, I have operated ETL pipelines, AWS infrastructure, and Databricks-based lakehouses under financial-grade compliance.",
     'hero.location': 'Seoul, KR',
     'hero.experience': '{{tenure}}',
     'hero.ctaContact': 'Get in Touch',
