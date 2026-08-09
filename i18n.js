@@ -40,7 +40,7 @@
 
     /* About */
     'about.heading': 'About',
-    'about.text': "Data Platform Engineer at Bithumb, Korea's leading cryptocurrency exchange, where I design and operate IDC + AWS data platforms under financial-regulatory and ISMS-P compliance. My focus sits at the intersection of data infrastructure, security, and FinOps — migrating legacy systems to modern lakehouses (Databricks, Redshift), cutting compute costs by 30–70% through workload optimization, and building secure landing zones that pass financial-grade security audits. Previously shipped data platforms at Worxphere LLC (ex-JobKorea LLC) and Bespin Global.",
+    'about.text': "I design and operate IDC- and AWS-based data platforms on Bithumb's Data Platform Team under financial regulations and ISMS-P compliance. My experience spans platform infrastructure design and asset management, security, FinOps, day-to-day operations, and work across a range of data platforms — migrating legacy systems to modern lakehouses (Databricks, Amazon Redshift), cutting compute costs by 30–70% through workload optimization, and building secure landing zones that pass financial-sector security audits. Previously shipped data platforms at Worxphere LLC (ex-JobKorea LLC) and Bespin Global.",
     'about.stat.years': 'Total Experience',
     'about.stat.savings': 'Avg ETL Cost Savings',
     'about.stat.companies': 'Companies Shipped',

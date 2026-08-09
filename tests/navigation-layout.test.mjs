@@ -32,3 +32,17 @@ test('hero introduction breaks after its first sentence in both languages', () =
   assert.match(html, /데이터 플랫폼을 설계 및 운영합니다\.\s*<br>\s*\{\{tenure\}\}/);
   assert.match(i18n, /cryptocurrency exchange\.\s*<br>\s*For \{\{tenure\}\}/);
 });
+
+test('about copy and desktop content columns stay aligned across languages', () => {
+  const desktop = css.slice(css.indexOf('@media (min-width: 1100px)'));
+
+  assert.match(html, /데이터 플랫폼의 인프라 설계와 자산 관리, 보안, FinOps를 포함한 운영 업무 전반/);
+  assert.match(i18n, /platform infrastructure design and asset management, security, FinOps, day-to-day operations/);
+  assert.match(desktop, /\.about__content,\s*\.contact \.section__inner\s*\{[^}]*grid-template-columns:\s*minmax\(0,\s*7fr\)\s+minmax\(18rem,\s*3fr\);/);
+  assert.match(desktop, /\.about__stats\s*\{[^}]*grid-template-columns:\s*1fr;/);
+  assert.match(desktop, /\.contact__links\s*\{[^}]*flex-direction:\s*column;/);
+});
+
+test('the stylesheet URL changes when desktop layout rules change', () => {
+  assert.match(html, /href="\.\/style\.css\?v=4"/);
+});
