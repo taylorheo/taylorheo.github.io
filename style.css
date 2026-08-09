@@ -675,6 +675,23 @@ button { cursor: pointer; background: none; border: none; }
   animation: fadeInUp 0.6s var(--ease-out-expo) 0.3s both;
 }
 
+@media (min-width: 769px) {
+  .nav__menu {
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 2.5vw, 2.5rem);
+  }
+
+  .hero__content {
+    width: min(70vw, 1200px);
+    max-width: none;
+  }
+
+  .hero__subtitle {
+    max-width: 100%;
+  }
+}
+
 .hero__meta {
   display: flex;
   justify-content: center;

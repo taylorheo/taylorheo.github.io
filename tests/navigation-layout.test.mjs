@@ -17,3 +17,11 @@ test('mobile menu centers two horizontal social shortcuts', () => {
   assert.match(shortcuts, /width:\s*100%;/);
   assert.match(shortcuts, /justify-content:\s*center;/);
 });
+
+test('large screens use a wider hero reading measure and fluid menu gaps', () => {
+  const desktop = css.slice(css.indexOf('@media (min-width: 769px)'));
+
+  assert.match(desktop, /\.hero__content\s*\{[^}]*width:\s*min\(70vw,\s*1200px\);[^}]*max-width:\s*none;/);
+  assert.match(desktop, /\.hero__subtitle\s*\{[^}]*max-width:\s*100%;/);
+  assert.match(desktop, /\.nav__menu\s*\{[^}]*display:\s*flex;[^}]*gap:\s*clamp\(1rem,\s*2\.5vw,\s*2\.5rem\);/);
+});
