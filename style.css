@@ -880,7 +880,7 @@ button { cursor: pointer; background: none; border: none; }
   font-size: var(--text-base);
   color: var(--color-text);
   line-height: 1.75;
-  max-width: 65ch;
+  max-width: none;
 }
 
 .about__stats {
@@ -1491,7 +1491,7 @@ a.cert-item--link:hover .cert-item__icon {
   font-size: var(--text-base);
   color: var(--color-text-muted);
   margin-bottom: var(--space-8);
-  max-width: 50ch;
+  max-width: none;
 }
 
 .contact__note {
