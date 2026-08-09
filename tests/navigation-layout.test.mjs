@@ -43,5 +43,5 @@ test('about and contact cards remain below their text on desktop', () => {
 });
 
 test('the stylesheet URL changes when desktop layout rules change', () => {
-  assert.match(html, /href="\.\/style\.css\?v=4"/);
+  assert.match(html, /href="\.\/style\.css\?v=5"/);
 });
