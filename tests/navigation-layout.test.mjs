@@ -45,5 +45,5 @@ test('about and contact text use the same width as their cards on desktop', () =
 });
 
 test('the stylesheet URL changes when desktop layout rules change', () => {
-  assert.match(html, /href="\.\/style\.css\?v=5"/);
+  assert.match(html, /href="\.\/style\.css\?v=6"/);
 });
