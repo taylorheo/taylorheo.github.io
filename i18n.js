@@ -13,8 +13,8 @@
   const EN = {
     /* Meta */
     'meta.title': 'Youngdae Heo — Data Engineer',
-    'meta.description': 'Data Platform Engineer at Bithumb. Designing secure, cost-efficient data infrastructure for cryptocurrency exchange — Databricks, AWS, Airflow. Based in Seoul, South Korea.',
-    'meta.ogDescription': 'Data Platform Engineer at Bithumb. Designing secure, cost-efficient data infrastructure for cryptocurrency exchange. Based in Seoul.',
+    'meta.description': 'Data Engineer at Bithumb. Designing secure, cost-efficient cloud-based data platforms — Databricks, AWS. Based in Seoul, South Korea.',
+    'meta.ogDescription': 'Data Engineer at Bithumb. Designing secure, cost-efficient cloud-based data platforms — Databricks, AWS. Based in Seoul.',
 
     /* A11y */
     'a11y.skip': 'Skip to content',
@@ -27,16 +27,16 @@
     'nav.contact': 'Contact',
 
     /* Hero */
-    'hero.tag': 'Data Platform Engineer · Bithumb',
+    'hero.tag': 'Data Engineer · Bithumb',
     'hero.name': 'Youngdae Heo',
     'hero.title': 'Data Engineer',
-    'hero.subtitle': "Building secure, cost-efficient data platforms for Korea's cryptocurrency exchange. {{tenure}} engineering ETL pipelines, AWS infrastructure, and Databricks lakehouses under financial-grade compliance.",
+    'hero.subtitle': "I design and operate secure, cost-efficient cloud-based data platforms for a leading Korean cryptocurrency exchange. For {{tenure}}, I have operated ETL pipelines, AWS infrastructure, and Databricks-based lakehouses under financial-grade compliance.",
     'hero.location': 'Seoul, KR',
     'hero.experience': '{{tenure}}',
     'hero.ctaContact': 'Get in Touch',
     'hero.scroll': 'scroll',
     'hero.brand.company': 'Bithumb',
-    'hero.brand.role': 'Data Platform Engineer',
+    'hero.brand.role': 'Data Engineer',
 
     /* About */
     'about.heading': 'About',
