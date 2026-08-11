@@ -1574,8 +1574,8 @@ a.cert-item--link:hover .cert-item__icon {
   }
 
   html[lang="ko"] .about__text {
-    text-align: justify;
-    text-justify: inter-character;
+    text-align: left;
+    word-spacing: normal;
   }
 
   .hero__name {
