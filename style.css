@@ -1573,6 +1573,11 @@ a.cert-item--link:hover .cert-item__icon {
     padding-top: var(--space-24);
   }
 
+  html[lang="ko"] .about__text {
+    text-align: justify;
+    text-justify: inter-character;
+  }
+
   .hero__name {
     font-size: var(--text-3xl);
   }
