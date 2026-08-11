@@ -44,13 +44,13 @@ test('about and contact text use the same width as their cards on desktop', () =
   assert.match(css, /\.contact__text\s*\{[^}]*max-width:\s*none;/);
 });
 
-test('Korean about copy keeps natural word spacing on mobile', () => {
+test('Korean about copy fills its card-width grid cell on mobile', () => {
   const mobile = css.slice(css.indexOf('@media (max-width: 768px)'));
 
-  assert.match(mobile, /html\[lang="ko"\]\s+\.about__text\s*\{[^}]*text-align:\s*left;[^}]*word-spacing:\s*normal;/);
+  assert.match(mobile, /html\[lang="ko"\]\s+\.about__text\s*\{[^}]*width:\s*100%;[^}]*text-align:\s*left;[^}]*word-spacing:\s*normal;/);
   assert.doesNotMatch(mobile, /html\[lang="ko"\]\s+\.about__text\s*\{[^}]*text-justify:/);
 });
 
 test('the stylesheet URL changes when desktop layout rules change', () => {
-  assert.match(html, /href="\.\/style\.css\?v=8"/);
+  assert.match(html, /href="\.\/style\.css\?v=9"/);
 });

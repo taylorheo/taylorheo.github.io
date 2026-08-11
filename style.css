@@ -1574,6 +1574,7 @@ a.cert-item--link:hover .cert-item__icon {
   }
 
   html[lang="ko"] .about__text {
+    width: 100%;
     text-align: left;
     word-spacing: normal;
   }
