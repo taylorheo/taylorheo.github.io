@@ -133,38 +133,7 @@
     'exp.intern.date': '2019 — 2020',
     'exp.intern.b1': "Built Raspberry Pi–based air-quality sensor network at Kookmin University for the Korea Forest Service's \"Green Shelter\" research project, delivering a real-time ingestion and visualization pipeline.",
     'exp.intern.b2': 'Optimized a fine-dust recovery-time algorithm, cutting analysis runtime 50%+ for the Bio+ City research project — co-authored the ICLEE 2019 poster "PM 2.5 Distribution Trend in an Urban Area".',
-    'exp.intern.b3': 'Stood up Ubuntu + JupyterLab + MySQL analysis environments that replaced SPSS/Excel workflows and cut analyst turnaround time ~20%.',
-
-    /* Projects */
-    'projects.heading': 'Featured Projects',
-
-    'proj.braze.title': 'Braze CRM Data Mart Design',
-    'proj.braze.desc': 'Braze adoption for customer push automation and personalized marketing. Designed Redshift + S3 PII data extraction architecture and process, CRM customer aggregation attribute mart design and pipeline development. Built Redshift Spectrum query environment for campaign results and impression data.',
-
-    'proj.p1.badge': 'Jan 2026 — Apr 2026 (MVP)',
-    'proj.p1.title': 'Databricks AI Agent Platform (MVP)',
-    'proj.p1.desc': 'Company-wide Databricks AI Agent platform rollout at Bithumb — Text-to-SQL, data analytics, and Insight Agent development and user training. Built PII and credit-information catalog and data governance processes, completed security vulnerability remediation, workspace separation and tagging policies.',
-
-    'proj.poc.title': 'Databricks AI Agent Platform PoC',
-    'proj.poc.desc': 'Built AWS-based Databricks platform for AI Agent platform selection. AWS PrivateLink physical infrastructure design and direct workspace construction, security compliance coordination. Built Databricks Genie Text-to-SQL Agent, achieved 90% accuracy on benchmark queries.',
-
-    'proj.p2.title': 'Data Platform Modernization (Phase 1–3)',
-    'proj.p2.desc': "Consolidating Bithumb's dual IDC + AWS analytics/information platforms — new AWS account IaC transition (Terraform), VPC/Subnet design, Prefect+EMR → Airflow+Glue pipeline migration (PySpark), SageMaker Unified Studio & Redshift Serverless PoC, multi-cluster isolation cutting Redshift node cost 33%.",
-
-    'proj.p3.title': 'Airflow × Databricks Custom Operator',
-    'proj.p3.desc': "Extended Astro + Databricks providers to run ETL on Job Compute instead of All-Purpose clusters. Added auto-retry and Jinja2 template rendering, eliminated Databricks Workflow dual-development burden. Cut Databricks ETL cost 60–70%, SageMaker-Databricks cost 50–60% across Worxphere LLC (ex-JobKorea LLC) pipelines. Developed SQL Warehouse module cutting ML costs avg 50%+.",
-
-    'proj.p4.title': 'Self-Insight Data Mart',
-    'proj.p4.desc': 'Company-wide self-serve data mart at Worxphere LLC (ex-JobKorea LLC) absorbing ad-hoc statistical requests from planning, operations, and marketing teams. SparkSQL optimization cut mart runtimes 5–20%. Built an API-based Unity Catalog access module; catalog access does not imply raw-data reads or writes without compute. Combined On-Prem Airflow and Databricks Workflow in a hybrid pipeline.',
-
-    'proj.p5.title': 'Onepick — AI Talent Recommendation',
-    'proj.p5.desc': 'End-to-end ML pipeline for AI-driven job-to-candidate matching. Python Deferrable operator for SageMaker reduced Airflow worker resource usage avg 20% without additional scaling. Webhook-based performance/error monitoring and Grafana dashboard.',
-
-    'proj.coverage.title': 'Data Coverage — Analytics Environment Automation',
-    'proj.coverage.desc': 'Transitioned On-Prem BI dashboards to cloud-based Power BI. Automated unmanaged analyst data marts and data quality check pipelines. Migrated Presto report queries to PySpark, 5–10% performance improvement per table.',
-
-    'proj.p6.title': 'JOBIA — Data & AI Platform',
-    'proj.p6.desc': "Worxphere LLC (ex-JobKorea LLC)'s AWS-native data platform built at Bespin Global — migrated on-prem MSSQL SSIS warehouse to Redshift + S3. Integrated GA360 (BigQuery Connector) / SAP / Appsflyer through Transfer Family (SFTP), EventBridge, and Lambda micro-ETL. Provided Glue Catalog + Athena analytics environment. 15%+ pipeline speedup over legacy.",
+    'exp.intern.b3': 'Built Ubuntu / MySQL-based Jupyter Notebook and JupyterLab analysis environments. The initial Green Shelter project reduced analysis time by approximately 20% versus Excel / SPSS workflows.',
 
     /* Education */
     'education.heading': 'Education & Certifications',

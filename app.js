@@ -103,7 +103,7 @@
     return `<div class="e-legend">${Object.entries(kinds).map(([id,k])=>`<span class="e-kind e-kind--${id}">${k.symbol} ${esc(tx(k))}</span>`).join('')}</div>`;
   }
   function graphFrame(id) {
-    return `<div class="e-graph-controls"><span>${t('가로 스크롤로 전체 관계를 확인하세요','Scroll horizontally to explore the map')}</span><div role="group" aria-label="${t('그래프 확대·축소','Graph zoom')}"><button data-zoom="-0.15" aria-label="${t('축소','Zoom out')}">−</button><button data-zoom="reset" aria-label="${t('배율 초기화','Reset zoom')}">100%</button><button data-zoom="0.15" aria-label="${t('확대','Zoom in')}">+</button></div></div><div class="e-graph-scroll" tabindex="0" role="region" aria-label="${t('관계도. 가로 스크롤 가능','Relationship map. Horizontally scrollable')}"><div class="e-graph" id="${id}" data-scale="1"></div></div>`;
+    return `<div class="e-graph-controls"><span>${t('노드를 눌러 연결을 탐색하세요','Select a node to explore connections')}</span><div role="group" aria-label="${t('그래프 확대·축소','Graph zoom')}"><button data-zoom="-0.15" aria-label="${t('축소','Zoom out')}">−</button><button data-zoom="reset" aria-label="${t('배율 초기화','Reset zoom')}">100%</button><button data-zoom="0.15" aria-label="${t('확대','Zoom in')}">+</button></div></div><div class="e-graph-scroll" tabindex="0" role="region" aria-label="${t('관계도. 확대 시 가로 스크롤 가능','Relationship map. Horizontally scrollable when zoomed')}"><div class="e-graph" id="${id}" data-scale="1"></div></div>`;
   }
   function renderTechs() {
     const rows = filteredTechs();

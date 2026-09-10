@@ -59,8 +59,7 @@
 .e-edge--context{stroke:var(--color-text-muted);stroke-dasharray:5 4;opacity:.45}
 .e-edge--poc{stroke:var(--graph-poc,#bb975a);stroke-dasharray:8 3;opacity:.5}
 .e-edge--planned{stroke:var(--color-text-muted);stroke-dasharray:2 5;opacity:.45}
-.e-graph-controls>span::after{content:''}
-@media(max-width:640px){.e-graph-controls>span{font-size:0}.e-graph-controls>span::after{content:'노드를 눌러 연결을 탐색하세요';font-size:var(--text-xs)}html[lang=en] .e-graph-controls>span::after{content:'Select a node to explore'}}
+.e-graph-controls>span{min-width:0;flex:1;line-height:1.6}
 .e-node-bg{fill:var(--color-surface);stroke:var(--color-border);stroke-width:1}
 .e-node--tech .e-node-bg{fill:var(--color-surface-2);stroke:var(--color-primary);stroke-opacity:.5}
 .e-node--company .e-node-bg{stroke-dasharray:3 3}
