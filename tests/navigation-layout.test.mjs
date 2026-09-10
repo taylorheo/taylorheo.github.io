@@ -1,56 +1,46 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
+const read = file => readFileSync(new URL(`../${file}`, import.meta.url), 'utf8');
+const html = read('index.html'), app = read('app.js'), i18n = read('i18n.js');
 
-const css = readFileSync(new URL('../style.css', import.meta.url), 'utf8');
-const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
-const i18n = readFileSync(new URL('../i18n.js', import.meta.url), 'utf8');
-
-test('desktop hides mobile-only navigation controls', () => {
-  assert.match(css, /\.nav__close,\s*\.nav__shortcuts\s*\{\s*display:\s*none;/);
+test('existing sections and accessible navigation are preserved', () => {
+  for (const id of ['nav','navToggle','navLinks','navClose','hero','main','about','skills','experience','education','contact']) {
+    assert.match(html, new RegExp(`id="${id}"`), id);
+  }
+  for (const view of ['company','project','tech']) {
+    assert.match(html, new RegExp(`id="tab-${view}"`));
+    assert.match(html, new RegExp(`id="view-${view}"`));
+  }
+  assert.match(html, /class="skip-link"/);
 });
 
-test('mobile menu centers two horizontal social shortcuts', () => {
-  const mobileNav = css.slice(css.indexOf('/* Mobile toggle */'));
-  const shortcuts = mobileNav.match(/\.nav__shortcuts\s*\{([^}]*)\}/)?.[1] ?? '';
-
-  assert.match(mobileNav, /\.nav__close\s*\{[^}]*display:\s*flex;/);
-  assert.match(shortcuts, /display:\s*flex;/);
-  assert.match(shortcuts, /width:\s*100%;/);
-  assert.match(shortcuts, /justify-content:\s*center;/);
+test('all project surfaces load a single dataset before the application', () => {
+  assert.ok(html.indexOf('src="./portfolio-data.js') < html.indexOf('src="./app.js'));
+  assert.match(html, /id="projectExplorer"/);
+  assert.match(html, /id="techExplorer"/);
+  assert.match(app, /window\.PORTFOLIO/);
+  assert.doesNotMatch(app, /var CAREER_GRAPH/);
+  assert.doesNotMatch(html, /id="projectDetails"/);
 });
 
-test('large screens use a wider hero reading measure and fluid menu gaps', () => {
-  const desktop = css.slice(css.indexOf('@media (min-width: 769px)'));
-
-  assert.match(desktop, /\.hero__content\s*\{[^}]*width:\s*min\(70vw,\s*1200px\);[^}]*max-width:\s*none;/);
-  assert.match(desktop, /\.hero__subtitle\s*\{[^}]*max-width:\s*100%;/);
-  assert.match(desktop, /\.nav__menu\s*\{[^}]*display:\s*flex;[^}]*gap:\s*clamp\(1rem,\s*2\.5vw,\s*2\.5rem\);/);
+test('modal, keyboard navigation, reduced motion and language updates are supported', () => {
+  assert.match(html, /aria-modal="true"/);
+  assert.match(app, /setBackgroundInert/);
+  assert.match(app, /ArrowLeft/);
+  assert.match(app, /Escape/);
+  assert.match(app, /languagechange/);
+  assert.match(i18n, /languagechange/);
+  assert.match(read('explorer.css'), /prefers-reduced-motion/);
 });
 
-test('hero introduction breaks after its first sentence in both languages', () => {
-  assert.match(html, /데이터 플랫폼을 설계 및 운영합니다\.\s*<br>\s*\{\{tenure\}\}/);
-  assert.match(i18n, /cryptocurrency exchange\.\s*<br>\s*For \{\{tenure\}\}/);
+test('static preview has no storage dependency or untrusted third-party script', () => {
+  assert.doesNotMatch(app + i18n, /\b(?:localStorage|sessionStorage)\b/);
+  assert.doesNotMatch(html, /<script[^>]+src="https?:/);
+  assert.match(html, /explorer\.css\?v=10/);
+  assert.match(html, /Content-Security-Policy/);
 });
 
-test('about and contact text use the same width as their cards on desktop', () => {
-  assert.match(html, /데이터 플랫폼의 인프라 설계와 자산 관리, 보안, FinOps를 포함한 운영 업무 전반/);
-  assert.match(i18n, /platform infrastructure design and asset management, security, FinOps, day-to-day operations/);
-  assert.match(css, /\.about__content\s*\{[^}]*grid-template-columns:\s*1fr;/);
-  assert.match(css, /\.about__stats\s*\{[^}]*grid-template-columns:\s*repeat\(3,\s*1fr\);/);
-  assert.match(css, /\.contact__links\s*\{[^}]*flex-wrap:\s*wrap;/);
-  assert.doesNotMatch(css, /@media \(min-width: 1100px\)/);
-  assert.match(css, /\.about__text\s*\{[^}]*max-width:\s*none;/);
-  assert.match(css, /\.contact__text\s*\{[^}]*max-width:\s*none;/);
-});
-
-test('Korean about copy fills its card-width grid cell on mobile', () => {
-  const mobile = css.slice(css.indexOf('@media (max-width: 768px)'));
-
-  assert.match(mobile, /html\[lang="ko"\]\s+\.about__text\s*\{[^}]*width:\s*100%;[^}]*text-align:\s*left;[^}]*word-spacing:\s*normal;/);
-  assert.doesNotMatch(mobile, /html\[lang="ko"\]\s+\.about__text\s*\{[^}]*text-justify:/);
-});
-
-test('the stylesheet URL changes when desktop layout rules change', () => {
-  assert.match(html, /href="\.\/style\.css\?v=9"/);
+test('unjustified global average and SHA-256 encryption wording are removed', () => {
+  assert.doesNotMatch(html + i18n, /평균 ETL 비용 절감|Avg ETL Cost Savings|PII Encryption \(SHA-256\)|SHA-256 PII 암호화/);
 });

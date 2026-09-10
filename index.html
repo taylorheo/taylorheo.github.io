@@ -8,7 +8,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com https://api.fontshare.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net https://api.fontshare.com; img-src 'self' data: https://avatars.githubusercontent.com; script-src 'self'; connect-src 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com https://api.fontshare.com https://cdn.jsdelivr.net; style-src-attr 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net https://cdn.fontshare.com; img-src 'self' data: https://avatars.githubusercontent.com; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'">
 <title data-i18n="meta.title">허영대 — 데이터 엔지니어</title>
 <meta name="description" data-i18n-attr="content" data-i18n="meta.description" content="빗썸 데이터 엔지니어. 클라우드 기반의 안전하고 비용 효율적인 데이터 플랫폼을 설계합니다. — Databricks, AWS. 서울 기반.">
 
@@ -19,14 +19,17 @@
 <meta property="og:url" content="https://taylorheo.github.io">
 <meta property="og:image" content="https://taylorheo.github.io/og-image.png">
 
-<!-- Fonts: JetBrains Mono for code feel + Satoshi for body + Pretendard for Korean -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<!-- Satoshi for Latin typography; Pretendard for Korean -->
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" as="style" crossorigin="anonymous" integrity="sha384-GIdEBaqGN9mNkDkMkzMHW8EKUqtpPIe/sLj1X7DIrnc9uPtLROJgmuDlh+3rBw0j" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" crossorigin="anonymous" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 
-  <link rel="stylesheet" href="./style.css?v=9">
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./base.css?v=10">
+<link rel="stylesheet" href="./style.css?v=10">
+<link rel="stylesheet" href="./explorer.css?v=10">
 
 <!-- JSON-LD Structured Data -->
 <script type="application/ld+json">
@@ -60,24 +63,24 @@
   <div class="nav__inner">
     <div class="nav__left">
       <a href="https://github.com/taylorheo" class="nav__logo" aria-label="GitHub Profile" target="_blank" rel="noopener noreferrer">
-        <img src="https://avatars.githubusercontent.com/u/7146321?v=4" alt="Profile" class="nav__avatar" width="28" height="28" />
+        <svg class="nav__monogram" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 7v18M23 7v18M7 16h16" stroke="currentColor" stroke-width="2.5"/><path d="M13 7h6M13 25h6" stroke="currentColor" stroke-width="2.5"/></svg>
       </a>
       <span class="nav__brand" id="navBrand">
         <span class="nav__brand-name" data-i18n="hero.name">허영대</span>
         <span class="nav__brand-sep" aria-hidden="true">·</span>
         <span class="nav__brand-company" data-i18n="hero.brand.company">빗썸</span>
-        <span class="nav__brand-sep" aria-hidden="true">·</span>
+        <span class="nav__brand-sep nav__brand-sep--role" aria-hidden="true">·</span>
         <span class="nav__brand-role" data-i18n="hero.brand.role">데이터 엔지니어</span>
       </span>
     </div>
     <div class="nav__links" id="navLinks">
-      <button class="nav__close" id="navClose" type="button" aria-label="Close navigation menu">
+      <button class="nav__close" id="navClose" type="button" data-i18n="nav.close" data-i18n-attr="aria-label" aria-label="메뉴 닫기">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
       </button>
       <div class="nav__menu">
+        <a href="#experience" class="nav__link" data-i18n="nav.experience">프로젝트</a>
         <a href="#about" class="nav__link" data-i18n="nav.about">소개</a>
         <a href="#skills" class="nav__link" data-i18n="nav.skills">스킬</a>
-        <a href="#experience" class="nav__link" data-i18n="nav.experience">경력</a>
         <a href="#education" class="nav__link" data-i18n="nav.education">학력</a>
         <a href="#contact" class="nav__link" data-i18n="nav.contact">연락처</a>
 
@@ -87,6 +90,10 @@
           <span class="lang-toggle__sep" aria-hidden="true">/</span>
           <button type="button" class="lang-toggle__btn" data-lang="en" aria-pressed="false">EN</button>
         </div>
+        <button type="button" class="theme-toggle" id="themeToggle" aria-pressed="true" data-i18n="nav.theme" data-i18n-attr="aria-label" aria-label="어두운 테마">
+          <span class="theme-toggle__label" data-i18n="nav.themeLabel">테마</span>
+          <svg class="theme-toggle__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
       </div>
       <div class="nav__shortcuts">
         <a href="https://www.linkedin.com/in/youngdae-heo-783446187" class="nav__shortcut" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
@@ -97,7 +104,7 @@
         </a>
       </div>
     </div>
-    <button class="nav__toggle" id="navToggle" aria-label="Open navigation menu" aria-expanded="false">
+    <button class="nav__toggle" id="navToggle" type="button" aria-controls="navLinks" data-i18n="nav.open" data-i18n-attr="aria-label" aria-label="메뉴 열기 또는 닫기" aria-expanded="false">
       <span class="nav__toggle-bar"></span>
       <span class="nav__toggle-bar"></span>
       <span class="nav__toggle-bar"></span>
@@ -107,174 +114,69 @@
 
 <!-- ===== HERO ===== -->
 <header class="hero" id="hero">
-  <div class="hero__grid-bg" aria-hidden="true"></div>
-  <div class="hero__particles" aria-hidden="true"></div>
-  <div class="hero__content">
-    <div class="hero__tag">
-      <span class="hero__status-dot" aria-hidden="true"></span>
-      <span data-i18n="hero.tag">데이터 엔지니어 · 빗썸</span>
+  <div class="hero__inner">
+    <div class="hero__content">
+      <p class="hero__eyebrow">DATA / INFRASTRUCTURE / OPERATIONS</p>
+      <h1 class="hero__name" data-i18n="hero.name">허영대</h1>
+      <p class="hero__title" data-i18n="hero.title">데이터 엔지니어</p>
+      <p class="hero__subtitle" data-i18n="hero.subtitle">데이터 흐름을 설계하고,<br>운영의 비용과 복잡도를 줄입니다.</p>
+      <p class="hero__description" data-i18n="hero.description">AWS·Databricks 기반 데이터 플랫폼을 설계·운영합니다. 파이프라인부터 인프라, 보안과 비용 최적화까지 연결합니다.</p>
+      <div class="hero__meta">
+        <span class="hero__tag"><span class="hero__status-dot" aria-hidden="true"></span><span data-i18n="hero.tag">빗썸 · 데이터 플랫폼 팀</span></span>
+        <span class="hero__meta-item" data-i18n="hero.experience">데이터 엔지니어링 {{tenure}}</span>
+      </div>
+      <div class="hero__actions">
+        <a href="#experience" class="btn btn--primary" data-career-view="project"><span data-i18n="hero.ctaProjects">프로젝트 살펴보기</span><span aria-hidden="true">↗</span></a>
+        <a href="#contact" class="btn btn--ghost" data-i18n="hero.ctaContact">연락하기</a>
+      </div>
     </div>
-    <h1 class="hero__name" data-i18n="hero.name">허영대</h1>
-    <p class="hero__title" data-i18n="hero.title">데이터 엔지니어</p>
-    <p class="hero__subtitle" data-i18n="hero.subtitle">국내 대표 암호화폐 거래소를 위해 안전하고 비용 효율적인 데이터 플랫폼을 설계 및 운영합니다.<br>{{tenure}}간 금융권 수준의 컴플라이언스 아래에서 ETL 파이프라인, AWS 인프라, Databricks 기반의 레이크하우스를 운영해 왔습니다.</p>
-    <div class="hero__meta">
-      <span class="hero__meta-item">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span data-i18n="hero.location">서울, 대한민국</span>
-      </span>
-      <span class="hero__meta-item">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/></svg>
-        <span data-i18n="hero.experience">{{tenure}}</span>
-      </span>
-    </div>
-    <div class="hero__actions">
-      <a href="#contact" class="btn btn--primary" data-i18n="hero.ctaContact">연락하기</a>
-      <a href="https://www.linkedin.com/in/youngdae-heo-783446187" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        LinkedIn
-      </a>
-    </div>
-  </div>
-  <div class="hero__scroll-indicator" aria-hidden="true">
-    <span data-i18n="hero.scroll">스크롤</span>
-    <svg width="16" height="24" viewBox="0 0 16 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="14" height="22" rx="7"/><line x1="8" y1="6" x2="8" y2="10"/></svg>
+    <aside class="hero__impact" aria-labelledby="impactHeading">
+      <div class="hero__impact-header">
+        <h2 id="impactHeading" data-i18n="hero.impactHeading">주요 프로젝트 성과</h2>
+        <span class="hero__impact-index" aria-hidden="true">01 — 03</span>
+      </div>
+      <button type="button" class="impact-row" data-open-project="p3" aria-haspopup="dialog" aria-controls="projectModal">
+        <span class="impact-row__value">60–70<span>%</span></span>
+        <span class="impact-row__copy"><strong data-i18n="hero.impact.etl">ETL 비용 절감</strong><span data-i18n="hero.impact.etlDetail">Job Compute 전환</span></span>
+        <span class="impact-row__arrow" aria-hidden="true">↗</span>
+      </button>
+      <button type="button" class="impact-row" data-open-project="p-migration" aria-haspopup="dialog" aria-controls="projectModal">
+        <span class="impact-row__value">5–20<span>%</span></span>
+        <span class="impact-row__copy"><strong data-i18n="hero.impact.dag">DAG 실행시간 단축</strong><span data-i18n="hero.impact.dagDetail">Databricks 클러스터 재사용</span></span>
+        <span class="impact-row__arrow" aria-hidden="true">↗</span>
+      </button>
+      <button type="button" class="impact-row" data-open-project="p5" aria-haspopup="dialog" aria-controls="projectModal">
+        <span class="impact-row__value"><span>~</span>20<span>%</span></span>
+        <span class="impact-row__copy"><strong data-i18n="hero.impact.worker">워커 자원 점유율 감소</strong><span data-i18n="hero.impact.workerDetail">SageMaker Deferrable Operator</span></span>
+        <span class="impact-row__arrow" aria-hidden="true">↗</span>
+      </button>
+      <p class="hero__impact-note" data-i18n="hero.impact.note">웍스피어(구 잡코리아) 프로젝트별 성과.<br>각 항목에서 적용 범위와 구현 내용을 확인할 수 있습니다.</p>
+    </aside>
   </div>
 </header>
 
 <!-- ===== MAIN ===== -->
 <main id="main">
 
-  <!-- ===== ABOUT ===== -->
-  <section class="section about" id="about">
-    <div class="section__inner">
-      <h2 class="section__heading">
-        <span class="section__number" aria-hidden="true">01</span>
-        <span data-i18n="about.heading">소개</span>
-      </h2>
-      <div class="about__content">
-        <p class="about__text" data-i18n="about.text">
-          빗썸 데이터 플랫폼 팀에서 IDC와 AWS 기반의 데이터 플랫폼을 금융권 규제 및 ISMS-P 컴플라이언스 아래 설계·운영하고 있습니다. 데이터 플랫폼의 인프라 설계와 자산 관리, 보안, FinOps를 포함한 운영 업무 전반 및 다양한 플랫폼을 다룬 경험을 보유하고 있습니다 — 레거시 시스템을 최신 레이크하우스(Databricks, Amazon Redshift)로 이전하고, 워크로드 최적화로 컴퓨트 비용을 30~70% 절감하며, 금융권 보안 감사를 통과하는 안전한 랜딩 존을 구축합니다. 이전에는 웍스피어 유한책임회사(구 잡코리아 유한책임회사)와 베스핀글로벌에서 데이터 플랫폼을 출시했습니다.
-        </p>
-        <div class="about__stats">
-          <div class="about__stat">
-            <span class="about__stat-value" data-dynamic="tenure">{{tenure}}</span>
-            <span class="about__stat-label" data-i18n="about.stat.years">총 경력</span>
-          </div>
-          <div class="about__stat">
-            <span class="about__stat-value">~60%</span>
-            <span class="about__stat-label" data-i18n="about.stat.savings">평균 ETL 비용 절감</span>
-          </div>
-          <div class="about__stat">
-            <span class="about__stat-value">3</span>
-            <span class="about__stat-label" data-i18n="about.stat.companies">재직 회사</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SKILLS ===== -->
-  <section class="section skills" id="skills">
-    <div class="section__inner">
-      <h2 class="section__heading">
-        <span class="section__number" aria-hidden="true">02</span>
-        <span data-i18n="skills.heading">스킬</span>
-      </h2>
-<div class="skills__grid">
-        <div class="skills__category">
-          <h3 class="skills__category-title" data-i18n="skills.cat.languages">언어</h3>
-          <div class="skills__tags">
-            <span class="skill-tag" data-skill="python" title="경력 마인드맵에서 보기">Python</span>
-            <span class="skill-tag" data-skill="sql" title="경력 마인드맵에서 보기">SQL</span>
-            <span class="skill-tag" data-skill="spark" title="경력 마인드맵에서 보기">PySpark</span>
-            <span class="skill-tag">Bash / Shell</span>
-            <span class="skill-tag" data-skill="terraform" title="경력 마인드맵에서 보기">Terraform (HCL)</span>
-            <span class="skill-tag">R</span>
-          </div>
-        </div>
-        <div class="skills__category">
-          <h3 class="skills__category-title" data-i18n="skills.cat.dataEng">데이터 엔지니어링</h3>
-          <div class="skills__tags">
-            <span class="skill-tag" data-skill="airflow" title="경력 마인드맵에서 보기">Apache Airflow</span>
-            <span class="skill-tag" data-skill="spark" title="경력 마인드맵에서 보기">Apache Spark</span>
-            <span class="skill-tag" data-skill="databricks" title="경력 마인드맵에서 보기">Databricks</span>
-            <span class="skill-tag" data-skill="deltalake" title="경력 마인드맵에서 보기">Delta Lake</span>
-            <span class="skill-tag" data-skill="unitycatalog" title="경력 마인드맵에서 보기">Unity Catalog</span>
-            <span class="skill-tag">ETL / ELT</span>
-            <span class="skill-tag" data-i18n="skills.tag.dataModeling">데이터 모델링</span>
-            <span class="skill-tag" data-i18n="skills.tag.customOperators">Custom Operators</span>
-            <span class="skill-tag" data-skill="grafana" title="경력 마인드맵에서 보기">Grafana / Webhook 알림</span>
-          </div>
-        </div>
-        <div class="skills__category">
-          <h3 class="skills__category-title" data-i18n="skills.cat.crypto">크립토 & 금융 데이터</h3>
-          <div class="skills__tags">
-            <span class="skill-tag" data-i18n="skills.tag.orderFlow">거래소 주문 플로우</span>
-            <span class="skill-tag" data-i18n="skills.tag.marketData">마켓 데이터 파이프라인</span>
-            <span class="skill-tag">GA4</span>
-            <span class="skill-tag">Appsflyer</span>
-            <span class="skill-tag">Braze / CRM 푸시</span>
-            <span class="skill-tag" data-skill="ismsp" data-i18n="skills.tag.ismsp" title="경력 마인드맵에서 보기">ISMS-P 컴플라이언스</span>
-            <span class="skill-tag" data-i18n="skills.tag.cspm">CSPM / 보안 리뷰</span>
-            <span class="skill-tag" data-i18n="skills.tag.piiEnc">PII 암호화 (SHA-256)</span>
-            <span class="skill-tag">DR (재해복구)</span>
-          </div>
-        </div>
-        <div class="skills__category">
-          <h3 class="skills__category-title" data-i18n="skills.cat.cloud">클라우드 & 플랫폼</h3>
-          <div class="skills__tags">
-            <span class="skill-tag" data-skill="aws" title="경력 마인드맵에서 보기">AWS</span>
-            <span class="skill-tag" data-skill="redshift" title="경력 마인드맵에서 보기">Redshift</span>
-            <span class="skill-tag" data-skill="s3" title="경력 마인드맵에서 보기">S3 / Glue / Athena</span>
-            <span class="skill-tag" data-skill="lambda" title="경력 마인드맵에서 보기">Lambda / EventBridge</span>
-            <span class="skill-tag" data-skill="emr" title="경력 마인드맵에서 보기">EMR</span>
-            <span class="skill-tag">MWAA (Managed Airflow)</span>
-            <span class="skill-tag" data-skill="sagemaker" title="경력 마인드맵에서 보기">SageMaker</span>
-            <span class="skill-tag" data-skill="stepfunctions" title="경력 마인드맵에서 보기">Step Functions</span>
-            <span class="skill-tag" data-skill="privatelink" title="경력 마인드맵에서 보기">PrivateLink / VPC</span>
-            <span class="skill-tag">Vertica</span>
-            <span class="skill-tag">Aurora MySQL / Oracle</span>
-            <span class="skill-tag">BI MATRIX</span>
-            <span class="skill-tag">Linux</span>
-            <span class="skill-tag">Git / CodeSeries</span>
-          </div>
-        </div>
-        <div class="skills__category">
-          <h3 class="skills__category-title" data-i18n="skills.cat.ml">ML & NLP</h3>
-          <div class="skills__tags">
-            <span class="skill-tag">NLP / KoNLPy</span>
-            <span class="skill-tag">scikit-learn</span>
-            <span class="skill-tag">Pandas / NumPy</span>
-            <span class="skill-tag" data-i18n="skills.tag.unsupervised">비지도학습 분류</span>
-            <span class="skill-tag">Selenium / BS4 크롤링</span>
-            <span class="skill-tag">MongoDB</span>
-            <span class="skill-tag">Django</span>
-            <span class="skill-tag">matplotlib / Seaborn</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ===== CAREER (Company / Project / Tech mindmap) ===== -->
   <section class="section career" id="experience">
     <div class="section__inner">
       <h2 class="section__heading">
-        <span class="section__number" aria-hidden="true">03</span>
-        <span data-i18n="career.heading">경력</span>
+        <span class="section__number" aria-hidden="true">01</span>
+        <span data-i18n="career.heading">프로젝트 & 경력</span>
       </h2>
 
-      <p class="career__prompt" data-i18n="career.prompt">어떤 기준으로 경력을 보시겠어요?</p>
+      <p class="career__prompt" data-i18n="career.prompt">해결한 문제, 선택한 기술, 그리고 실제 운영에서의 결과.</p>
 
       <!-- View tab switcher -->
       <div class="career__tabs" role="tablist" aria-label="Career view selector">
-        <button type="button" class="career__tab career__tab--active" role="tab" id="tab-company" aria-selected="true" aria-controls="view-company" data-view="company" data-i18n="career.tab.company">회사별</button>
-        <button type="button" class="career__tab" role="tab" id="tab-project" aria-selected="false" aria-controls="view-project" data-view="project" data-i18n="career.tab.project">프로젝트별</button>
-        <button type="button" class="career__tab" role="tab" id="tab-tech" aria-selected="false" aria-controls="view-tech" data-view="tech" data-i18n="career.tab.tech">기술별 (마인드맵)</button>
+        <button type="button" class="career__tab career__tab--active" role="tab" id="tab-project" aria-selected="true" aria-controls="view-project" data-view="project" data-i18n="career.tab.project" tabindex="0">프로젝트</button>
+        <button type="button" class="career__tab" role="tab" id="tab-tech" aria-selected="false" aria-controls="view-tech" data-view="tech" data-i18n="career.tab.tech" tabindex="-1">기술 연결</button>
+        <button type="button" class="career__tab" role="tab" id="tab-company" aria-selected="false" aria-controls="view-company" data-view="company" data-i18n="career.tab.company" tabindex="-1">회사별 경력</button>
       </div>
 
       <!-- View: by Company -->
-      <div class="career__view career__view--active" id="view-company" role="tabpanel" aria-labelledby="tab-company" data-view="company">
+      <div class="career__view" id="view-company" role="tabpanel" aria-labelledby="tab-company" data-view="company" hidden>
         <h3 class="sr-only" data-i18n="career.sub.company">회사별 경력</h3>
         <div class="experience__timeline">
 
@@ -283,7 +185,7 @@
             <div class="experience__card">
               <div class="experience__header">
                 <div class="experience__header-left">
-                  <img src="./assets/logos/bithumb.jpg" alt="빗썸" class="experience__logo" width="40" height="40" />
+                  <img src="./assets/logos/bithumb.jpg" alt="빗썸" class="experience__logo" width="40" height="40" loading="lazy" decoding="async" />
                   <div>
                     <h3 class="experience__role" data-i18n="exp.bithumb.role">데이터 플랫폼 엔지니어</h3>
                     <p class="experience__company" data-i18n="exp.bithumb.company">빗썸 — Data/AI 실, 데이터 플랫폼 팀 · 서울</p>
@@ -308,7 +210,7 @@
             <div class="experience__card">
               <div class="experience__header">
                 <div class="experience__header-left">
-                  <img src="./assets/logos/worksphere.png" alt="웍스피어 유한책임회사(구 잡코리아 유한책임회사)" class="experience__logo" width="40" height="40" />
+                  <img src="./assets/logos/worksphere.png" alt="웍스피어 유한책임회사(구 잡코리아 유한책임회사)" class="experience__logo" width="40" height="40" loading="lazy" decoding="async" />
                   <div>
                     <h3 class="experience__role" data-i18n="exp.jk.role">데이터 엔지니어, 매니저</h3>
                     <p class="experience__company" data-i18n="exp.jk.company">웍스피어 유한책임회사(구 잡코리아 유한책임회사) — Data & AI 본부, 데이터 플랫폼 팀 · 서울</p>
@@ -320,9 +222,9 @@
                 <li data-i18n="exp.jk.b1">Self-Insight 데이터 마트 구축 — 전사 셀프서비스 분석 플랫폼 — SparkSQL 최적화로 마트 런타임 5~20% 단축, 중복 프로필 데이터 제거. On-Prem Airflow + Databricks Workflow 하이브리드 파이프라인 구축.</li>
                 <li data-i18n="exp.jk.b2">Airflow 커스텀 오퍼레이터 설계 — Astro + Databricks 프로바이더 확장, ETL을 All-Purpose에서 Job Compute로 이전. ETL 비용 60~70%, SageMaker-Databricks 비용 50~60% 절감. 자동 Retry 및 Jinja2 Template 렌더링 추가.</li>
                 <li data-i18n="exp.jk.b3">데이터 레이크를 AWS EMR에서 Databricks + Delta Lake + Unity Catalog로 마이그레이션 — All-Purpose 클러스터 재사용 오퍼레이터로 DAG 런타임 5~20% 단축, 태스크당 3~5분 자원 할당 오버헤드 제거. EMR Hive Metastore를 Databricks에 연결하여 검증 환경 구성.</li>
-                <li data-i18n="exp.jk.b4">Onepick — AI 기반 인재 추천 ML 파이프라인 출시: SageMaker용 Python Deferrable 오퍼레이터 작성으로 Airflow 워커 가용성 20%+ 향상, MS Teams 웹훅 기반 성능/오류 모니터링, Grafana 대시보드 구축.</li>
+                <li data-i18n="exp.jk.b4">Onepick — AI 기반 인재 추천 ML 파이프라인 구축: SageMaker용 Python Deferrable 오퍼레이터 적용으로 Airflow 워커 자원 점유율 약 20% 감소. MS Teams 웹훅 기반 성능/오류 모니터링, Grafana 대시보드 구축.</li>
                 <li data-i18n="exp.jk.b5">Data Coverage — 분석가용 데이터 마트 생성 파이프라인 자동화, Presto 기반 리포트 쿼리를 PySpark로 마이그레이션, 테이블당 5~10% 성능 향상 (2023.05~06).</li>
-                <li data-i18n="exp.jk.b6">ISMS-P 컴플라이언스와 분석가 생산성을 위한 SHA-256 PII 암호화 모듈 및 Databricks↔AWS Glue Catalog 자동화 모듈 개발.</li>
+                <li data-i18n="exp.jk.b6">ISMS-P 대응과 분석가 생산성을 위한 SHA-256 기반 PII 해싱 모듈 및 Databricks↔AWS Glue Catalog 자동화 모듈 개발.</li>
               </ul>
             </div>
           </article>
@@ -332,7 +234,7 @@
             <div class="experience__card">
               <div class="experience__header">
                 <div class="experience__header-left">
-                  <img src="./assets/logos/bespin-global.png" alt="베스핀글로벌" class="experience__logo" width="40" height="40" />
+                  <img src="./assets/logos/bespin-global.png" alt="베스핀글로벌" class="experience__logo" width="40" height="40" loading="lazy" decoding="async" />
                   <div>
                     <h3 class="experience__role" data-i18n="exp.bespin.role">클라우드 데이터 엔지니어</h3>
                     <p class="experience__company" data-i18n="exp.bespin.company">베스핀글로벌 — DataOps 본부, Data Analytics 팀 · 서울</p>
@@ -371,170 +273,145 @@
       </div>
 
       <!-- View: by Project -->
-      <div class="career__view" id="view-project" role="tabpanel" aria-labelledby="tab-project" data-view="project" hidden>
+      <div class="career__view career__view--active" id="view-project" role="tabpanel" aria-labelledby="tab-project" data-view="project">
         <h3 class="sr-only" data-i18n="career.sub.project">프로젝트별 경력</h3>
-        <div class="projects__grid">
-
-          <article class="project-card" data-project="p-braze" data-owner="bithumb" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="projectModal" aria-label="프로젝트 상세 보기: Braze CRM 데이터 마트 설계">
-            <div class="project-card__header">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-              <span class="project-card__badge">2026.01 — 2026.04</span>
-            </div>
-            <h3 class="project-card__title" data-i18n="proj.braze.title">Braze CRM 데이터 마트 설계</h3>
-            <p class="project-card__desc" data-i18n="proj.braze.desc">고객 앱 푸시 자동화 및 개인화 마케팅을 위한 Braze 도입. Redshift + S3 기반 개인정보 반출 아키텍처 및 프로세스 설계, CRM 솔루션 현업 활용 목적의 고객 집계 속성 마트 설계 및 파이프라인 개발. Redshift Spectrum 기반 캠페인 결과·임프레션 데이터 조회 환경 구성.</p>
-            <div class="project-card__tags">
-              <span class="project-tag">Redshift</span>
-              <span class="project-tag">S3</span>
-              <span class="project-tag">Redshift Spectrum</span>
-              <span class="project-tag">Braze</span>
-            </div>
-          </article>
-
-          <article class="project-card" data-project="p1" data-owner="bithumb" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="projectModal" aria-label="프로젝트 상세 보기: Databricks AI Agent 플랫폼 (MvP)">
-            <div class="project-card__header">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-              <span class="project-card__badge" data-i18n="proj.p1.badge">2026.01 — 2026.04 (MvP)</span>
-            </div>
-            <h3 class="project-card__title" data-i18n="proj.p1.title">Databricks AI Agent 플랫폼 (MvP)</h3>
-            <p class="project-card__desc" data-i18n="proj.p1.desc">빗썸에서 Databricks 기반 AI Agent 플랫폼 전사 확산 — Text-to-SQL, 데이터 분석, Insight Agent 개발 및 현업 교육. 개인정보·신용정보 처리 카탈로그와 데이터 거버넌스 프로세스 구축, 보안 취약점 조치 완수, 워크스페이스 분리 및 태깅 정책 수립.</p>
-            <div class="project-card__tags">
-              <span class="project-tag">Databricks</span>
-              <span class="project-tag">AWS</span>
-              <span class="project-tag">Unity Catalog</span>
-              <span class="project-tag">ISMS-P</span>
-            </div>
-          </article>
-
-          <article class="project-card" data-project="p-poc" data-owner="bithumb" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="projectModal" aria-label="프로젝트 상세 보기: Databricks AI Agent 플랫폼 도입 PoC">
-            <div class="project-card__header">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-              <span class="project-card__badge">2025.11 — 2025.12 (PoC)</span>
-            </div>
-            <h3 class="project-card__title" data-i18n="proj.poc.title">Databricks AI Agent 플랫폼 도입 PoC</h3>
-            <p class="project-card__desc" data-i18n="proj.poc.desc">AI Agent 플랫폼 도입 선정을 위한 AWS 기반 Databricks 플랫폼 구축. AWS PrivateLink 기반 인프라 물리적 설계 및 Workspace 직접 구축, 보안 규정 준수 협의. Databricks Genie 기반 Text-to-SQL Agent 구축, 벤치마크 쿼리에서 90% 정확도 달성.</p>
-            <div class="project-card__tags">
-              <span class="project-tag">Databricks</span>
-              <span class="project-tag">AWS PrivateLink</span>
-              <span class="project-tag">Databricks Genie</span>
-              <span class="project-tag">Text-to-SQL</span>
-            </div>
-          </article>
-
-          <article class="project-card" data-project="p2" data-owner="bithumb" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="projectModal" aria-label="프로젝트 상세 보기: 데이터 플랫폼 고도화 (Phase 1~3)">
-            <div class="project-card__header">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-              <span class="project-card__badge">2025.06 — 진행중</span>
-            </div>
-            <h3 class="project-card__title" data-i18n="proj.p2.title">데이터 플랫폼 고도화 (Phase 1~3)</h3>
-            <p class="project-card__desc" data-i18n="proj.p2.desc">빗썸의 이원화된 IDC + AWS 분석/정보계 통합 — AWS 신규 계정 IaC 전환(Terraform), VPC/Subnet 설계, Prefect+EMR → Airflow+Glue 파이프라인 전환(PySpark), SageMaker Unified Studio & Redshift Serverless PoC, 멀티 클러스터 분리로 Redshift 노드 비용 33% 절감.</p>
-            <div class="project-card__tags">
-              <span class="project-tag">AWS</span>
-              <span class="project-tag">Terraform</span>
-              <span class="project-tag">Airflow</span>
-              <span class="project-tag">Redshift</span>
-              <span class="project-tag">Glue</span>
-              <span class="project-tag">PySpark</span>
-            </div>
-          </article>
-
-          <article class="project-card" data-project="p3" data-owner="jk" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="projectModal" aria-label="프로젝트 상세 보기: Airflow × Databricks 커스텀 오퍼레이터">
-            <div class="project-card__header">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-              <span class="project-card__badge">2023.08 — 2023.11</span>
-            </div>
-            <h3 class="project-card__title" data-i18n="proj.p3.title">Airflow × Databricks 커스텀 오퍼레이터</h3>
-            <p class="project-card__desc" data-i18n="proj.p3.desc">Astro + Databricks 프로바이더 확장, All-Purpose 대신 Job Compute에서 ETL 실행. 자동 Retry 및 Jinja2 Template 렌더링 추가, Databricks Workflow 이중 개발 부담 해소. 웍스피어 유한책임회사(구 잡코리아 유한책임회사) 전 파이프라인에서 Databricks ETL 비용 60~70%, SageMaker-Databricks 비용 50~60% 절감. SQL Warehouse 모듈 개발로 ML 비용 평균 50%+ 절감.</p>
-            <div class="project-card__tags">
-              <span class="project-tag">Airflow</span>
-              <span class="project-tag">Databricks</span>
-              <span class="project-tag">PySpark</span>
-              <span class="project-tag">Python</span>
-              <span class="project-tag">SageMaker</span>
-            </div>
-          </article>
-
-          <article class="project-card" data-project="p4" data-owner="jk" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="projectModal" aria-label="프로젝트 상세 보기: Self-Insight 데이터 마트">
-            <div class="project-card__header">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-              <span class="project-card__badge">2023.12 — 2024.06</span>
-            </div>
-            <h3 class="project-card__title" data-i18n="proj.p4.title">Self-Insight 데이터 마트</h3>
-            <p class="project-card__desc" data-i18n="proj.p4.desc">웍스피어 유한책임회사(구 잡코리아 유한책임회사) 전사 셀프서비스 데이터 마트 출시 — 기획·운영·마케팅 팀의 애드혹 통계 요청 흡수. SparkSQL 최적화로 마트 런타임 5~20% 단축, Databricks API 기반 모듈로 Compute 없이 Unity Catalog 읽기/쓰기 가능. 하이브리드 On-Prem Airflow + Databricks Workflow 파이프라인으로 클라우드 단일 장애점 리스크 제거.</p>
-            <div class="project-card__tags">
-              <span class="project-tag">Spark</span>
-              <span class="project-tag">Databricks</span>
-              <span class="project-tag">Delta Lake</span>
-              <span class="project-tag">Airflow</span>
-              <span class="project-tag">Unity Catalog</span>
-            </div>
-          </article>
-
-          <article class="project-card" data-project="p5" data-owner="jk" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="projectModal" aria-label="프로젝트 상세 보기: Onepick — AI 인재 추천">
-            <div class="project-card__header">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-              <span class="project-card__badge">2023.01 — 2023.04</span>
-            </div>
-            <h3 class="project-card__title" data-i18n="proj.p5.title">Onepick — AI 인재 추천</h3>
-            <p class="project-card__desc" data-i18n="proj.p5.desc">AI 기반 공고-후보자 매칭 엔드투엔드 ML 파이프라인. SageMaker용 Python Deferrable 오퍼레이터로 Airflow 워커 자원 점유율 평균 20% 감소, Worker 추가 확장 없이 장애 해소. Webhook 기반 성능/오류 모니터링, Grafana 대시보드 구축.</p>
-            <div class="project-card__tags">
-              <span class="project-tag">SageMaker</span>
-              <span class="project-tag">Airflow</span>
-              <span class="project-tag">EMR</span>
-              <span class="project-tag">Spark</span>
-              <span class="project-tag">Grafana</span>
-            </div>
-          </article>
-
-          <article class="project-card" data-project="p-coverage" data-owner="jk" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="projectModal" aria-label="프로젝트 상세 보기: Data Coverage — 분석 환경 자동화">
-            <div class="project-card__header">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-              <span class="project-card__badge">2023.05 — 2023.06</span>
-            </div>
-            <h3 class="project-card__title" data-i18n="proj.coverage.title">Data Coverage — 분석 환경 자동화</h3>
-            <p class="project-card__desc" data-i18n="proj.coverage.desc">On-Prem 기반 BI 대시보드를 클라우드 기반 Power BI로 전환. 분석가들이 생성하던 관리 안 된 데이터 마트 자동화 및 정합성 체크 파이프라인 개발. Presto 기반 리포트 쿼리 분석 후 PySpark 마이그레이션, 테이블당 5~10% 성능 향상.</p>
-            <div class="project-card__tags">
-              <span class="project-tag">Airflow</span>
-              <span class="project-tag">PySpark</span>
-              <span class="project-tag">Presto</span>
-              <span class="project-tag">Power BI</span>
-            </div>
-          </article>
-
-          <article class="project-card" data-project="p6" data-owner="bespin" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="projectModal" aria-label="프로젝트 상세 보기: JOBIA — 데이터 & AI 플랫폼">
-            <div class="project-card__header">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-              <span class="project-card__badge">2021.11 — 2022.06</span>
-            </div>
-            <h3 class="project-card__title" data-i18n="proj.p6.title">JOBIA — 데이터 & AI 플랫폼</h3>
-            <p class="project-card__desc" data-i18n="proj.p6.desc">베스핀글로벌에서 구축한 웍스피어(구 잡코리아)의 AWS 네이티브 데이터 플랫폼 — 온프레미스 MSSQL SSIS 웨어하우스를 Redshift + S3로 이전. Transfer Family(SFTP)·EventBridge·Lambda 마이크로 ETL로 GA360(BigQuery Connector) / SAP / Appsflyer 통합. Glue Catalog + Athena 분석 환경 제공, 레거시 대비 파이프라인 15%+ 속도 향상.</p>
-            <div class="project-card__tags">
-              <span class="project-tag">Redshift</span>
-              <span class="project-tag">S3</span>
-              <span class="project-tag">Step Functions</span>
-              <span class="project-tag">Glue</span>
-              <span class="project-tag">Athena</span>
-              <span class="project-tag">Lambda</span>
-            </div>
-          </article>
-
-        </div>
+        <div id="projectExplorer"></div>
       </div>
 
-      <!-- View: by Tech (mindmap graph) -->
+      <!-- View: by Technology -->
       <div class="career__view" id="view-tech" role="tabpanel" aria-labelledby="tab-tech" data-view="tech" hidden>
-        <h3 class="sr-only" data-i18n="career.sub.tech">기술별 마인드맵</h3>
-        <p class="career__hint" data-i18n="career.hint">기술·회사·프로젝트 노드를 클릭하면 연결된 항목이 강조 표시됩니다. 배경을 클릭하면 선택이 해제됩니다.</p>
-        <div class="career__legend" aria-hidden="true">
-          <span class="legend-item"><span class="legend-dot legend-dot--tech"></span><span data-i18n="career.legend.tech">기술</span></span>
-          <span class="legend-item"><span class="legend-dot legend-dot--company"></span><span data-i18n="career.legend.company">회사</span></span>
-          <span class="legend-item"><span class="legend-dot legend-dot--project"></span><span data-i18n="career.legend.project">프로젝트</span></span>
-          <span class="legend-item"><span class="legend-dot legend-dot--hub"></span><span data-i18n="career.legend.hub">허브</span></span>
-        </div>
-        <div class="tech-graph" id="techGraph" role="img" aria-label="Technology mindmap graph" data-i18n-aria="aria-label">
-          <p class="tech-graph__fallback" data-i18n="career.fallback">마인드맵을 렌더링하려면 JavaScript가 필요합니다.</p>
-        </div>
+        <h3 class="sr-only" data-i18n="career.sub.tech">기술과 프로젝트 연결</h3>
+        <div id="techExplorer"></div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="section about" id="about">
+    <div class="section__inner">
+      <h2 class="section__heading">
+        <span class="section__number" aria-hidden="true">02</span>
+        <span data-i18n="about.heading">소개</span>
+      </h2>
+      <div class="about__content">
+        <p class="about__text" data-i18n="about.text">
+          빗썸 Data/AI 실, 데이터 플랫폼 팀에서 IDC와 AWS 기반 데이터 플랫폼을 설계·운영하고 있습니다. 데이터 플랫폼의 인프라 설계와 자산 관리, 보안, FinOps를 포함한 운영 업무 전반을 담당합니다.<br><br>베스핀글로벌에서는 AWS 데이터 플랫폼 구축을, 웍스피어 유한책임회사(구 잡코리아 유한책임회사)에서는 Databricks 전환과 Airflow 오퍼레이터 개발을 경험했습니다. 현재는 이 경험을 바탕으로 금융 규제와 ISMS-P 요구사항을 고려한 데이터 플랫폼 고도화와 AI Agent 도입을 진행하고 있습니다.
+        </p>
+        <div class="about__stats">
+          <div class="about__stat">
+            <span class="about__stat-value" data-dynamic="tenure">{{tenure}}</span>
+            <span class="about__stat-label" data-i18n="about.stat.years">데이터 엔지니어링 경력</span>
+          </div>
+          <div class="about__stat">
+            <span class="about__stat-value">60–70%</span>
+            <span class="about__stat-label" data-i18n="about.stat.savings">Job Compute 전환 ETL 비용 절감</span>
+          </div>
+          <div class="about__stat">
+            <span class="about__stat-value">3</span>
+            <span class="about__stat-label" data-i18n="about.stat.companies">데이터 플랫폼 실무 회사</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section class="section skills" id="skills">
+    <div class="section__inner">
+      <h2 class="section__heading">
+        <span class="section__number" aria-hidden="true">03</span>
+        <span data-i18n="skills.heading">스킬</span>
+      </h2>
+      <p class="skills__hint" data-i18n="skills.hint">화살표가 있는 기술을 선택하면 관련 프로젝트를 확인할 수 있습니다.</p>
+      <div class="skills__grid">
+        <div class="skills__category">
+          <h3 class="skills__category-title" data-i18n="skills.cat.languages">언어</h3>
+          <div class="skills__tags">
+            <button type="button" class="skill-tag" data-skill="python" aria-controls="techExplorer">Python</button>
+            <button type="button" class="skill-tag" data-skill="sql" aria-controls="techExplorer">SQL</button>
+            <button type="button" class="skill-tag" data-skill="pyspark" aria-controls="techExplorer">PySpark</button>
+            <span class="skill-tag">Bash / Shell</span>
+            <button type="button" class="skill-tag" data-skill="terraform" aria-controls="techExplorer">Terraform (HCL)</button>
+            <button type="button" class="skill-tag" data-skill="r" aria-controls="techExplorer">R</button>
+          </div>
+        </div>
+        <div class="skills__category">
+          <h3 class="skills__category-title" data-i18n="skills.cat.dataEng">데이터 엔지니어링</h3>
+          <div class="skills__tags">
+            <button type="button" class="skill-tag" data-skill="airflow" aria-controls="techExplorer">Apache Airflow</button>
+            <button type="button" class="skill-tag" data-skill="spark" aria-controls="techExplorer">Apache Spark</button>
+            <button type="button" class="skill-tag" data-skill="sparksql" aria-controls="techExplorer">Spark SQL</button>
+            <button type="button" class="skill-tag" data-skill="databricks" aria-controls="techExplorer">Databricks</button>
+            <button type="button" class="skill-tag" data-skill="genie" aria-controls="techExplorer">Databricks Genie</button>
+            <button type="button" class="skill-tag" data-skill="deltalake" aria-controls="techExplorer">Delta Lake</button>
+            <button type="button" class="skill-tag" data-skill="unitycatalog" aria-controls="techExplorer">Unity Catalog</button>
+            <button type="button" class="skill-tag" data-skill="gluecatalog" aria-controls="techExplorer">AWS Glue Data Catalog</button>
+            <span class="skill-tag">ETL / ELT</span>
+            <span class="skill-tag" data-i18n="skills.tag.dataModeling">데이터 모델링</span>
+            <span class="skill-tag" data-i18n="skills.tag.customOperators">Custom Operators</span>
+            <button type="button" class="skill-tag" data-skill="grafana" aria-controls="techExplorer">Grafana</button>
+            <button type="button" class="skill-tag" data-skill="webhook" data-i18n="skills.tag.webhook" aria-controls="techExplorer">Webhook 알림</button>
+          </div>
+        </div>
+        <div class="skills__category">
+          <h3 class="skills__category-title" data-i18n="skills.cat.crypto">크립토 & 금융 데이터</h3>
+          <div class="skills__tags">
+            <span class="skill-tag" data-i18n="skills.tag.orderFlow">거래소 주문 플로우</span>
+            <span class="skill-tag" data-i18n="skills.tag.marketData">마켓 데이터 파이프라인</span>
+            <button type="button" class="skill-tag" data-skill="ga4" aria-controls="techExplorer">GA4</button>
+            <button type="button" class="skill-tag" data-skill="appsflyer" aria-controls="techExplorer">Appsflyer</button>
+            <button type="button" class="skill-tag" data-skill="braze" aria-controls="techExplorer">Braze</button>
+            <span class="skill-tag" data-i18n="skills.tag.crm">CRM 푸시</span>
+            <button type="button" class="skill-tag" data-skill="ismsp" data-i18n="skills.tag.ismsp" aria-controls="techExplorer">ISMS-P 컴플라이언스</button>
+            <button type="button" class="skill-tag" data-skill="cspm" data-i18n="skills.tag.cspm" aria-controls="techExplorer">CSPM / 보안 리뷰</button>
+            <button type="button" class="skill-tag" data-skill="sha256" data-i18n="skills.tag.piiEnc" aria-controls="techExplorer">PII 해싱 (SHA-256)</button>
+            <span class="skill-tag" data-i18n="skills.tag.dr">DR (재해복구)</span>
+          </div>
+        </div>
+        <div class="skills__category">
+          <h3 class="skills__category-title" data-i18n="skills.cat.cloud">클라우드 & 플랫폼</h3>
+          <div class="skills__tags">
+            <button type="button" class="skill-tag" data-skill="aws" aria-controls="techExplorer">AWS</button>
+            <button type="button" class="skill-tag" data-skill="redshift" aria-controls="techExplorer">Redshift</button>
+            <button type="button" class="skill-tag" data-skill="spectrum" aria-controls="techExplorer">Redshift Spectrum</button>
+            <button type="button" class="skill-tag" data-skill="s3" aria-controls="techExplorer">S3</button>
+            <button type="button" class="skill-tag" data-skill="glue" aria-controls="techExplorer">Glue</button>
+            <button type="button" class="skill-tag" data-skill="athena" aria-controls="techExplorer">Athena</button>
+            <button type="button" class="skill-tag" data-skill="bigquery" aria-controls="techExplorer">BigQuery</button>
+            <button type="button" class="skill-tag" data-skill="lambda" aria-controls="techExplorer">Lambda</button>
+            <button type="button" class="skill-tag" data-skill="eventbridge" aria-controls="techExplorer">EventBridge</button>
+            <button type="button" class="skill-tag" data-skill="emr" aria-controls="techExplorer">EMR</button>
+            <span class="skill-tag">MWAA (Managed Airflow)</span>
+            <button type="button" class="skill-tag" data-skill="sagemaker" aria-controls="techExplorer">SageMaker</button>
+            <button type="button" class="skill-tag" data-skill="stepfunctions" aria-controls="techExplorer">Step Functions</button>
+            <button type="button" class="skill-tag" data-skill="privatelink" aria-controls="techExplorer">PrivateLink</button>
+            <button type="button" class="skill-tag" data-skill="vpc" aria-controls="techExplorer">VPC</button>
+            <button type="button" class="skill-tag" data-skill="vertica" aria-controls="techExplorer">Vertica</button>
+            <button type="button" class="skill-tag" data-skill="aurora-mysql" aria-controls="techExplorer">Aurora MySQL</button>
+            <button type="button" class="skill-tag" data-skill="oracle" aria-controls="techExplorer">Oracle</button>
+            <button type="button" class="skill-tag" data-skill="bimatrix" aria-controls="techExplorer">BI MATRIX</button>
+            <button type="button" class="skill-tag" data-skill="linux" aria-controls="techExplorer">Linux</button>
+            <span class="skill-tag">Git / CodeSeries</span>
+          </div>
+        </div>
+        <div class="skills__category">
+          <h3 class="skills__category-title" data-i18n="skills.cat.ml">ML & NLP</h3>
+          <div class="skills__tags">
+            <span class="skill-tag">NLP</span>
+            <button type="button" class="skill-tag" data-skill="konlpy" aria-controls="techExplorer">KoNLPy</button>
+            <button type="button" class="skill-tag" data-skill="scikit-learn" aria-controls="techExplorer">scikit-learn</button>
+            <button type="button" class="skill-tag" data-skill="pandas" aria-controls="techExplorer">Pandas</button>
+            <button type="button" class="skill-tag" data-skill="numpy" aria-controls="techExplorer">NumPy</button>
+            <span class="skill-tag" data-i18n="skills.tag.unsupervised">비지도학습 분류</span>
+            <span class="skill-tag" data-i18n="skills.tag.webCollection">Selenium / BS4 데이터 수집</span>
+            <button type="button" class="skill-tag" data-skill="mongodb" aria-controls="techExplorer">MongoDB</button>
+            <button type="button" class="skill-tag" data-skill="django" aria-controls="techExplorer">Django</button>
+            <span class="skill-tag">matplotlib</span>
+            <button type="button" class="skill-tag" data-skill="seaborn" aria-controls="techExplorer">Seaborn</button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -566,15 +443,15 @@
             <span class="cert-item__date">2022.05</span>
           </div>
           <div class="cert-item">
-            <span class="cert-item__name">TOEIC 895점</span>
+            <span class="cert-item__name" data-i18n="certs.toeic">TOEIC 895점</span>
             <span class="cert-item__date">2019.12</span>
           </div>
           <div class="cert-item">
-            <span class="cert-item__name">정보처리기사</span>
+            <span class="cert-item__name" data-i18n="certs.engineer">정보처리기사</span>
             <span class="cert-item__date">2019.11</span>
           </div>
           <div class="cert-item">
-            <span class="cert-item__name">SQL 개발자 (SQLD)</span>
+            <span class="cert-item__name" data-i18n="certs.sqld">SQL 개발자 (SQLD)</span>
             <span class="cert-item__date">2019.09</span>
           </div>
         </div>
@@ -582,28 +459,28 @@
         <h3 class="certs__subheading" data-i18n="awards.heading">수상</h3>
         <div class="certs__grid">
           <div class="cert-item">
-            <span class="cert-item__name">2019 지능시스템학회 춘계학술대회 — 우수논문상</span>
+            <span class="cert-item__name" data-i18n="awards.paper">2019 지능시스템학회 춘계학술대회 — 우수논문상</span>
             <span class="cert-item__date">2019.04</span>
           </div>
           <div class="cert-item">
-            <span class="cert-item__name">Young Samsung 대학생 서포터즈 10기 개인우수상</span>
+            <span class="cert-item__name" data-i18n="awards.samsung">Young Samsung 대학생 서포터즈 10기 개인우수상</span>
             <span class="cert-item__date">2018.02</span>
           </div>
         </div>
 
         <h3 class="certs__subheading" data-i18n="pubs.heading">논문</h3>
         <div class="certs__grid">
-          <a href="https://doi.org/10.3390/land11122176" target="_blank" rel="noopener noreferrer" class="cert-item cert-item--link" data-i18n-aria="aria.pubs.mdpi" aria-label="MDPI Land 2022 논문 DOI 링크 (새 탭 열림)">
+          <a href="https://doi.org/10.3390/land11122176" target="_blank" rel="noopener noreferrer" class="cert-item cert-item--link" data-i18n="aria.pubs.mdpi" data-i18n-attr="aria-label" aria-label="MDPI Land 2022 논문 DOI 링크 (새 탭 열림)">
             <span class="cert-item__name">Effects of Landscape Patterns on the Concentration and Recovery Time of PM2.5 in South Korea — MDPI Land (2022)</span>
             <span class="cert-item__date">2022.11</span>
             <svg class="cert-item__icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
           </a>
           <div class="cert-item">
-            <span class="cert-item__name">PM 2.5 Distribution Trend in an Urban Area — ICLEE 2019 포스터 세션</span>
+            <span class="cert-item__name" data-i18n="pubs.iclee">PM 2.5 Distribution Trend in an Urban Area — ICLEE 2019 포스터 세션</span>
             <span class="cert-item__date">2019.11</span>
           </div>
           <div class="cert-item">
-            <span class="cert-item__name">온라인 정보를 활용한 식당 사용자 패턴 분석 — 한국지능시스템학회 (2019)</span>
+            <span class="cert-item__name" data-i18n="pubs.patterns">온라인 정보를 활용한 식당 사용자 패턴 분석 — 한국지능시스템학회 (2019)</span>
             <span class="cert-item__date">2019.04</span>
           </div>
         </div>
@@ -652,7 +529,7 @@
         <span class="modal__owner" id="projectModalOwner"></span>
       </div>
       <h2 class="modal__title" id="projectModalTitle"></h2>
-      <button type="button" class="modal__close" data-modal-close aria-label="닫기">
+      <button type="button" class="modal__close" data-modal-close data-i18n="modal.close" data-i18n-attr="aria-label" aria-label="닫기">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -666,318 +543,6 @@
 <!-- ===== PROJECT DETAIL DATA (i18n-keyed) =====
      Each entry holds full project description keyed by language code.
      App.js reads this on modal open and re-reads on language toggle. -->
-<script type="application/json" id="projectDetails">
-{
-  "p-braze": {
-    "ko": {
-      "summary": "고객 앱 푸시 자동화 및 개인화 마케팅을 위한 Braze 도입 프로젝트. 현업의 마케팅 활용 목적에 맞는 고객 집계 속성 마트를 신규 설계하고, 운영 환경에서 개인정보가 외부로 반출되지 않는 안전한 아키텍처와 운영 프로세스를 함께 구축했습니다.",
-      "owner": "빗썸",
-      "sections": [
-        { "heading": "프로젝트 요약", "items": [
-          "고객 앱 푸시 자동화 및 개인화된 마케팅 제공을 위한 Braze 도입",
-          "Redshift + S3 기반 운영 환경 개인정보 반출 아키텍처 및 프로세스 설계·구성",
-          "Redshift Spectrum 기반 캠페인 결과·고객 임프레션 데이터 조회 환경 구축"
-        ]}
-      ]
-    },
-    "en": {
-      "summary": "Braze adoption for customer push automation and personalized marketing. Designed a new customer aggregation attribute mart aligned with marketing-team use cases and built a secure architecture and operational process that prevents PII from leaving the production environment.",
-      "owner": "Bithumb",
-      "sections": [
-        { "heading": "Project Summary", "items": [
-          "Braze adoption for CRM push automation and personalized marketing",
-          "Designed Redshift + S3 architecture and operational process for PII-safe data extraction",
-          "Built Redshift Spectrum query environment for campaign results and customer impression data"
-        ]}
-      ]
-    }
-  },
-
-  "p1": {
-    "ko": {
-      "summary": "빗썸에서 Databricks 기반 AI Agent 플랫폼을 전사적으로 확산하는 프로젝트. Text-to-SQL, 데이터 분석, Insight Agent 등 현업 업무 환경에 맞는 AI Agent를 개발·교육하고, 프로덕션 도입을 위한 망분리 설계와 보안 부문 협의, 실사 검증을 단독으로 리딩했습니다.",
-      "owner": "빗썸",
-      "sections": [
-        { "heading": "프로젝트 요약", "items": [
-          "Databricks 기반 AI Agent 플랫폼의 전사 확산을 위한 Agent 개발 및 운영",
-          "Text-to-SQL, 데이터 분석, Insight Agent 등 현업 업무환경에 맞는 AI Agent 개발 및 교육, 전사 확산",
-          "보안부문 요구사항 실사 검증 및 취약점 보완, 프로세스 협의",
-          "망분리 설계, 워크스페이스 분리, 비용 추적·관리를 위한 태깅 정책 수립"
-        ]}
-      ]
-    },
-    "en": {
-      "summary": "Company-wide rollout of the Databricks-based AI Agent platform at Bithumb. Led network-segregation design, security review, due-diligence verification, and built Text-to-SQL, analytics, and Insight agents tailored to in-house workflows.",
-      "owner": "Bithumb",
-      "sections": [
-        { "heading": "Project Summary", "items": [
-          "Built Text-to-SQL, data analytics, and Insight Agents on Databricks for company-wide rollout",
-          "User training and enablement across business teams",
-          "Led network-segregation design, security due-diligence, and process alignment",
-          "Defined workspace isolation and tagging policies for cost tracking and self-service"
-        ]}
-      ]
-    }
-  },
-
-  "p-poc": {
-    "ko": {
-      "summary": "AI Agent 플랫폼 도입 선정을 위한 AWS 기반 Databricks PoC. 전사 핵심 과제인 AI Agent 플랫폼으로 Databricks가 선정되어, 금융 규제를 준수한 보안 요건을 만족하는 인프라를 설계·구축하고 Databricks Genie 기반 Text-to-SQL Agent의 정확도와 성능을 검증했습니다.",
-      "owner": "빗썸",
-      "sections": [
-        { "heading": "핵심 성과", "items": [
-          "Databricks Genie 기반 Text-to-SQL Agent 구축, 정확도 및 성능 검증에서 90% 정확도 달성"
-        ]},
-        { "heading": "프로젝트 요약", "items": [
-          "AI Agent 플랫폼 도입 선정을 위한 AWS 기반 Databricks 플랫폼 구축",
-          "AWS PrivateLink 기반 인프라 물리적 설계, 보안 규정 준수를 위한 Databricks 계정 및 Workspace 직접 구축",
-          "플랫폼 아키텍처 및 데이터 정책 보안 검토 및 협의 후 금융 규제 준수 보안 검토 통과",
-          "Text-to-SQL Agent 시멘틱 레이어 데이터 격리 아키텍처 구성 및 이관"
-        ]}
-      ]
-    },
-    "en": {
-      "summary": "AWS-based Databricks PoC for AI Agent platform selection. Designed and built infrastructure that satisfied financial-sector security requirements and validated the Databricks Genie Text-to-SQL Agent for accuracy and performance.",
-      "owner": "Bithumb",
-      "sections": [
-        { "heading": "Key Outcome", "items": [
-          "Built Databricks Genie Text-to-SQL Agent — 90% accuracy on benchmark queries"
-        ]},
-        { "heading": "Project Summary", "items": [
-          "Built AWS-based Databricks platform for AI Agent platform selection",
-          "AWS PrivateLink-based physical infrastructure design with direct Databricks account & Workspace provisioning",
-          "Passed financial-regulatory security review through platform architecture and data policy alignment",
-          "Configured data-isolation architecture for the Text-to-SQL Agent semantic layer"
-        ]}
-      ]
-    }
-  },
-
-  "p2": {
-    "ko": {
-      "summary": "빗썸의 IDC + AWS로 이원화되어 운영 중인 분석·정보계 데이터 플랫폼을 AWS 단일 플랫폼으로 통합하는 지속 프로젝트. 신규 서비스 도입과 기존 플랫폼 마이그레이션 과정에서 VPC/서브넷 단위 설계와 서비스 단위 보안 검토·취약점 조치를 단독으로 주도하고 있습니다.",
-      "owner": "빗썸",
-      "sections": [
-        { "heading": "핵심 성과 (진행중)", "items": [
-          "멀티 클러스터 분리 설계 및 Reserved Node 비용 안 설계를 통해 Redshift 노드 비용 33% 절감"
-        ]},
-        { "heading": "프로젝트 요약", "items": [
-          "IDC + AWS 이원화 데이터 플랫폼을 AWS 기반 단일 플랫폼으로 통합",
-          "AWS 신규 계정 내 기존 플랫폼 자원 IaC 전환 및 VPC·Subnet 네트워크 설계·배포 (Terraform)",
-          "Prefect + Amazon EMR 기반 파이프라인을 Airflow + AWS Glue(PySpark) 기반으로 전환",
-          "SageMaker Unified Studio, Redshift Serverless 등 신규 서비스 도입 PoC 및 보안 요구사항 충족을 위한 감사 로그 프로세스 구축",
-          "팀 내 AWS 인프라 이해도가 가장 높아 VPC/서브넷 단위 설계와 서비스 단위 보안 검토·취약점 조치 담당"
-        ]}
-      ]
-    },
-    "en": {
-      "summary": "Ongoing consolidation of Bithumb's dual IDC + AWS analytics and information systems into a single AWS-based platform. Leads VPC/subnet-level design, per-service security review, and vulnerability remediation for all new service introductions and migrations.",
-      "owner": "Bithumb",
-      "sections": [
-        { "heading": "Key Outcome (in progress)", "items": [
-          "33% Redshift node cost reduction via multi-cluster isolation and Reserved Node design"
-        ]},
-        { "heading": "Project Summary", "items": [
-          "Consolidating information and analytics systems split between IDC and AWS into a single AWS platform",
-          "IaC transition of existing platform resources into the new AWS account with VPC/Subnet design (Terraform)",
-          "Migrated Prefect + Amazon EMR data pipelines to Airflow + AWS Glue (PySpark)",
-          "PoC for SageMaker Unified Studio and Redshift Serverless with audit-log and compliance processes",
-          "Owns VPC/subnet-level design and per-service security review across the team"
-        ]}
-      ]
-    }
-  },
-
-  "p3": {
-    "ko": {
-      "summary": "Astro + Databricks 프로바이더 확장과 Airflow 커스텀 오퍼레이터 설계를 통해 All-Purpose Compute → Job Compute 마이그레이션을 수행한 프로젝트. 웍스피어(구 잡코리아) 전사 파이프라인에서 막대한 ETL 비용을 절감했습니다.",
-      "owner": "웍스피어 (구 잡코리아)",
-      "sections": [
-        { "heading": "핵심 성과", "items": [
-          "Databricks All-Purpose → Job Compute 마이그레이션으로 ETL 비용 60~70% 절감",
-          "SageMaker에서 Databricks 사용 시 발생하는 비용 50~60% 절감",
-          "SQL Warehouse 모듈 개발로 ML 업무 Databricks 비용 평균 50% 이상 절감",
-          "당시 Airflow 기반의 모든 파이프라인을 재마이그레이션하여 ETL 비용을 약 1/3로 절감",
-          "자동 Retry 및 Jinja2 Template 렌더링 기능 추가로 Airflow 운영 리스크 해소"
-        ]},
-        { "heading": "프로젝트 요약", "items": [
-          "Astro + Databricks 프로바이더 확장으로 All-Purpose → Job Compute 마이그레이션",
-          "Astro Operator의 Retry 불가·Jinja Template 사용 불가 문제를 해결하는 Custom Operator 설계·개발",
-          "Databricks Workflow 이중 개발 부담 해소",
-          "SageMaker Notebook/Training Job에서 Databricks SQL Warehouse로 데이터 라우팅하는 Pandas 모듈 개발"
-        ]}
-      ]
-    },
-    "en": {
-      "summary": "Designed Airflow custom operators extending Astro + Databricks providers to migrate ETL from All-Purpose to Job Compute clusters. Cut ETL cost 60–70% and SageMaker-Databricks cost 50–60% across all Worxphere (ex-JobKorea) pipelines.",
-      "owner": "Worxphere (ex-JobKorea)",
-      "sections": [
-        { "heading": "Key Outcomes", "items": [
-          "60–70% ETL cost reduction via All-Purpose → Job Compute migration",
-          "50–60% SageMaker-Databricks cost reduction",
-          "Avg 50%+ ML workload Databricks cost reduction via SQL Warehouse module",
-          "Re-migrated all Airflow-based pipelines, cutting ETL cost to ~1/3",
-          "Eliminated Astro Operator's Retry / Jinja Template limitations with a custom operator"
-        ]},
-        { "heading": "Project Summary", "items": [
-          "Extended Astro + Databricks providers to run ETL on Job Compute clusters",
-          "Built a custom operator resolving Astro Operator's no-Retry / no-Jinja-Template limitations",
-          "Removed Databricks Workflow dual-development burden",
-          "Built a Pandas module that routes SageMaker Notebook/Training Job data access through Databricks SQL Warehouse"
-        ]}
-      ]
-    }
-  },
-
-  "p4": {
-    "ko": {
-      "summary": "웍스피어(구 잡코리아)에서 전사 대상 범용 데이터 마트 및 분석 플랫폼을 제공하여, 기획·운영·마케팅 부서의 애드혹 통계 요청 업무 부담을 해소한 데이터 민주화 프로젝트.",
-      "owner": "웍스피어 (구 잡코리아)",
-      "sections": [
-        { "heading": "핵심 성과", "items": [
-          "데이터 분석가가 개발한 SparkSQL 쿼리 최적화로 각 데이터 마트별 수행시간 5~20% 단축",
-          "Databricks API 기반 모듈로 Compute 없이 Unity Catalog 읽기·쓰기 가능 — 컴퓨팅 비용 절감 및 클러스터 준비 시간 제거",
-          "프로파일 데이터 통합 및 중간 마트 구축으로 중복 데이터 제거"
-        ]},
-        { "heading": "프로젝트 요약", "items": [
-          "전사 대상의 범용 데이터 마트 및 분석 플랫폼 제공 — 기획·운영·마케팅 부서의 애드혹 통계 요청 흡수",
-          "On-Premise Airflow + Databricks Workflow 하이브리드 파이프라인으로 클라우드 단일 장애점 리스크 제거",
-          "ISMS-P 심사 대응을 위한 SHA-256 PII 암호화 모듈 및 Databricks↔AWS Glue Catalog 자동화 모듈 개발"
-        ]}
-      ]
-    },
-    "en": {
-      "summary": "Company-wide self-serve data mart and analytics platform at Worxphere (ex-JobKorea) that absorbed ad-hoc statistical requests from planning, operations, and marketing teams — a data-democratization project.",
-      "owner": "Worxphere (ex-JobKorea)",
-      "sections": [
-        { "heading": "Key Outcomes", "items": [
-          "SparkSQL optimization cut mart runtimes 5–20%",
-          "Databricks API module enabled Unity Catalog read/write without Compute clusters — saving compute cost and removing cluster provisioning time",
-          "Integrated and de-duplicated profile data used in marts and ML via intermediate marts"
-        ]},
-        { "heading": "Project Summary", "items": [
-          "Company-wide general-purpose data mart and analytics platform — absorbed ad-hoc statistical requests from planning, operations, and marketing",
-          "Hybrid On-Prem Airflow + Databricks Workflow pipeline removed cloud single-point-of-failure risk",
-          "Built SHA-256 PII encryption module for ISMS-P audit and Databricks↔Glue Catalog automation module"
-        ]}
-      ]
-    }
-  },
-
-  "p5": {
-    "ko": {
-      "summary": "AI 모델 기반 공고 추천 및 매칭을 통해 헤드헌팅 서비스와 결합한 기업 맞춤형 인재 추천 서비스(OnePick)의 엔드투엔드 ML 파이프라인 구축 프로젝트.",
-      "owner": "웍스피어 (구 잡코리아)",
-      "sections": [
-        { "heading": "핵심 성과", "items": [
-          "Python Deferrable Operator를 SageMaker에 적용한 Airflow 커스텀 오퍼레이터 개발로 Airflow Worker 자원 가용률 20% 이상 향상",
-          "다른 DAG에도 오퍼레이터를 적용하여 자원 점유율 평균 20% 감소 — Worker 추가 확장 없이 문제 해결",
-          "추천 서비스 머신러닝 모델 개발을 위한 데이터 및 SageMaker 파이프라인 구축",
-          "Webhook 기반 성능·장애 모니터링 및 MS Teams 알림 개발, Grafana 대시보드 구축"
-        ]},
-        { "heading": "프로젝트 요약", "items": [
-          "AI 모델 기반 공고 추천 및 매칭으로 헤드헌팅 서비스와 결합한 기업 맞춤형 인재 추천 서비스",
-          "장시간 소요되는 ML Task 증가로 인한 Worker 메모리·CPU 점유율 치솟음 문제를 Deferrable Operator로 해결",
-          "Airflow 서버 및 파이프라인 모니터링 대시보드(Grafana) 기반의 운영 효율화 프로젝트로 발전"
-        ]}
-      ]
-    },
-    "en": {
-      "summary": "End-to-end ML pipeline for AI-driven job-to-candidate matching combined with a headhunting service (OnePick).",
-      "owner": "Worxphere (ex-JobKorea)",
-      "sections": [
-        { "heading": "Key Outcomes", "items": [
-          "SageMaker-applied Python Deferrable Operator improved Airflow Worker resource availability by 20%+",
-          "Operator reuse across DAGs cut average resource utilization by 20% with zero scaling",
-          "Built data and SageMaker pipelines for the recommendation model",
-          "Webhook-based performance/incident monitoring with MS Teams notifications, plus Grafana dashboard"
-        ]},
-        { "heading": "Project Summary", "items": [
-          "AI-based job recommendation and matching service combined with a headhunting service",
-          "Solved Worker memory/CPU saturation caused by long-running ML Tasks via Deferrable Operator",
-          "Evolved into a Grafana-based Airflow and pipeline monitoring dashboard for the team"
-        ]}
-      ]
-    }
-  },
-
-  "p-coverage": {
-    "ko": {
-      "summary": "On-Premise 기반의 분석 환경 및 BI 대시보드를 클라우드 기반 Power BI로 전환하기 위한 데이터 파이프라인 구축 및 비즈니스 로직 최적화 프로젝트.",
-      "owner": "웍스피어 (구 잡코리아)",
-      "sections": [
-        { "heading": "핵심 성과", "items": [
-          "분석가들이 BI 리포트 생성에 사용하는 데이터 마트 생성 파이프라인 개발",
-          "데이터 마트 생성 쿼리 분석 후 로직 최적화로 테이블당 약 5~10% 성능 향상"
-        ]},
-        { "heading": "프로젝트 요약", "items": [
-          "On-premise 기반 분석 환경 및 BI 대시보드를 클라우드 기반 Power BI로 전환",
-          "수동 분석 및 전처리 환경 자동화를 위한 데이터 파이프라인 개발 (Airflow)",
-          "Presto 기반 리포트 생성을 위한 쿼리 분석 및 PySpark 마이그레이션",
-          "재적재 및 데이터 정합성 체크 업무를 데이터 파이프라인으로 구현하여 플랫폼 관리 효율 향상"
-        ]}
-      ]
-    },
-    "en": {
-      "summary": "Data pipeline and business-logic optimization project to transition On-Premise analytics and BI dashboards to cloud-based Power BI.",
-      "owner": "Worxphere (ex-JobKorea)",
-      "sections": [
-        { "heading": "Key Outcomes", "items": [
-          "Built data mart generation pipeline used by analysts for BI reports",
-          "Optimized mart-generation queries — ~5–10% runtime improvement per table"
-        ]},
-        { "heading": "Project Summary", "items": [
-          "Transitioned On-Premise analytics and BI dashboards to cloud-based Power BI",
-          "Built pipelines automating manual analysis and preprocessing workflows (Airflow)",
-          "Analyzed Presto-based report queries and migrated to PySpark",
-          "Automated refresh and data-quality check workloads, improving platform management efficiency"
-        ]}
-      ]
-    }
-  },
-
-  "p6": {
-    "ko": {
-      "summary": "베스핀글로벌에서 구축한 웍스피어(구 잡코리아)의 AWS 네이티브 데이터·AI 플랫폼. 온프레미스 MSSQL SSIS로 구축된 데이터 웨어하우스 및 마트를 AWS Redshift + S3로 마이그레이션하고, 분산되어 있던 외부 데이터를 단일 Glue Catalog / Athena 분석 환경으로 통합했습니다.",
-      "owner": "베스핀글로벌",
-      "sections": [
-        { "heading": "핵심 성과", "items": [
-          "온프레미스 MSSQL SSIS 대비 수행시간 15% 이상 단축 (Redshift + S3 마이그레이션)",
-          "GA, SAP, MMP 같은 외부 데이터를 AWS 데이터 레이크로 통합 — Athena 기반 ad-hoc 분석 환경 제공",
-          "Glue Catalog 테이블·파티션 자동 구성으로 분석가 셀프서비스 환경 제공"
-        ]},
-        { "heading": "프로젝트 요약", "items": [
-          "AWS S3 기반 데이터레이크 구축 및 On-Premise 데이터 웨어하우스·마트를 퍼블릭 클라우드로 마이그레이션",
-          "AWS Step Functions + AWS Glue 기반 Apache Spark ETL 파이프라인 개발 및 가이드 배포, 고객사 교육",
-          "PostgreSQL 기반 Redshift 데이터 웨어하우스·마트 로직 작성",
-          "AWS Transfer Family(SFTP) → MS Azure 기반 SAP 데이터 S3 적재 후 배치 ETL 처리",
-          "Appsflyer 데이터는 S3 이벤트 → EventBridge → Lambda 기반 실시간 Micro ETL 구성",
-          "GA360은 AWS Glue BigQuery Connector로 BigQuery 적재 후 Glue에서 Spark로 S3 적재"
-        ]}
-      ]
-    },
-    "en": {
-      "summary": "AWS-native data and AI platform (JOBIA) built at Bespin Global for Worxphere (ex-JobKorea). Migrated on-prem MSSQL SSIS warehouse and marts to AWS Redshift + S3 and consolidated distributed external data into a single Glue Catalog / Athena environment.",
-      "owner": "Bespin Global",
-      "sections": [
-        { "heading": "Key Outcomes", "items": [
-          "Migrated on-prem MSSQL SSIS warehouse and marts — 15%+ runtime improvement",
-          "Consolidated external data (GA, SAP, MMP) into S3 data lake using AWS Transfer Family, Lambda, and EventBridge",
-          "Athena ad-hoc environment backed by automatically partitioned Glue Catalog"
-        ]},
-        { "heading": "Project Summary", "items": [
-          "Built AWS S3 data lake and migrated on-prem warehouse/marts to public cloud",
-          "Built and documented AWS Step Functions + AWS Glue Apache Spark ETL pipeline; trained client team",
-          "Wrote PostgreSQL-based Redshift data warehouse and mart logic",
-          "Ingested MS Azure-hosted SAP via AWS Transfer Family (SFTP) into S3, then processed in batch ETL",
-          "Built real-time micro-ETL for Appsflyer via S3 event → EventBridge → Lambda",
-          "GA360 ingested via AWS Glue BigQuery Connector → BigQuery → Glue Spark → S3"
-        ]}
-      ]
-    }
-  }
-}
-</script>
 
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
@@ -987,7 +552,8 @@
   </div>
 </footer>
 
-<script src="./i18n.js?v=3" defer></script>
-<script src="./app.js?v=3" defer></script>
+<script src="./portfolio-data.js?v=10" defer></script>
+<script src="./i18n.js?v=10" defer></script>
+<script src="./app.js?v=10" defer></script>
 </body>
 </html>

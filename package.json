@@ -1,0 +1,10 @@
+{
+  "name": "youngdae-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Static bilingual data engineering portfolio with evidence-backed project graphs",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "check": "node --check app.js && node --check i18n.js && node --check portfolio-data.js"
+  }
+}

@@ -5,7 +5,6 @@
 (function () {
   'use strict';
 
-  const STORAGE_KEY = 'resume-site.lang';
   const DEFAULT_LANG = 'ko';
 
   /* --- English translation dictionary ---
@@ -22,31 +21,46 @@
     /* Nav */
     'nav.about': 'About',
     'nav.skills': 'Skills',
-    'nav.experience': 'Experience',
+    'nav.experience': 'Work',
     'nav.education': 'Education',
     'nav.contact': 'Contact',
+    'nav.open': 'Toggle navigation menu',
+    'nav.close': 'Close navigation menu',
+    'nav.theme': 'Dark theme',
+    'nav.themeLabel': 'Theme',
 
     /* Hero */
-    'hero.tag': 'Data Engineer · Bithumb',
+    'hero.tag': 'Bithumb · Data Platform Team',
     'hero.name': 'Youngdae Heo',
     'hero.title': 'Data Engineer',
-    'hero.subtitle': "I design and operate secure, cost-efficient cloud-based data platforms for a leading Korean cryptocurrency exchange.<br>For {{tenure}}, I have operated ETL pipelines, AWS infrastructure, and Databricks-based lakehouses under financial-grade compliance.",
+    'hero.subtitle': 'Designing data flows.<br>Reducing operational cost and complexity.',
+    'hero.description': 'I build and operate data platforms on AWS and Databricks, connecting pipelines, infrastructure, security, and cost optimization.',
     'hero.location': 'Seoul, KR',
-    'hero.experience': '{{tenure}}',
+    'hero.experience': '{{tenure}} in data engineering',
+    'hero.ctaProjects': 'Explore projects',
     'hero.ctaContact': 'Get in Touch',
     'hero.scroll': 'scroll',
     'hero.brand.company': 'Bithumb',
     'hero.brand.role': 'Data Engineer',
+    'hero.impactHeading': 'Selected impact',
+    'hero.impact.etl': 'ETL cost reduction',
+    'hero.impact.etlDetail': 'Job Compute migration',
+    'hero.impact.dag': 'DAG runtime reduction',
+    'hero.impact.dagDetail': 'Databricks cluster reuse',
+    'hero.impact.worker': 'Lower worker resource usage',
+    'hero.impact.workerDetail': 'SageMaker Deferrable Operator',
+    'hero.impact.note': 'Project-specific results at Worxphere (ex-JobKorea).<br>Open each project for its scope and implementation.',
 
     /* About */
     'about.heading': 'About',
-    'about.text': "I design and operate IDC- and AWS-based data platforms on Bithumb's Data Platform Team under financial regulations and ISMS-P compliance. My experience spans platform infrastructure design and asset management, security, FinOps, day-to-day operations, and work across a range of data platforms — migrating legacy systems to modern lakehouses (Databricks, Amazon Redshift), cutting compute costs by 30–70% through workload optimization, and building secure landing zones that pass financial-sector security audits. Previously shipped data platforms at Worxphere LLC (ex-JobKorea LLC) and Bespin Global.",
-    'about.stat.years': 'Total Experience',
-    'about.stat.savings': 'Avg ETL Cost Savings',
-    'about.stat.companies': 'Companies Shipped',
+    'about.text': "I design and operate IDC- and AWS-based data platforms on Bithumb's Data Platform Team, within the Data/AI Division. My work covers platform infrastructure design and asset management, security, FinOps, and day-to-day operations.<br><br>At Bespin Global, I built AWS data platforms. At Worxphere LLC (ex-JobKorea LLC), I worked on Databricks migration and custom Airflow operators. I now apply that experience to platform modernization and AI Agent adoption, with financial regulations and ISMS-P requirements in mind.",
+    'about.stat.years': 'Data engineering experience',
+    'about.stat.savings': 'ETL cost reduction through Job Compute migration',
+    'about.stat.companies': 'Companies in data platform roles',
 
     /* Skills */
     'skills.heading': 'Skills',
+    'skills.hint': 'Select a technology with an arrow to explore the projects where it was used.',
     'skills.cat.languages': 'Languages',
     'skills.cat.dataEng': 'Data Engineering',
     'skills.cat.crypto': 'Crypto & Financial Data',
@@ -58,21 +72,26 @@
     'skills.tag.marketData': 'Market Data Pipelines',
     'skills.tag.ismsp': 'ISMS-P Compliance',
     'skills.tag.cspm': 'CSPM / Security Review',
-    'skills.tag.piiEnc': 'PII Encryption (SHA-256)',
+    'skills.tag.piiEnc': 'PII Hashing (SHA-256)',
     'skills.tag.unsupervised': 'Unsupervised Classification',
+    'skills.tag.webhook': 'Webhook Alerts',
+    'skills.tag.webCollection': 'Selenium / BS4 Data Collection',
+    'skills.tag.braze': 'Braze / CRM Push',
+    'skills.tag.crm': 'CRM Push',
+    'skills.tag.dr': 'DR (Disaster Recovery)',
 
     /* Experience */
     'experience.heading': 'Experience',
 
     /* Career 3-view section */
-    'career.heading': 'Career',
-    'career.tab.company': 'By Company',
-    'career.tab.project': 'By Project',
-    'career.tab.tech': 'By Tech (Mindmap)',
-    'career.prompt': 'How would you like to view the career?',
+    'career.heading': 'Projects & career',
+    'career.tab.company': 'Experience',
+    'career.tab.project': 'Projects',
+    'career.tab.tech': 'Technology',
+    'career.prompt': 'The problems, the technology choices, and the results in production.',
     'career.sub.company': 'Experience by company',
     'career.sub.project': 'Featured projects',
-    'career.sub.tech': 'Technology mindmap',
+    'career.sub.tech': 'Technology and project connections',
     'career.hint': 'Click a tech, company, or project node to highlight its connections. Click the background to clear.',
     'career.legend.tech': 'Tech',
     'career.legend.company': 'Company',
@@ -97,9 +116,9 @@
     'exp.jk.b1': 'Built Self-Insight Data Mart — a company-wide self-serve analytics platform — cutting mart runtimes 5–20% via SparkSQL optimization and eliminating duplicated profile data. Built hybrid On-Prem Airflow + Databricks Workflow pipeline.',
     'exp.jk.b2': 'Designed Airflow custom operators extending Astro + Databricks providers, migrating ETL from All-Purpose to Job Compute clusters. Cut ETL cost 60–70%, SageMaker-Databricks cost 50–60%. Added auto-retry and Jinja2 template rendering.',
     'exp.jk.b3': 'Migrated data lake from AWS EMR to Databricks + Delta Lake with Unity Catalog — built an All-Purpose-cluster reuse operator that cut DAG runtime by 5–20% and removed 3–5 min of per-task resource allocation overhead. Connected EMR Hive Metastore to Databricks for validation.',
-    'exp.jk.b4': 'Shipped Onepick, an AI-driven talent recommendation ML pipeline: authored a Python Deferrable operator for SageMaker that reduced Airflow worker resource usage by avg 20% without additional scaling. Added webhook-based monitoring and Grafana dashboard.',
+    'exp.jk.b4': 'Built the Onepick AI-driven talent recommendation ML pipeline: applied a Python Deferrable operator for SageMaker, reducing Airflow worker resource usage by approximately 20%. Added MS Teams webhook-based performance/error monitoring and a Grafana dashboard.',
     'exp.jk.b5': 'Data Coverage — automated analyst data mart generation pipelines, migrated Presto report queries to PySpark, 5–10% performance improvement per table (May–Jun 2023).',
-    'exp.jk.b6': 'Developed SHA-256 PII encryption and Databricks↔AWS Glue Catalog automation modules for ISMS-P compliance and analyst productivity.',
+    'exp.jk.b6': 'Developed SHA-256 PII hashing and Databricks↔AWS Glue Catalog automation modules to support ISMS-P requirements and analyst productivity.',
 
     'exp.bespin.role': 'Cloud Data Engineer',
     'exp.bespin.company': 'Bespin Global — DataOps Division, Data Analytics Team · Seoul, KR',
@@ -136,7 +155,7 @@
     'proj.p3.desc': "Extended Astro + Databricks providers to run ETL on Job Compute instead of All-Purpose clusters. Added auto-retry and Jinja2 template rendering, eliminated Databricks Workflow dual-development burden. Cut Databricks ETL cost 60–70%, SageMaker-Databricks cost 50–60% across Worxphere LLC (ex-JobKorea LLC) pipelines. Developed SQL Warehouse module cutting ML costs avg 50%+.",
 
     'proj.p4.title': 'Self-Insight Data Mart',
-    'proj.p4.desc': 'Company-wide self-serve data mart at Worxphere LLC (ex-JobKorea LLC) absorbing ad-hoc statistical requests from planning, operations, and marketing teams. SparkSQL optimization cut mart runtimes 5–20%. Databricks API module enabled Unity Catalog read/write without Compute. Hybrid On-Prem Airflow + Databricks Workflow pipeline removed cloud single-point-of-failure risk.',
+    'proj.p4.desc': 'Company-wide self-serve data mart at Worxphere LLC (ex-JobKorea LLC) absorbing ad-hoc statistical requests from planning, operations, and marketing teams. SparkSQL optimization cut mart runtimes 5–20%. Built an API-based Unity Catalog access module; catalog access does not imply raw-data reads or writes without compute. Combined On-Prem Airflow and Databricks Workflow in a hybrid pipeline.',
 
     'proj.p5.title': 'Onepick — AI Talent Recommendation',
     'proj.p5.desc': 'End-to-end ML pipeline for AI-driven job-to-candidate matching. Python Deferrable operator for SageMaker reduced Airflow worker resource usage avg 20% without additional scaling. Webhook-based performance/error monitoring and Grafana dashboard.',
@@ -156,8 +175,15 @@
 
     /* Certifications */
     'certs.heading': 'Certifications',
+    'certs.toeic': 'TOEIC 895',
+    'certs.engineer': 'Engineer Information Processing',
+    'certs.sqld': 'SQL Developer (SQLD)',
     'awards.heading': 'Awards',
+    'awards.paper': 'Korean Institute of Intelligent Systems, Spring Conference — Outstanding Paper Award',
+    'awards.samsung': 'Young Samsung, 10th University Supporters — Individual Excellence Award',
     'pubs.heading': 'Publications',
+    'pubs.iclee': 'PM 2.5 Distribution Trend in an Urban Area — ICLEE 2019 Poster Session',
+    'pubs.patterns': 'Restaurant User Pattern Analysis Using Online Information — Korean Institute of Intelligent Systems (2019)',
     'aria.pubs.mdpi': 'Open MDPI Land 2022 paper (DOI link, new tab)',
 
     /* Contact */
@@ -220,6 +246,7 @@
   /* --- Apply a language across the page --- */
   function applyLang(lang) {
     if (lang !== 'ko' && lang !== 'en') lang = DEFAULT_LANG;
+    currentLang = lang;
 
     // Set root attributes
     document.documentElement.setAttribute('lang', lang);
@@ -256,8 +283,8 @@
       btn.setAttribute('aria-pressed', String(isActive));
     });
 
-    // Persist
-    try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) { /* ignore */ }
+    // Notify project and technology explorers after all static text is updated.
+    document.dispatchEvent(new CustomEvent('languagechange', { detail: { lang: lang } }));
   }
 
   /* --- Init on DOM ready --- */
@@ -266,21 +293,13 @@
   function init() {
     captureKoreanDefaults();
 
-    // Read stored preference, default to Korean
-    let saved = DEFAULT_LANG;
-    try {
-      const s = localStorage.getItem(STORAGE_KEY);
-      if (s === 'ko' || s === 'en') saved = s;
-    } catch (e) { /* ignore */ }
-
-    currentLang = saved;
-    applyLang(saved);
+    // Preferences stay in memory, including in restricted preview frames.
+    applyLang(DEFAULT_LANG);
 
     // Wire up toggle buttons
     document.querySelectorAll('.lang-toggle__btn').forEach(function (btn) {
       btn.addEventListener('click', function () {
         const next = btn.getAttribute('data-lang');
-        currentLang = next;
         applyLang(next);
       });
     });
@@ -295,10 +314,11 @@
   /* --- Public API (exposed for app.js to read the active language) --- */
   window.__i18n = {
     getLang: function () { return currentLang; },
+    setLang: applyLang,
     t: function (key, fallback) {
       const v = (DICT[currentLang] && DICT[currentLang][key]);
       if (v === undefined) return fallback !== undefined ? fallback : key;
-      return v;
+      return resolveTenure(v, currentLang);
     }
   };
 })();
