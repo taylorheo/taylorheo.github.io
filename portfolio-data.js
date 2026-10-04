@@ -100,11 +100,11 @@ window.PORTFOLIO = {
       title: {ko: "Braze CRM 데이터 마트 설계", en: "Braze CRM Data Mart Design"},
       shortTitle: {ko: "Braze CRM 마트", en: "Braze CRM Mart"},
       period: {ko: "2026.01 — 2026.04", en: "Jan 2026 — Apr 2026"}, start: "2026-01",
-      summary: {ko: "앱 푸시 자동화와 개인화 마케팅을 위한 Braze 도입에 맞춰 고객 집계 속성 마트, 데이터 파이프라인과 개인정보 취급 프로세스를 설계했습니다.", en: "Designed customer aggregation attribute marts, data pipelines, and PII-handling processes for Braze adoption, supporting automated app pushes and personalized marketing."},
+      summary: {ko: "Braze에서 앱 푸시와 개인화 마케팅에 사용할 고객 속성 마트와 데이터 파이프라인을 설계했습니다. 개인정보 반출·취급 절차도 함께 구성했습니다.", en: "Designed customer attribute marts and data pipelines for app push notifications and personalized marketing in Braze. Also set up procedures for exporting and handling personal information."},
       impact: {ko: "CRM용 고객 속성 마트와 캠페인 결과·임프레션 조회 환경 구축", en: "Delivered CRM customer attribute marts and campaign-result / impression query access"},
       sections: [
         {heading: {ko: "문제 · 목표", en: "Problem & Goal"}, items: [
-          {ko: "현업 마케팅 활용 목적에 맞는 고객 집계 속성과 앱 푸시 자동화·개인화 마케팅을 위한 데이터 기반이 필요했습니다.", en: "Marketing teams needed customer aggregation attributes and a data foundation for automated app pushes and personalized campaigns."}
+          {ko: "마케팅팀이 Braze에서 앱 푸시를 자동화하고 개인화 캠페인을 운영할 수 있도록 고객 속성 데이터를 제공해야 했습니다.", en: "The marketing team needed customer attribute data to automate app push notifications and run personalized campaigns in Braze."}
         ]},
         {heading: {ko: "역할", en: "Role"}, items: [
           {ko: "고객 집계 속성 마트를 신규 설계하고 CRM 활용 파이프라인을 개발했습니다.", en: "Designed new customer aggregation attribute marts and developed pipelines for CRM use."},
@@ -114,10 +114,10 @@ window.PORTFOLIO = {
           {ko: "운영 환경 개인정보 취급을 고려한 데이터 제공 구조를 구성하고, Redshift Spectrum으로 캠페인 결과와 고객 임프레션 데이터를 조회할 수 있도록 했습니다.", en: "Built a data-provisioning structure addressing production PII handling and a Redshift Spectrum query environment for campaign results and customer impressions."}
         ]},
         {heading: {ko: "성과", en: "Outcome"}, items: [
-          {ko: "현업 CRM 활용을 위한 고객 속성 데이터와 마케팅 결과 조회 환경을 제공했습니다. 별도의 정량 성과는 기존 사이트에 기재되어 있지 않습니다.", en: "Provided customer attribute data for CRM workflows and query access to marketing results. The existing site reports no separate quantitative outcome."}
+          {ko: "마케팅팀이 CRM에 사용할 고객 속성 데이터를 제공하고 캠페인 결과를 조회할 수 있도록 했습니다.", en: "Provided customer attribute data for CRM use and enabled the marketing team to query campaign results."}
         ]}
       ],
-      source: {kind: "existing", label: {ko: "기존 사이트 · Braze 상세·경력", en: "Existing site · Braze details & career"}, pages: [], note: {ko: "기존 프로젝트 상세 기준. 개인정보 취급 범위는 통제된 처리로 표현합니다.", en: "Based on existing project details. PII scope is described as controlled handling."}},
+      source: {kind: "existing", label: {ko: "기존 사이트 · Braze 상세·경력", en: "Existing site · Braze details & career"}, pages: [], note: {ko: "개인정보 반출·취급 절차와 CRM용 데이터 제공을 담당했습니다.", en: "Responsibilities covered controlled PII export and handling procedures, and data delivery for CRM use."}},
       stack: [
         {tech: "redshift", kind: "implemented", role: {ko: "고객 집계 속성 마트", en: "Customer aggregation attribute marts"}, evidence: {ko: "Redshift + S3 아키텍처와 고객 속성 마트 설계·파이프라인 개발을 명시합니다.", en: "Explicitly describes Redshift + S3 architecture, customer attribute mart design, and pipeline development."}, source: "Existing site: p-braze details and career exp.bithumb.b2"},
         {tech: "s3", kind: "implemented", role: {ko: "개인정보 취급 아키텍처의 저장 계층", en: "Storage within the PII-handling architecture"}, evidence: {ko: "Redshift + S3 기반 개인정보 취급 아키텍처 설계·구성을 명시합니다.", en: "Explicitly names S3 in the designed and configured Redshift + S3 PII-handling architecture."}, source: "Existing site: p-braze details"},
@@ -131,11 +131,11 @@ window.PORTFOLIO = {
       title: {ko: "Databricks AI Agent 플랫폼 (MVP)", en: "Databricks AI Agent Platform (MVP)"},
       shortTitle: {ko: "AI Agent MVP", en: "AI Agent MVP"},
       period: {ko: "2026.01 — 2026.04 (MVP)", en: "Jan 2026 — Apr 2026 (MVP)"}, start: "2026-01",
-      summary: {ko: "Databricks 기반 AI Agent 플랫폼을 전사 확산하고 Text-to-SQL, 데이터 분석, Insight Agent를 개발·교육했습니다. 프로덕션 도입을 위한 망분리 설계, 보안 협의와 실사 검증을 단독으로 리딩했습니다.", en: "Rolled out a Databricks-based AI Agent platform company-wide, developing and teaching Text-to-SQL, analytics, and Insight Agents. Independently led network-segregation design, security coordination, and due-diligence verification for production adoption."},
-      impact: {ko: "MVP 구축·프로덕션 도입 및 전사 사용자 교육", en: "MVP delivery, production adoption, and company-wide user enablement"},
+      summary: {ko: "Databricks에서 Text-to-SQL, 데이터 분석, Insight Agent를 개발하고 사내 사용자를 교육했습니다. 운영 환경 도입에 필요한 망분리 설계, 보안 협의와 실사 검증을 단독으로 담당했습니다.", en: "Developed Text-to-SQL, data analytics, and Insight Agents on Databricks and trained users across the company. Independently handled network-segregation design, security coordination, and due-diligence checks for production deployment."},
+      impact: {ko: "MVP 구축·프로덕션 도입 및 전사 사용자 교육", en: "MVP deployment to production and company-wide user training"},
       sections: [
         {heading: {ko: "문제 · 목표", en: "Problem & Goal"}, items: [
-          {ko: "PoC 이후 현업 업무 환경에 맞는 AI Agent를 전사에 확산하고 프로덕션 보안 요구사항을 충족해야 했습니다.", en: "After the PoC, the platform needed agents tailored to business workflows, company-wide adoption, and production security readiness."}
+          {ko: "PoC 이후 AI Agent를 사내 업무에 도입하고 운영 환경의 보안 요구사항을 충족해야 했습니다.", en: "After the PoC, the agents needed to support day-to-day work and meet production security requirements."}
         ]},
         {heading: {ko: "역할", en: "Role"}, items: [
           {ko: "Text-to-SQL, 데이터 분석, Insight Agent 개발·운영과 현업 교육을 수행했습니다.", en: "Developed and operated Text-to-SQL, data analytics, and Insight Agents and trained business users."},
@@ -143,10 +143,10 @@ window.PORTFOLIO = {
         ]},
         {heading: {ko: "구현", en: "Implementation"}, items: [
           {ko: "개인정보·신용정보 처리 카탈로그와 데이터 거버넌스 프로세스를 구축했습니다.", en: "Built catalogs and data-governance processes for personal and credit information."},
-          {ko: "보안 취약점 조치와 운영 프로세스 협의를 진행하고 워크스페이스 분리 및 비용 추적·관리용 태깅 정책을 수립했습니다.", en: "Remediated security vulnerabilities, aligned operational processes, and established workspace isolation and tagging policies for cost tracking and management."}
+          {ko: "보안 취약점을 조치하고 운영 절차를 협의했습니다. 워크스페이스를 분리하고 비용을 추적할 수 있도록 태깅 정책을 정했습니다.", en: "Fixed security vulnerabilities and agreed on operating procedures. Separated workspaces and defined tagging policies for tracking costs."}
         ]},
         {heading: {ko: "성과", en: "Outcome"}, items: [
-          {ko: "2026.01~04 MVP 구축과 프로덕션 도입을 진행하고 전사 사용자 교육·확산을 수행했습니다.", en: "Delivered the Jan–Apr 2026 MVP and production adoption, alongside company-wide user education and rollout."}
+          {ko: "2026.01~04에 MVP를 구축해 운영 환경에 도입하고 사내 사용자를 교육했습니다.", en: "Built and deployed the MVP to production in Jan–Apr 2026 and trained users across the company."}
         ]}
       ],
       source: {kind: "existing", label: {ko: "기존 사이트 · AI Agent MVP", en: "Existing site · AI Agent MVP"}, pages: [], note: {ko: "기존 사이트 프로젝트 상세 기준. 첨부 이력서에는 해당 기간이 포함되어 있지 않습니다. 90% 정확도는 별도 PoC 결과입니다.", en: "Based on existing site project details; this period is not covered by the attached resume. The 90% accuracy result belongs to the separate PoC."}},
@@ -170,7 +170,7 @@ window.PORTFOLIO = {
           {ko: "전사 핵심 과제인 AI Agent 플랫폼을 선정하기 위해 기능 검증과 금융 규제 보안 요건을 함께 충족해야 했습니다.", en: "Selecting the company-wide AI Agent platform required both functional validation and compliance with financial-sector security requirements."}
         ]},
         {heading: {ko: "역할", en: "Role"}, items: [
-          {ko: "AWS PrivateLink 기반 인프라를 물리적으로 설계하고 Databricks 계정과 Workspace를 직접 구축했습니다.", en: "Designed the AWS PrivateLink-based physical infrastructure and directly provisioned the Databricks account and workspaces."},
+          {ko: "AWS PrivateLink 기반 네트워크를 설계하고 Databricks 계정과 워크스페이스를 구축했습니다.", en: "Designed the network using AWS PrivateLink and set up the Databricks account and workspaces."},
           {ko: "플랫폼 아키텍처와 데이터 정책의 보안 검토·협의를 수행했습니다.", en: "Coordinated security review of the platform architecture and data policies."}
         ]},
         {heading: {ko: "구현", en: "Implementation"}, items: [
@@ -179,7 +179,7 @@ window.PORTFOLIO = {
         ]},
         {heading: {ko: "성과", en: "Outcome"}, items: [
           {ko: "벤치마크 쿼리에서 90% 정확도를 달성했으며 금융 규제 준수 보안 검토를 통과했습니다.", en: "Achieved 90% accuracy on benchmark queries and passed financial-regulatory security review."},
-          {ko: "전사 AI Agent 플랫폼으로 Databricks가 선정되어 후속 MVP·프로덕션 도입의 기반이 되었습니다.", en: "Databricks was selected as the company-wide AI Agent platform, providing the foundation for the subsequent MVP and production adoption."}
+          {ko: "PoC 이후 Databricks가 사내 AI Agent 플랫폼으로 선정됐고, MVP 구축과 운영 환경 도입으로 이어졌습니다.", en: "After the PoC, Databricks was selected as the company-wide AI Agent platform. The next steps were the MVP and production deployment."}
         ]}
       ],
       source: {kind: "existing", label: {ko: "기존 사이트 · AI Agent PoC", en: "Existing site · AI Agent PoC"}, pages: [], note: {ko: "90% 정확도는 벤치마크 쿼리 기준의 PoC 검증 결과입니다.", en: "The 90% accuracy figure is the PoC validation result on benchmark queries."}},
@@ -199,7 +199,7 @@ window.PORTFOLIO = {
       title: {ko: "데이터 플랫폼 고도화 (Phase 1–3)", en: "Data Platform Modernization (Phase 1–3)"},
       shortTitle: {ko: "플랫폼 고도화", en: "Platform Modernization"},
       period: {ko: "2025.06 — 진행중", en: "Jun 2025 — Ongoing"}, start: "2025-06",
-      summary: {ko: "IDC + AWS로 이원화된 분석·정보계 데이터 플랫폼을 AWS 단일 플랫폼으로 통합하는 지속 프로젝트입니다. 신규 계정 IaC 전환, 네트워크 설계, 파이프라인 이전과 서비스별 보안 검토·취약점 조치를 주도하고 있습니다.", en: "An ongoing consolidation of dual IDC + AWS analytics and information platforms into a single AWS platform. Leads new-account IaC transition, network design, pipeline migration, per-service security review, and vulnerability remediation."},
+      summary: {ko: "IDC와 AWS에 나뉜 분석·정보계 플랫폼을 AWS로 통합하고 있습니다. 신규 계정의 인프라 코드화, 네트워크 설계, 파이프라인 이전과 보안 검토·취약점 조치를 맡고 있습니다.", en: "I am consolidating analytics and information platforms from IDC and AWS into one AWS platform. My responsibilities include infrastructure as code for the new account, network design, pipeline migration, security reviews, and vulnerability fixes."},
       impact: {ko: "멀티 클러스터 분리·Reserved Node 설계로 Redshift 노드 비용 33% 절감", en: "33% lower Redshift node cost through multi-cluster isolation and Reserved Node design"},
       sections: [
         {heading: {ko: "문제 · 목표", en: "Problem & Goal"}, items: [
@@ -296,7 +296,7 @@ window.PORTFOLIO = {
       title: {ko: "Self-Insight 데이터 마트", en: "Self-Insight Data Mart"},
       shortTitle: {ko: "Self-Insight 마트", en: "Self-Insight Mart"},
       period: {ko: "2023.12 — 2024.06", en: "Dec 2023 — Jun 2024"}, start: "2023-12",
-      summary: {ko: "기획·운영·마케팅 부서의 애드혹 통계 요청을 흡수하는 전사 셀프서비스 데이터 마트·분석 플랫폼을 구축했습니다. SparkSQL 최적화, 프로파일 통합, 하이브리드 파이프라인과 카탈로그 자동화를 수행했습니다.", en: "Built a company-wide self-service mart and analytics platform absorbing ad-hoc statistical requests from planning, operations, and marketing. Delivered SparkSQL optimization, profile consolidation, hybrid pipelines, and catalog automation."},
+      summary: {ko: "기획·운영·마케팅 부서가 필요한 통계를 직접 조회할 수 있도록 데이터 마트를 구축했습니다. SparkSQL 쿼리를 최적화하고 중복 프로파일을 통합했으며, 하이브리드 파이프라인과 카탈로그 자동화 모듈을 개발했습니다.", en: "Built data marts so planning, operations, and marketing teams could query the statistics they needed. Optimized SparkSQL queries, consolidated duplicate profiles, and developed hybrid pipelines and catalog automation modules."},
       impact: {ko: "마트 수행시간 5–20% 단축 · 중복 프로파일 데이터 제거", en: "5–20% shorter mart runtimes · Deduplicated profile data"},
       sections: [
         {heading: {ko: "문제 · 목표", en: "Problem & Goal"}, items: [
@@ -314,7 +314,7 @@ window.PORTFOLIO = {
         ]},
         {heading: {ko: "성과", en: "Outcome"}, items: [
           {ko: "SparkSQL 최적화로 데이터 마트별 수행시간을 5~20% 단축하고 중간 마트로 중복 프로파일 데이터를 제거했습니다.", en: "Reduced individual mart runtimes by 5–20% through SparkSQL optimization and removed duplicated profile data through intermediate marts."},
-          {ko: "전사 셀프서비스 분석으로 애드혹 통계 요청을 흡수하고 하이브리드 파이프라인으로 클라우드 단일 장애점 리스크에 대응했습니다.", en: "Absorbed ad-hoc statistical requests through self-service analytics and addressed cloud single-point-of-failure risk through hybrid pipelines."}
+          {ko: "각 부서가 통계를 직접 조회할 수 있게 해 개별 요청을 줄였고, 하이브리드 파이프라인으로 클라우드 단일 장애점에 대응했습니다.", en: "Reduced individual statistics requests by enabling teams to query data themselves, and used hybrid pipelines to address cloud single-point-of-failure risk."}
         ]}
       ],
       source: {kind: "existing", label: {ko: "기존 사이트 · Self-Insight 상세", en: "Existing site · Self-Insight details"}, pages: [], note: {ko: "API 기반 메타데이터 접근과 카탈로그 자동화 범위. PII 처리는 SHA-256 해싱을 사용했습니다.", en: "API scope covers metadata access and catalog automation. PII handling used SHA-256 hashing."}},
@@ -361,7 +361,7 @@ window.PORTFOLIO = {
         ]},
         {heading: {ko: "성과", en: "Outcome"}, items: [
           {ko: "오퍼레이터 재사용으로 평균 자원 점유율을 약 20% 줄여 Worker 추가 확장 없이 동시 DAG 장애를 해결했습니다. 이력서 요약은 자원 가용률 20% 이상 향상으로도 표현합니다.", en: "Operator reuse reduced average resource occupation by about 20%, resolving concurrent DAG failures without adding workers. The resume summary also describes this as over 20% higher resource availability."},
-          {ko: "추천 서비스 머신러닝 모델용 데이터·SageMaker 파이프라인을 제공하고 Grafana 기반 팀 운영 효율화로 발전시켰습니다.", en: "Delivered data and SageMaker pipelines for the recommendation model and expanded the work into team-wide Grafana-based operational improvements."}
+          {ko: "추천 모델용 데이터와 SageMaker 파이프라인을 제공하고, 팀에서 Airflow 서버와 파이프라인 상태를 확인할 수 있도록 Grafana 대시보드를 구축했습니다.", en: "Provided data and SageMaker pipelines for the recommendation model, and built Grafana dashboards for the team to monitor Airflow servers and pipelines."}
         ]}
       ],
       source: {kind: "both", label: {ko: "이력서 p. 3–4 · 기존 Onepick 상세", en: "Resume pp. 3–4 · Existing Onepick details"}, pages: [3, 4], note: {ko: "데이터·ML 파이프라인과 운영 모니터링 구축 범위. 자원 점유율은 평균 약 20% 감소 기준입니다.", en: "Scope covers data / ML pipelines and operational monitoring, with approximately 20% lower average resource occupation."}},
@@ -506,10 +506,10 @@ window.PORTFOLIO = {
         ]},
         {heading: {ko: "성과", en: "Outcome"}, items: [
           {ko: "태스크당 3~5분의 자원 할당 시간을 제거하고 DAG별 평균 수행시간을 5~20% 단축했으며 DAG Task 복잡도를 낮췄습니다.", en: "Removed 3–5 minutes of resource-allocation overhead per task, shortened average DAG runtimes by 5–20%, and reduced DAG task complexity."},
-          {ko: "두 플랫폼을 오가던 검증 작업을 단일 Notebook 환경으로 통합해 정합성 검증 속도 개선에 기여했습니다. 검증 속도의 별도 수치는 없습니다.", en: "Consolidated cross-platform validation into one notebook environment, contributing to faster consistency checks. No separate validation-speed metric is stated."}
+          {ko: "Databricks Notebook 한 곳에서 기존 데이터와 이전한 데이터를 비교할 수 있게 해 정합성 검증 시간을 줄였습니다. 단축률 수치는 별도로 기록되어 있지 않습니다.", en: "Enabled comparison of legacy and migrated data in one Databricks Notebook, reducing time spent on consistency checks. No separate validation-speed metric is recorded."}
         ]},
-        {heading: {ko: "후속 계획 · 미구현으로 구분", en: "Planned Follow-up · Not Claimed as Delivered"}, items: [
-          {ko: "런칭 후 OOM 등 장애 대응을 위한 Auto Scaling 적용을 후속 고도화로 준비했습니다. 이력서는 계획 단계로 서술하며 구현 완료를 확인하지 않습니다.", en: "Prepared Auto Scaling as a post-launch enhancement for failures such as OOM. The resume describes this as planned follow-up, not a completed implementation."}
+        {heading: {ko: "후속 계획 (미구현)", en: "Planned Follow-up (Not Implemented)"}, items: [
+          {ko: "런칭 후 OOM 등 장애에 대응하기 위해 Auto Scaling 적용을 계획했습니다. 구현 완료 여부는 확인되지 않았습니다.", en: "Planned Auto Scaling to address post-launch failures such as OOM. Implementation has not been confirmed."}
         ]}
       ],
       source: {kind: "both", label: {ko: "이력서 p. 2–3 · 기존 잡코리아 경력", en: "Resume pp. 2–3 · Existing JobKorea career"}, pages: [2, 3], note: {ko: "All-Purpose 클러스터 재사용에 따른 런타임 개선 프로젝트. Auto Scaling은 후속 계획으로 구분합니다.", en: "Runtime improvement through All-Purpose cluster reuse. Auto Scaling is classified as planned follow-up."}},
@@ -560,7 +560,7 @@ window.PORTFOLIO = {
           {ko: "각 기기 데이터를 처리하는 마이크로 배치 파이프라인으로 관측값을 수집·통합하고 통계와 시각화를 제공했습니다.", en: "Collected and integrated device observations through micro-batch pipelines and produced statistics and visualizations."}
         ]},
         {heading: {ko: "성과", en: "Outcome"}, items: [
-          {ko: "공공자료에서 확보하기 어려운 지점의 신규 관측 데이터를 확보하고 실시간 측정·수집·시각화 기반으로 연구 인사이트를 보완했습니다.", en: "Obtained new observations at locations not adequately covered by public datasets and enriched research insights with real-time measurement, ingestion, and visualization."}
+          {ko: "공공자료에 없는 지점의 관측값을 직접 수집하고, 실시간 측정 결과와 시각화 자료를 연구에 제공했습니다.", en: "Collected observations at locations not covered by public datasets and provided real-time measurements and visualizations for the research."}
         ]}
       ],
       source: {kind: "both", label: {ko: "이력서 p. 5 · 기존 연구 경력", en: "Resume p. 5 · Existing research career"}, pages: [5], note: {ko: "교내 시범 측정망·연구 환경 구축 범위. 기상청 AWS는 Automated Weather System 관측자료입니다.", en: "Scope covers a pilot campus sensor network and research infrastructure. Weather-agency AWS means Automated Weather System observations."}},
@@ -685,7 +685,7 @@ window.PORTFOLIO = {
           {ko: "Django·Bootstrap으로 카카오톡 챗봇(플러스친구) API와 데이터를 주고받는 경량 API 서버와 설문 생성·관리·결과 조회 웹 서버를 구축했습니다.", en: "Built a lightweight API server exchanging data with the KakaoTalk chatbot (Plus Friend) API and a survey-creation / management / results web application with Django and Bootstrap."}
         ]},
         {heading: {ko: "성과", en: "Outcome"}, items: [
-          {ko: "대화형 주관식 설문 수집부터 NLP 기반 응답 분류·시각화와 관리 대시보드까지 연결했습니다. 정확도·사용자 수 등 별도 정량 성과는 기재되어 있지 않습니다.", en: "Connected conversational free-text survey collection to NLP response classification / visualization and a management dashboard. No separate accuracy or user-count results are documented."}
+          {ko: "카카오톡으로 주관식 응답을 수집하고, NLP로 분류한 결과를 설문 관리 대시보드에서 조회할 수 있도록 구현했습니다.", en: "Implemented free-text survey collection through KakaoTalk and made the NLP classification results available in a survey-management dashboard."}
         ]}
       ],
       source: {kind: "both", label: {ko: "이력서 p. 7 · 기존 학력 설명", en: "Resume p. 7 · Existing education description"}, pages: [7], note: {ko: "학부 캡스톤 프로젝트. 이력서에 프로젝트 연도는 기재되어 있지 않습니다.", en: "Undergraduate capstone project; its year is not stated in the resume."}},

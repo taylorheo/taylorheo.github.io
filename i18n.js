@@ -12,8 +12,8 @@
   const EN = {
     /* Meta */
     'meta.title': 'Youngdae Heo — Data Engineer',
-    'meta.description': 'Data Engineer at Bithumb. Designing secure, cost-efficient cloud-based data platforms — Databricks, AWS. Based in Seoul, South Korea.',
-    'meta.ogDescription': 'Data Engineer at Bithumb. Designing secure, cost-efficient cloud-based data platforms — Databricks, AWS. Based in Seoul.',
+    'meta.description': 'Youngdae Heo, Data Engineer at Bithumb. Projects in AWS and Databricks data platforms, ETL pipelines, and infrastructure operations.',
+    'meta.ogDescription': 'Youngdae Heo, Data Engineer at Bithumb. Projects in AWS and Databricks data platforms, ETL pipelines, and infrastructure operations.',
 
     /* A11y */
     'a11y.skip': 'Skip to content',
@@ -33,8 +33,8 @@
     'hero.tag': 'Bithumb · Data Platform Team',
     'hero.name': 'Youngdae Heo',
     'hero.title': 'Data Engineer',
-    'hero.subtitle': 'Designing data flows.<br>Reducing operational cost and complexity.',
-    'hero.description': 'I build and operate data platforms on AWS and Databricks, connecting pipelines, infrastructure, security, and cost optimization.',
+    'hero.subtitle': 'I build and operate<br>data platforms.',
+    'hero.description': 'I develop data pipelines and manage infrastructure on AWS and Databricks. My work includes improving queries and compute configurations to reduce runtime and cost.',
     'hero.location': 'Seoul, KR',
     'hero.experience': '{{tenure}} in data engineering',
     'hero.ctaProjects': 'Explore projects',
@@ -42,7 +42,7 @@
     'hero.scroll': 'scroll',
     'hero.brand.company': 'Bithumb',
     'hero.brand.role': 'Data Engineer',
-    'hero.impactHeading': 'Selected impact',
+    'hero.impactHeading': 'Project results',
     'hero.impact.etl': 'ETL cost reduction',
     'hero.impact.etlDetail': 'Job Compute migration',
     'hero.impact.dag': 'DAG runtime reduction',
@@ -53,10 +53,10 @@
 
     /* About */
     'about.heading': 'About',
-    'about.text': "I design and operate IDC- and AWS-based data platforms on Bithumb's Data Platform Team, within the Data/AI Division. My work covers platform infrastructure design and asset management, security, FinOps, and day-to-day operations.<br><br>At Bespin Global, I built AWS data platforms. At Worxphere LLC (ex-JobKorea LLC), I worked on Databricks migration and custom Airflow operators. I now apply that experience to platform modernization and AI Agent adoption, with financial regulations and ISMS-P requirements in mind.",
+    'about.text': "I design and operate IDC- and AWS-based data platforms on Bithumb's Data Platform Team in the Data/AI Division. I manage infrastructure design, assets, security reviews, and cloud costs. I also work on platform consolidation and AI Agent adoption under financial regulations and ISMS-P requirements.<br><br>Previously, I built AWS data platforms at Bespin Global and worked on Databricks migration and custom Airflow operators at Worxphere LLC (ex-JobKorea LLC).",
     'about.stat.years': 'Data engineering experience',
     'about.stat.savings': 'ETL cost reduction through Job Compute migration',
-    'about.stat.companies': 'Companies in data platform roles',
+    'about.stat.companies': 'Companies worked at',
 
     /* Skills */
     'skills.heading': 'Skills',
@@ -88,7 +88,7 @@
     'career.tab.company': 'Experience',
     'career.tab.project': 'Projects',
     'career.tab.tech': 'Technology',
-    'career.prompt': 'The problems, the technology choices, and the results in production.',
+    'career.prompt': 'Responsibilities, implementation details, and results for each project.',
     'career.sub.company': 'Experience by company',
     'career.sub.project': 'Featured projects',
     'career.sub.tech': 'Technology and project connections',
@@ -157,7 +157,7 @@
 
     /* Contact */
     'contact.heading': 'Contact',
-    'contact.text': 'Interested in collaborating on data platform, crypto data infrastructure, or lakehouse architecture? Reach me through the links below.',
+    'contact.text': 'For work or collaboration inquiries, please contact me by email or LinkedIn.',
     'contact.note': 'For direct email, please reach out via LinkedIn or GitHub first.',
 
     /* Footer */

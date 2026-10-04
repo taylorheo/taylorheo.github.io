@@ -61,14 +61,14 @@
     const projectRoot = $('#projectExplorer'), techRoot = $('#techExplorer');
     if (!projectRoot || !techRoot) return;
     projectRoot.innerHTML = `
-      <div class="e-intro"><div><span class="e-eyebrow">PROJECT INDEX</span><h3>${t('문제에서 구현, 그리고 성과까지','From the problem to the outcome')}</h3></div><p>${t('프로젝트 상세와 기술 관계를 함께 살펴보세요.','Explore the work and the technology behind it.')}</p></div>
+      <div class="e-intro"><div><span class="e-eyebrow">PROJECT INDEX</span><h3>${t('프로젝트 목록','Project list')}</h3></div><p>${t('프로젝트를 선택하면 담당 업무와 구현 내용을 볼 수 있습니다.','Select a project to view responsibilities and implementation details.')}</p></div>
       <div class="e-toolbar"><label class="e-search">${t('프로젝트 검색','Search projects')}<input id="projectSearch" type="search" value="${esc(state.projectQuery)}" placeholder="${t('프로젝트, 기술, 구현 내용 검색','Project, technology, implementation')}" autocomplete="off"></label>
       <label>${t('소속','Organization')}<select id="companyFilter">${option('all',t('전체 소속','All organizations'),state.company)}${D.companies.map(c => option(c.id,tx(c.label),state.company)).join('')}</select></label>
       <label>${t('기술','Technology')}<select id="projectTechFilter">${option('all',t('전체 기술','All technologies'),state.techFilter)}${[...D.technologies].sort((a,b)=>a.label.localeCompare(b.label)).map(s=>option(s.id,s.label,state.techFilter)).join('')}</select></label></div>
       <div class="e-resultbar"><p id="projectCount" role="status" aria-live="polite"></p><div class="e-segment" role="group" aria-label="${t('프로젝트 표시 방식','Project display')}"><button data-project-mode="cards">${t('프로젝트 카드','Project cards')}</button><button data-project-mode="graph">${t('관계도','Relationship map')}</button></div></div>
       <div id="projectResults"></div>`;
     techRoot.innerHTML = `
-      <div class="e-intro"><div><span class="e-eyebrow">TECHNOLOGY EXPLORER</span><h3>${t('기술을 누르면, 경험이 연결됩니다','Follow a technology through the work')}</h3></div><p>${t('기술 → 프로젝트 → 소속 관계를 탐색하세요.','Explore technology → project → organization.')}</p></div>
+      <div class="e-intro"><div><span class="e-eyebrow">TECHNOLOGY EXPLORER</span><h3>${t('기술별 프로젝트','Projects by technology')}</h3></div><p>${t('기술을 선택하면 사용한 프로젝트와 소속을 볼 수 있습니다.','Select a technology to see its projects and organizations.')}</p></div>
       <div class="e-toolbar"><label class="e-search">${t('기술 검색','Search technologies')}<input id="techSearch" type="search" value="${esc(state.techQuery)}" placeholder="${t('Airflow, BigQuery, MongoDB…','Airflow, BigQuery, MongoDB…')}" autocomplete="off"></label>
       <label>${t('기술 분류','Category')}<select id="techCategory">${option('all',t('전체 분류','All categories'),state.category)}${Object.keys(categories).map(id=>option(id,categoryName(id),state.category)).join('')}</select></label>
       <label>${t('활용 구분','Evidence type')}<select id="techKind">${option('all',t('모든 관계','All relationships'),state.kind)}${Object.keys(kinds).map(id=>option(id,kindName(id),state.kind)).join('')}</select></label></div>
@@ -82,7 +82,7 @@
       <p class="e-card-summary">${esc(tx(p.summary))}</p>
       <div class="e-impact"><span>${t('주요 성과','OUTCOME')}</span><p>${esc(tx(p.impact))}</p></div>
       <div class="e-chips">${p.stack.slice(0,5).map(s=>techChip(s.tech)).join('')}${p.stack.length>5 ? `<button class="e-chip e-chip--more" data-open-project="${p.id}">+${p.stack.length-5}</button>` : ''}</div>
-      <div class="e-card-footer"><span>${p.stack.length} ${t('개 기술 관계','technology relationships')}</span><button data-open-project="${p.id}" class="e-text-button">${t('상세 사례 읽기','Read case study')} <span aria-hidden="true">↗</span></button></div></article>`;
+      <div class="e-card-footer"><span>${p.stack.length} ${t('개 기술 관계','technology relationships')}</span><button data-open-project="${p.id}" class="e-text-button">${t('상세 보기','View details')} <span aria-hidden="true">↗</span></button></div></article>`;
   }
   function renderProjects() {
     const rows = D.projects.filter(projectMatches).sort((a,b)=>(b.start||'').localeCompare(a.start||''));
@@ -96,7 +96,7 @@
     root.innerHTML = `<div class="e-map-shell"><div class="e-map-heading"><label>${t('관계도를 볼 프로젝트','Choose a project')}<select id="mapProject">${rows.map(p=>option(p.id,tx(p.title),state.project)).join('')}</select></label><button class="e-button" data-open-project="${p.id}">${t('프로젝트 상세','Project details')} ↗</button></div>
       <div class="e-map-stats"><span>${esc(companyName(p.company))}</span><strong>${p.stack.length}</strong><span>${t('개 기술 관계','technology relationships')}</span></div>
       ${legend()}${graphFrame('projectNetwork')}<div class="e-map-caption">${t('소속 → 프로젝트 → 기술. 선은 활용 관계이며, 실행 순서나 데이터 흐름이 아닙니다. 기술을 선택하면 다른 프로젝트와의 연결로 이동합니다.','Organization → project → technology. Edges indicate usage, not execution order or data flow. Select a technology to explore its other projects.')}</div>
-      <details class="e-evidence"><summary>${t('기술별 역할과 추출 근거','Roles and extraction evidence')} (${p.stack.length})</summary>${evidenceTable(p)}</details></div>`;
+      <details class="e-evidence"><summary>${t('기술별 용도와 참고 내용','Technology uses and references')} (${p.stack.length})</summary>${evidenceTable(p)}</details></div>`;
     drawProjectGraph(p, $('#projectNetwork'));
   }
   function legend() {
@@ -126,7 +126,7 @@
     root.innerHTML = `<div class="e-tech-main"><div class="e-tech-heading"><div><span class="e-eyebrow">${esc(categoryName(tech.category))}</span><h3>${esc(tech.label)}</h3></div><p><strong>${linked.length}</strong> ${t('프로젝트','projects')} <span>·</span> <strong>${uniqueCompanies.size}</strong> ${t('소속','organizations')}</p></div>
       <div class="e-resultbar">${legend()}<div class="e-segment" role="group" aria-label="${t('기술 표시 방식','Technology display')}"><button data-tech-mode="graph" aria-pressed="${state.techMode==='graph'}">${t('관계도','Map')}</button><button data-tech-mode="list" aria-pressed="${state.techMode==='list'}">${t('근거 목록','Evidence list')}</button></div></div>
       ${state.techMode==='graph' ? `${graphFrame('techNetwork')}<p class="e-map-caption">${t('기술 → 프로젝트 → 소속. 프로젝트 노드를 누르면 구현 내용과 성과를 볼 수 있습니다.','Technology → project → organization. Select a project node for implementation details and outcomes.')}</p>` : ''}
-      <div class="e-linked-projects"><h4>${t('프로젝트에서의 역할','Role in each project')}</h4>${links.map(({p,s})=>`<article class="e-role-row"><div><button class="e-text-button" data-open-project="${p.id}">${esc(tx(p.shortTitle || p.title))} ↗</button><span class="e-kind e-kind--${s.kind}">${esc(kindLabel(s.kind))}</span></div><p>${esc(tx(s.role))}</p><details><summary>${t('추출 근거','Evidence')}</summary><blockquote>${esc(tx(s.evidence))}</blockquote><small>${esc(s.source)}</small></details></article>`).join('')}</div>
+      <div class="e-linked-projects"><h4>${t('프로젝트에서의 역할','Role in each project')}</h4>${links.map(({p,s})=>`<article class="e-role-row"><div><button class="e-text-button" data-open-project="${p.id}">${esc(tx(p.shortTitle || p.title))} ↗</button><span class="e-kind e-kind--${s.kind}">${esc(kindLabel(s.kind))}</span></div><p>${esc(tx(s.role))}</p><details><summary>${t('참고 내용','Evidence')}</summary><blockquote>${esc(tx(s.evidence))}</blockquote><small>${esc(s.source)}</small></details></article>`).join('')}</div>
       ${coRows.length? `<div class="e-co-use"><h4>${t('같은 프로젝트에 함께 등장한 기술','Technologies recorded in the same projects')}</h4><p>${t('막대는 공통 프로젝트 수입니다. 데이터 흐름이나 숙련도 점수가 아닙니다.','Bars count shared projects, not data flow or proficiency.')}</p>${coRows.map(([id,set])=>`<button class="e-bar" data-select-tech="${id}"><span>${esc(techName(id))}</span><span class="e-bar-track"><span data-bar-width="${100*set.size/linked.length}"></span></span><strong>${set.size}</strong></button>`).join('')}</div>`:''}</div>`;
     $$('[data-bar-width]',root).forEach(el => el.style.width = `${el.dataset.barWidth}%`);
     if (state.techMode==='graph') drawTechGraph(tech, linked, $('#techNetwork'));
@@ -248,7 +248,7 @@
       <section class="e-case-section"><h3>${t('기술 스택과 맡은 역할','Technology stack and responsibilities')} <span class="e-count">${p.stack.length}</span></h3>${legend()}${evidenceTable(p)}</section>
       ${p.flows?.length ? `<section class="e-case-section"><h3>${t('구현 단계의 기술 연결','Implementation relationships')}</h3><p class="e-section-note">${t('상세 설명에 명시된 연결만 표시합니다. 전체 운영 아키텍처를 뜻하지 않습니다.','Only relationships explicitly stated in the project description are shown, not the complete production architecture.')}</p><div class="e-flows">${p.flows.map(f=>`<details class="e-flow"><summary><span>${esc(techName(f.from))}</span><span class="e-flow-verb">${esc(tx(f.label))} →</span><span>${esc(techName(f.to))}</span></summary><p>${esc(tx(f.evidence))}</p></details>`).join('')}</div></section>`:''}
       <section class="e-case-section"><h3>${t('공통 기술로 연결된 프로젝트','Projects with shared technologies')}</h3><div class="e-related">${related.map(r=>`<button data-open-project="${r.p.id}"><strong>${esc(tx(r.p.shortTitle||r.p.title))} ↗</strong><span>${r.shared.length} ${t('개 공통 기술','shared technologies')} · ${r.shared.slice(0,4).map(s=>esc(techName(s.tech))).join(', ')}</span></button>`).join('')}</div></section>
-      <footer class="e-source"><span>${t('내용 근거','Content provenance')}: ${esc(sourceLabel(p))}</span><p>${esc(tx(p.source.note))}</p></footer>`;
+      <footer class="e-source"><span>${t('출처','Source')}: ${esc(sourceLabel(p))}</span><p>${esc(tx(p.source.note))}</p></footer>`;
   }
   function setBackgroundInert(value) {
     ['nav','hero','main'].forEach(id=>{const el=document.getElementById(id);if(el) el.inert=value;});

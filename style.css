@@ -152,7 +152,7 @@ html[lang="ko"] { word-break: keep-all; }
   text-decoration: none;
 }
 .nav__logo:hover { color: var(--color-text); }
-.nav__monogram { width: 32px; height: 32px; }
+.nav__avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
 .nav__brand {
   display: inline-flex;
   align-items: baseline;
