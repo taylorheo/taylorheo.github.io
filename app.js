@@ -27,7 +27,7 @@
   };
   const state = {projectQuery:'',company:'all',techFilter:'all',projectMode:'cards',
     project:'p-migration',tech:'airflow',techQuery:'',category:'all',kind:'all',techMode:'graph'};
-  let currentModal = null, restoreFocus = null, activeView = 'project';
+  let currentModal = null, restoreFocus = null, activeView = 'company';
   const companyName = id => tx(companies.get(id)?.label);
   const techName = id => technologies.get(id)?.label ?? id;
   const kindName = id => tx(kinds[id]) || id;
@@ -306,7 +306,7 @@
     initExplorers();
   }
   function init() {
-    initExplorers();switchView($('.career__tab--active')?.dataset.view || 'project');
+    initExplorers();switchView($('.career__tab--active')?.dataset.view || 'company');
     $$('.skill-tag[data-skill]').forEach(el=>{el.tabIndex=0;el.setAttribute('role','button');});
     $$('.contact__link--email').forEach(el=>{
       const {emailUser:u,emailDomain:d,emailTld:ext}=el.dataset;

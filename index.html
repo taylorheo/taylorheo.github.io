@@ -170,13 +170,13 @@
 
       <!-- View tab switcher -->
       <div class="career__tabs" role="tablist" aria-label="Career view selector">
-        <button type="button" class="career__tab career__tab--active" role="tab" id="tab-project" aria-selected="true" aria-controls="view-project" data-view="project" data-i18n="career.tab.project" tabindex="0">프로젝트</button>
+        <button type="button" class="career__tab career__tab--active" role="tab" id="tab-company" aria-selected="true" aria-controls="view-company" data-view="company" data-i18n="career.tab.company" tabindex="0">회사별 경력</button>
+        <button type="button" class="career__tab" role="tab" id="tab-project" aria-selected="false" aria-controls="view-project" data-view="project" data-i18n="career.tab.project" tabindex="-1">프로젝트</button>
         <button type="button" class="career__tab" role="tab" id="tab-tech" aria-selected="false" aria-controls="view-tech" data-view="tech" data-i18n="career.tab.tech" tabindex="-1">기술 연결</button>
-        <button type="button" class="career__tab" role="tab" id="tab-company" aria-selected="false" aria-controls="view-company" data-view="company" data-i18n="career.tab.company" tabindex="-1">회사별 경력</button>
       </div>
 
       <!-- View: by Company -->
-      <div class="career__view" id="view-company" role="tabpanel" aria-labelledby="tab-company" data-view="company" hidden>
+      <div class="career__view career__view--active" id="view-company" role="tabpanel" aria-labelledby="tab-company" data-view="company">
         <h3 class="sr-only" data-i18n="career.sub.company">회사별 경력</h3>
         <div class="experience__timeline">
 
@@ -273,7 +273,7 @@
       </div>
 
       <!-- View: by Project -->
-      <div class="career__view career__view--active" id="view-project" role="tabpanel" aria-labelledby="tab-project" data-view="project">
+      <div class="career__view" id="view-project" role="tabpanel" aria-labelledby="tab-project" data-view="project" hidden>
         <h3 class="sr-only" data-i18n="career.sub.project">프로젝트별 경력</h3>
         <div id="projectExplorer"></div>
       </div>
@@ -554,6 +554,6 @@
 
 <script src="./portfolio-data.js?v=11" defer></script>
 <script src="./i18n.js?v=11" defer></script>
-<script src="./app.js?v=11" defer></script>
+<script src="./app.js?v=12" defer></script>
 </body>
 </html>
