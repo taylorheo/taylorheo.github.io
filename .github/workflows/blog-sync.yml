@@ -1,0 +1,44 @@
+name: Blog sync
+# velog 글을 가져오고 blog/_posts/*.md 를 렌더링해 생성물(blog/<slug>/, blog/data/, feed.xml)을 커밋합니다.
+on:
+  schedule:
+    - cron: '17 0 * * *'        # 매일 09:17 KST
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'blog/_posts/**'
+      - 'blog/index.html'
+      - 'blog/blog.css'
+      - 'blog/blog.js'
+      - 'scripts/**'
+      - 'package.json'
+      - 'package-lock.json'
+permissions:
+  contents: write
+concurrency:
+  group: blog-sync
+  cancel-in-progress: false
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Build blog (velog sync + markdown render)
+        run: npm run blog:build
+      - run: npm test
+      - name: Commit generated files
+        run: |
+          git add -A blog
+          if git diff --cached --quiet; then
+            echo "변경 없음"; exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "blog: sync velog posts and rebuild pages [skip ci]"
+          git push

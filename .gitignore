@@ -38,3 +38,6 @@ _test_*.png
 # Audit / session / log artifacts
 audit.log
 *.log
+
+# Dependencies
+node_modules/

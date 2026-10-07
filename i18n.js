@@ -24,6 +24,7 @@
     'nav.experience': 'Work',
     'nav.education': 'Education',
     'nav.contact': 'Contact',
+    'nav.blog': 'Blog',
     'nav.open': 'Toggle navigation menu',
     'nav.close': 'Close navigation menu',
     'nav.theme': 'Dark theme',
@@ -165,7 +166,30 @@
 
     /* Project detail modal — UI chrome */
     'modal.close': 'Close',
-    'modal.role': 'Role'
+    'modal.role': 'Role',
+
+    /* Writing block on the main page */
+    'writing.heading': 'Writing',
+    'writing.intro': 'Notes from building and operating data platforms. Posts from velog are synced automatically.',
+    'writing.all': 'All posts',
+
+    /* Blog list and post pages */
+    'blog.meta.title': 'Blog — Youngdae Heo',
+    'blog.meta.description': 'Technical blog by Youngdae Heo, Data Engineer. Posts from velog and posts published only on this site, in one place.',
+    'blog.heading': 'Blog',
+    'blog.lead': 'Notes from building and operating data platforms. Posts on <a href="https://velog.io/@graphy-young/" target="_blank" rel="noopener noreferrer">velog</a> are synced automatically, alongside posts published only on this site.',
+    'blog.search': 'Search',
+    'blog.searchPlaceholder': 'Search by title, summary, or tag',
+    'blog.source.all': 'All',
+    'blog.source.site': 'This site',
+    'blog.backToList': 'All posts',
+    'blog.minutes': ' min read',
+    'blog.updated': 'Updated',
+    'blog.toc': 'Contents',
+    'blog.originVelog': 'This post was first published on velog.',
+    'blog.viewOnVelog': 'Read the original on velog',
+    'blog.prev': 'Previous',
+    'blog.next': 'Next'
   };
 
   /* Korean defaults are captured from the initial HTML (first paint) */

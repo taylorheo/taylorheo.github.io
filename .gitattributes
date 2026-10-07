@@ -1,0 +1,5 @@
+# Generated blog output — collapse in diffs/PR review
+blog/*/index.html linguist-generated=true
+blog/data/** linguist-generated=true
+blog/feed.xml linguist-generated=true
+blog/sitemap.xml linguist-generated=true

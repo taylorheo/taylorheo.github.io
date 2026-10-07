@@ -1,6 +1,6 @@
 # Youngdae Heo · Data Engineering Portfolio
 
-한영 이력서와 프로젝트 상세, 기술 활용 관계를 보여주는 GitHub Pages 정적 사이트입니다. 별도 빌드나 API 키, 데이터베이스 없이 실행됩니다.
+한영 이력서와 프로젝트 상세, 기술 활용 관계를 보여주는 GitHub Pages 정적 사이트입니다. 포트폴리오 자체는 빌드 없이 실행되며, 블로그 글만 GitHub Actions가 Markdown → HTML로 미리 렌더링해 커밋합니다. API 키나 데이터베이스는 필요 없습니다.
 
 ## 구조
 
@@ -10,6 +10,24 @@
 - `i18n.js`: 정적 문구의 한국어/영어 번역. 동적 프로젝트 콘텐츠는 데이터 파일의 번역을 사용합니다.
 - `style.css`, `base.css`, `explorer.css`: 페이지 디자인과 프로젝트 탐색기 스타일.
 - `tests/`: 데이터 무결성과 핵심 정적 구조 검사.
+- `blog/`: 블로그. `index.html`(목록), `blog.css`, `blog.js`는 직접 관리하고, `blog/<slug>/index.html`, `blog/data/`, `feed.xml`, `sitemap.xml`은 생성물입니다.
+- `blog/_posts/`: 이 사이트에만 올리는 Markdown 글. 작성 규칙은 [`blog/_posts/README.md`](blog/_posts/README.md) 참고.
+- `scripts/build-blog.mjs`: velog 동기화 + Markdown 렌더링. `scripts/templates/post.html`이 글 페이지 템플릿입니다.
+
+## 블로그
+
+두 가지 소스를 한 목록으로 보여줍니다.
+
+| 소스 | 입력 | 처리 |
+| --- | --- | --- |
+| velog ([@graphy-young](https://velog.io/@graphy-young/)) | velog GraphQL API (`v3.velog.io/graphql`) → 실패 시 RSS → 실패 시 `blog/data/velog.json` 캐시 | 본문 Markdown을 가져와 동일한 렌더러로 변환. 글 페이지의 `canonical`은 velog 원문을 가리킵니다. |
+| 이 사이트 | `blog/_posts/YYYY-MM-DD-slug.md` + front matter | push하면 Actions가 렌더링하여 `blog/<slug>/`에 커밋 |
+
+- 동기화 주기: `.github/workflows/blog-sync.yml` — 매일 09:17 KST, `blog/_posts/**`·`scripts/**` 변경 push, 수동 실행(`workflow_dispatch`).
+- 생성물 커밋 메시지에는 `[skip ci]`가 붙어 품질 워크플로를 다시 돌리지 않습니다.
+- 로컬 실행: `npm ci && npm run blog:build` (오프라인: `npm run blog:build:offline`, 최신 여부 검사: `npm run blog:check`).
+- 메인 페이지 `05 글` 섹션은 `blog/data/posts.js`에서 최신 3개를 읽어 보여줍니다.
+- 글 페이지 CSP는 외부 이미지(`img-src https:`)와 YouTube 임베드만 추가로 허용하며, 외부 스크립트는 여전히 차단됩니다.
 
 ## 프로젝트 추가
 
