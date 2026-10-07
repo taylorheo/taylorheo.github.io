@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://taylorheo.github.io/</loc></url>
-  <url><loc>https://taylorheo.github.io/blog/</loc><lastmod>2026-10-08</lastmod></url>
-  <url><loc>https://taylorheo.github.io/blog/hello-blog/</loc><lastmod>2026-10-08</lastmod></url>
+  <url><loc>https://taylorheo.github.io/blog/</loc><lastmod>2024-06-24</lastmod></url>
   <url><loc>https://taylorheo.github.io/blog/Apache-Airflow-Custom-Operator-Template/</loc><lastmod>2026-10-05</lastmod></url>
   <url><loc>https://taylorheo.github.io/blog/Apache-Airflow%EC%9D%98-DAG%EB%B3%84-%EC%A0%91%EA%B7%BC-%EC%A0%9C%EC%96%B4-%EB%B0%A9%EB%B2%95/</loc><lastmod>2026-10-05</lastmod></url>
   <url><loc>https://taylorheo.github.io/blog/Docker%EB%A1%9C-Python-Django-%EA%B0%9C%EB%B0%9C%ED%95%98%EA%B8%B0/</loc><lastmod>2026-09-22</lastmod></url>

@@ -1,10 +1,7 @@
 {
   "site": "https://taylorheo.github.io",
-  "count": 6,
+  "count": 5,
   "tags": {
-    "블로그": 1,
-    "GitHub Pages": 1,
-    "자동화": 1,
     "Apache Airflow": 3,
     "data engineering": 3,
     "python": 3,
@@ -18,25 +15,6 @@
     "linux": 1
   },
   "posts": [
-    {
-      "slug": "hello-blog",
-      "source": "site",
-      "title": "블로그를 포트폴리오 사이트에 합쳤습니다",
-      "description": "velog 글을 자동으로 동기화하고, 이 저장소에 Markdown을 올리면 바로 글이 되는 구조를 정리했습니다.",
-      "date": "2026-10-08T00:00:00.000Z",
-      "updated": null,
-      "tags": [
-        "블로그",
-        "GitHub Pages",
-        "자동화"
-      ],
-      "series": null,
-      "thumbnail": null,
-      "readingMinutes": 1,
-      "lang": "ko",
-      "url": "/blog/hello-blog/",
-      "canonical": "https://taylorheo.github.io/blog/hello-blog/"
-    },
     {
       "slug": "Apache-Airflow-Custom-Operator-Template",
       "source": "velog",

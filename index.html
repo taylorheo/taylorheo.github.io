@@ -26,7 +26,7 @@
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" crossorigin="anonymous" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 
-<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<link rel="icon" href="https://avatars.githubusercontent.com/u/7146321?s=64&amp;v=4" sizes="64x64">
 <link rel="stylesheet" href="./base.css?v=10">
 <link rel="stylesheet" href="./style.css?v=11">
 <link rel="stylesheet" href="./explorer.css?v=10">
@@ -161,11 +161,40 @@
 <!-- ===== MAIN ===== -->
 <main id="main">
 
+  <!-- ===== ABOUT ===== -->
+  <section class="section about" id="about">
+    <div class="section__inner">
+      <h2 class="section__heading">
+        <span class="section__number" aria-hidden="true">01</span>
+        <span data-i18n="about.heading">소개</span>
+      </h2>
+      <div class="about__content">
+        <p class="about__text" data-i18n="about.text">
+          빗썸 Data/AI 실 데이터 플랫폼 팀에서 IDC와 AWS 기반 데이터 플랫폼을 설계하고 운영합니다. 인프라 설계, 자산 관리, 보안 점검, 클라우드 비용 관리를 맡고 있습니다. 금융 규제와 ISMS-P 요구사항에 맞춰 플랫폼 통합과 AI Agent 도입도 진행하고 있습니다.<br><br>이전에는 베스핀글로벌에서 AWS 데이터 플랫폼을 구축했고, 웍스피어 유한책임회사(구 잡코리아 유한책임회사)에서 Databricks 전환과 Airflow 커스텀 오퍼레이터 개발을 담당했습니다.
+        </p>
+        <div class="about__stats">
+          <div class="about__stat">
+            <span class="about__stat-value" data-dynamic="tenure">{{tenure}}</span>
+            <span class="about__stat-label" data-i18n="about.stat.years">데이터 엔지니어링 경력</span>
+          </div>
+          <div class="about__stat">
+            <span class="about__stat-value">60–70%</span>
+            <span class="about__stat-label" data-i18n="about.stat.savings">Job Compute 전환 ETL 비용 절감</span>
+          </div>
+          <div class="about__stat">
+            <span class="about__stat-value">3</span>
+            <span class="about__stat-label" data-i18n="about.stat.companies">근무한 회사</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== CAREER (Company / Project / Tech mindmap) ===== -->
   <section class="section career" id="experience">
     <div class="section__inner">
       <h2 class="section__heading">
-        <span class="section__number" aria-hidden="true">01</span>
+        <span class="section__number" aria-hidden="true">02</span>
         <span data-i18n="career.heading">프로젝트 & 경력</span>
       </h2>
 
@@ -287,35 +316,6 @@
         <div id="techExplorer"></div>
       </div>
 
-    </div>
-  </section>
-
-  <!-- ===== ABOUT ===== -->
-  <section class="section about" id="about">
-    <div class="section__inner">
-      <h2 class="section__heading">
-        <span class="section__number" aria-hidden="true">02</span>
-        <span data-i18n="about.heading">소개</span>
-      </h2>
-      <div class="about__content">
-        <p class="about__text" data-i18n="about.text">
-          빗썸 Data/AI 실 데이터 플랫폼 팀에서 IDC와 AWS 기반 데이터 플랫폼을 설계하고 운영합니다. 인프라 설계, 자산 관리, 보안 점검, 클라우드 비용 관리를 맡고 있습니다. 금융 규제와 ISMS-P 요구사항에 맞춰 플랫폼 통합과 AI Agent 도입도 진행하고 있습니다.<br><br>이전에는 베스핀글로벌에서 AWS 데이터 플랫폼을 구축했고, 웍스피어 유한책임회사(구 잡코리아 유한책임회사)에서 Databricks 전환과 Airflow 커스텀 오퍼레이터 개발을 담당했습니다.
-        </p>
-        <div class="about__stats">
-          <div class="about__stat">
-            <span class="about__stat-value" data-dynamic="tenure">{{tenure}}</span>
-            <span class="about__stat-label" data-i18n="about.stat.years">데이터 엔지니어링 경력</span>
-          </div>
-          <div class="about__stat">
-            <span class="about__stat-value">60–70%</span>
-            <span class="about__stat-label" data-i18n="about.stat.savings">Job Compute 전환 ETL 비용 절감</span>
-          </div>
-          <div class="about__stat">
-            <span class="about__stat-value">3</span>
-            <span class="about__stat-label" data-i18n="about.stat.companies">근무한 회사</span>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 

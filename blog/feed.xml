@@ -5,41 +5,8 @@
     <link>https://taylorheo.github.io/blog/</link>
     <description>데이터 엔지니어 허영대의 기술 블로그. velog 글과 이 사이트에 직접 올린 글을 함께 모았습니다.</description>
     <language>ko</language>
-    <lastBuildDate>Thu, 08 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 24 Jun 2024 13:16:49 GMT</lastBuildDate>
     <atom:link href="https://taylorheo.github.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <item>
-      <title><![CDATA[블로그를 포트폴리오 사이트에 합쳤습니다]]></title>
-      <link>https://taylorheo.github.io/blog/hello-blog/</link>
-      <guid isPermaLink="false">site:hello-blog</guid>
-      <pubDate>Thu, 08 Oct 2026 00:00:00 GMT</pubDate>
-      <category><![CDATA[블로그]]></category><category><![CDATA[GitHub Pages]]></category><category><![CDATA[자동화]]></category>
-      <description><![CDATA[velog 글을 자동으로 동기화하고, 이 저장소에 Markdown을 올리면 바로 글이 되는 구조를 정리했습니다.]]></description>
-      <content:encoded><![CDATA[<p>이력서·포트폴리오 사이트에 블로그를 붙였습니다. 별도 서버나 빌드 프레임워크 없이, 기존 사이트와 같은 정적 파일 구조를 유지하면서 두 가지 글 소스를 한 목록으로 모읍니다.</p>
-<h2 id="어떻게-동작하나"><a class="post__anchor" href="#어떻게-동작하나" aria-label="어떻게 동작하나 섹션 링크">#</a>어떻게 동작하나</h2>
-<ol>
-<li><strong>velog 동기화</strong> — <code>scripts/build-blog.mjs</code>가 velog GraphQL API에서 <a href="https://velog.io/@graphy-young/" target="_blank" rel="noopener noreferrer">@graphy-young</a> 글 목록과 Markdown 본문을 가져와 <code>blog/data/velog.json</code>에 캐시합니다. API가 실패하면 RSS, 그마저 실패하면 기존 캐시를 사용합니다.</li>
-<li><strong>사이트 전용 글</strong> — <code>blog/_posts/*.md</code>에 Front matter를 붙여 올리면 같은 파이프라인으로 렌더링됩니다.</li>
-<li><strong>생성물</strong> — 글마다 <code>blog/&lt;slug&gt;/index.html</code>을 만들고, 목록 데이터(<code>posts.js</code>), RSS(<code>feed.xml</code>), 사이트맵을 함께 갱신합니다.</li>
-<li><strong>GitHub Actions</strong> — 매일 한 번, 그리고 <code>blog/_posts/</code>가 바뀔 때마다 빌드해서 변경분만 커밋합니다.</li>
-</ol>
-<h2 id="글을-올리는-방법"><a class="post__anchor" href="#글을-올리는-방법" aria-label="글을 올리는 방법 섹션 링크">#</a>글을 올리는 방법</h2>
-<div class="post__code"><span class="post__code-lang">bash</span><button type="button" class="post__copy" data-copy-code aria-label="코드 복사">Copy</button><pre><code class="hljs language-bash"><span class="hljs-built_in">cat</span> &gt; blog/_posts/2026-10-20-redshift-datashare.md &lt;&lt;<span class="hljs-string">&#x27;MD&#x27;</span>
----
-title: Redshift Datashare 운영 메모
-<span class="hljs-built_in">date</span>: 2026-10-20
-tags: [Redshift, AWS]
----
-
-본문...
-MD
-git add blog/_posts &amp;&amp; git commit -m <span class="hljs-string">&quot;post: Redshift Datashare 운영 메모&quot;</span> &amp;&amp; git push</code></pre></div>
-<p>push 후 1~2분이면 <code>https://taylorheo.github.io/blog/redshift-datashare/</code>에서 볼 수 있습니다.</p>
-<blockquote>
-<p>velog 원문은 그대로 velog에 남고, 이 사이트의 사본에는 <code>canonical</code> 링크가 velog를 가리키므로 검색엔진 중복 페널티를 피할 수 있습니다.</p>
-</blockquote>
-<div class="post__table"><table><thead><tr><th>소스</th><th>출처 표시</th><th>원문 링크</th></tr></thead><tbody><tr><td>velog</td><td><code>velog</code> 배지</td><td>글 하단에 표시</td></tr><tr><td>이 사이트</td><td><code>이 사이트</code> 배지</td><td>자기 자신</td></tr></tbody></table></div>
-]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[Apache Airflow Custom Operator Template]]></title>
       <link>https://taylorheo.github.io/blog/Apache-Airflow-Custom-Operator-Template/</link>
