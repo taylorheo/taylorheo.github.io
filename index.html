@@ -28,7 +28,7 @@
 
 <link rel="icon" href="https://avatars.githubusercontent.com/u/7146321?s=64&amp;v=4" sizes="64x64">
 <link rel="stylesheet" href="./base.css?v=10">
-<link rel="stylesheet" href="./style.css?v=11">
+<link rel="stylesheet" href="./style.css?v=12">
 <link rel="stylesheet" href="./explorer.css?v=10">
 <link rel="stylesheet" href="./blog/blog.css?v=1">
 <link rel="alternate" type="application/rss+xml" title="허영대 — 블로그" href="./blog/feed.xml">
@@ -133,28 +133,6 @@
         <a href="#contact" class="btn btn--ghost" data-i18n="hero.ctaContact">연락하기</a>
       </div>
     </div>
-    <aside class="hero__impact" aria-labelledby="impactHeading">
-      <div class="hero__impact-header">
-        <h2 id="impactHeading" data-i18n="hero.impactHeading">주요 프로젝트 성과</h2>
-        <span class="hero__impact-index" aria-hidden="true">01 — 03</span>
-      </div>
-      <button type="button" class="impact-row" data-open-project="p3" aria-haspopup="dialog" aria-controls="projectModal">
-        <span class="impact-row__value">60–70<span>%</span></span>
-        <span class="impact-row__copy"><strong data-i18n="hero.impact.etl">ETL 비용 절감</strong><span data-i18n="hero.impact.etlDetail">Job Compute 전환</span></span>
-        <span class="impact-row__arrow" aria-hidden="true">↗</span>
-      </button>
-      <button type="button" class="impact-row" data-open-project="p-migration" aria-haspopup="dialog" aria-controls="projectModal">
-        <span class="impact-row__value">5–20<span>%</span></span>
-        <span class="impact-row__copy"><strong data-i18n="hero.impact.dag">DAG 실행시간 단축</strong><span data-i18n="hero.impact.dagDetail">Databricks 클러스터 재사용</span></span>
-        <span class="impact-row__arrow" aria-hidden="true">↗</span>
-      </button>
-      <button type="button" class="impact-row" data-open-project="p5" aria-haspopup="dialog" aria-controls="projectModal">
-        <span class="impact-row__value"><span>~</span>20<span>%</span></span>
-        <span class="impact-row__copy"><strong data-i18n="hero.impact.worker">워커 자원 점유율 감소</strong><span data-i18n="hero.impact.workerDetail">SageMaker Deferrable Operator</span></span>
-        <span class="impact-row__arrow" aria-hidden="true">↗</span>
-      </button>
-      <p class="hero__impact-note" data-i18n="hero.impact.note">웍스피어(구 잡코리아) 프로젝트별 성과.<br>각 항목에서 적용 범위와 구현 내용을 확인할 수 있습니다.</p>
-    </aside>
   </div>
 </header>
 
@@ -197,6 +175,29 @@
         <span class="section__number" aria-hidden="true">02</span>
         <span data-i18n="career.heading">프로젝트 & 경력</span>
       </h2>
+
+      <aside class="career__impact" aria-labelledby="impactHeading">
+        <div class="career__impact-header">
+          <h3 id="impactHeading" data-i18n="hero.impactHeading">주요 프로젝트 성과</h3>
+          <span class="career__impact-index" aria-hidden="true">01 — 03</span>
+        </div>
+        <button type="button" class="impact-row" data-open-project="p3" aria-haspopup="dialog" aria-controls="projectModal">
+          <span class="impact-row__value">60–70<span>%</span></span>
+          <span class="impact-row__copy"><strong data-i18n="hero.impact.etl">ETL 비용 절감</strong><span data-i18n="hero.impact.etlDetail">Job Compute 전환</span></span>
+          <span class="impact-row__arrow" aria-hidden="true">↗</span>
+        </button>
+        <button type="button" class="impact-row" data-open-project="p-migration" aria-haspopup="dialog" aria-controls="projectModal">
+          <span class="impact-row__value">5–20<span>%</span></span>
+          <span class="impact-row__copy"><strong data-i18n="hero.impact.dag">DAG 실행시간 단축</strong><span data-i18n="hero.impact.dagDetail">Databricks 클러스터 재사용</span></span>
+          <span class="impact-row__arrow" aria-hidden="true">↗</span>
+        </button>
+        <button type="button" class="impact-row" data-open-project="p5" aria-haspopup="dialog" aria-controls="projectModal">
+          <span class="impact-row__value"><span>~</span>20<span>%</span></span>
+          <span class="impact-row__copy"><strong data-i18n="hero.impact.worker">워커 자원 점유율 감소</strong><span data-i18n="hero.impact.workerDetail">SageMaker Deferrable Operator</span></span>
+          <span class="impact-row__arrow" aria-hidden="true">↗</span>
+        </button>
+        <p class="career__impact-note" data-i18n="hero.impact.note">웍스피어(구 잡코리아) 프로젝트별 성과.<br>각 항목에서 적용 범위와 구현 내용을 확인할 수 있습니다.</p>
+      </aside>
 
       <p class="career__prompt" data-i18n="career.prompt">프로젝트별 담당 업무와 구현 내용, 성과를 정리했습니다.</p>
 
@@ -446,10 +447,6 @@
             <span class="cert-item__date">2022.05</span>
           </div>
           <div class="cert-item">
-            <span class="cert-item__name" data-i18n="certs.toeic">TOEIC 895점</span>
-            <span class="cert-item__date">2019.12</span>
-          </div>
-          <div class="cert-item">
             <span class="cert-item__name" data-i18n="certs.engineer">정보처리기사</span>
             <span class="cert-item__date">2019.11</span>
           </div>
@@ -500,7 +497,7 @@
         <span data-i18n="writing.heading">글</span>
       </h2>
       <div class="writing__intro">
-        <p data-i18n="writing.intro">데이터 플랫폼을 만들고 운영하며 배운 것을 기록합니다. velog에 쓴 글은 자동으로 동기화됩니다.</p>
+        <p data-i18n="writing.intro">데이터 플랫폼을 만들고 운영하며 배운 것을 기록합니다.</p>
         <a href="./blog/" class="writing__all"><span data-i18n="writing.all">전체 글 보기</span><span aria-hidden="true">↗</span></a>
       </div>
       <div class="writing__grid" id="blogLatest"></div>

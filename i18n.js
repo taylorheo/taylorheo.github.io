@@ -145,7 +145,6 @@
 
     /* Certifications */
     'certs.heading': 'Certifications',
-    'certs.toeic': 'TOEIC 895',
     'certs.engineer': 'Engineer Information Processing',
     'certs.sqld': 'SQL Developer (SQLD)',
     'awards.heading': 'Awards',
@@ -170,7 +169,7 @@
 
     /* Writing block on the main page */
     'writing.heading': 'Writing',
-    'writing.intro': 'Notes from building and operating data platforms. Posts from velog are synced automatically.',
+    'writing.intro': 'Notes from building and operating data platforms.',
     'writing.all': 'All posts',
 
     /* Blog list and post pages */
