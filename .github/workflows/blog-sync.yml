@@ -1,5 +1,5 @@
 name: Blog sync
-# velog 글을 가져오고 blog/_posts/*.md 를 렌더링해 생성물(blog/<slug>/, blog/data/, feed.xml)을 커밋합니다.
+# velog 글과 blog/_posts/*.md 생성물을 전용 브랜치의 PR로 올립니다.
 on:
   schedule:
     - cron: '17 0 * * *'        # 매일 09:17 KST
@@ -14,31 +14,44 @@ on:
       - 'scripts/**'
       - 'package.json'
       - 'package-lock.json'
+      - '.github/workflows/blog-sync.yml'
 permissions:
   contents: write
+  pull-requests: write
 concurrency:
   group: blog-sync
   cancel-in-progress: false
 jobs:
   sync:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
       - run: npm ci
+      - run: npm run check
       - name: Build blog (velog sync + markdown render)
         run: npm run blog:build
       - run: npm test
-      - name: Commit generated files
-        run: |
-          git add -A blog
-          if git diff --cached --quiet; then
-            echo "변경 없음"; exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "blog: sync velog posts and rebuild pages [skip ci]"
-          git push
+      - name: Create or update generated blog pull request
+        uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
+        with:
+          base: main
+          branch: automation/blog-sync
+          add-paths: |
+            blog/data/
+            blog/*/index.html
+            blog/feed.xml
+            blog/sitemap.xml
+          commit-message: 'blog: sync velog posts and rebuild pages'
+          title: 'blog: sync velog posts and rebuild pages'
+          body: |
+            Velog 동기화 및 Markdown 렌더링으로 갱신한 블로그 생성물입니다.
+            이 PR은 다음 동기화에서도 같은 브랜치로 갱신됩니다.
+            변경 내용을 검토하고 필수 검사를 통과한 뒤 병합해 주세요.
+            Actions 검사 승인 배너가 표시되면 Approve workflows to run을 선택해 주세요.

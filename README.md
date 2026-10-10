@@ -21,10 +21,13 @@
 | 소스 | 입력 | 처리 |
 | --- | --- | --- |
 | velog ([@graphy-young](https://velog.io/@graphy-young/)) | velog GraphQL API (`v3.velog.io/graphql`) → 실패 시 RSS → 실패 시 `blog/data/velog.json` 캐시 | 본문 Markdown을 가져와 동일한 렌더러로 변환. 글 페이지의 `canonical`은 velog 원문을 가리킵니다. |
-| 이 사이트 | `blog/_posts/YYYY-MM-DD-slug.md` + front matter | push하면 Actions가 렌더링하여 `blog/<slug>/`에 커밋 |
+| 이 사이트 | `blog/_posts/YYYY-MM-DD-slug.md` + front matter | `main`에 반영하면 Actions가 렌더링하여 생성물 PR에 포함 |
 
 - 동기화 주기: `.github/workflows/blog-sync.yml` — 매일 09:17 KST, `blog/_posts/**`·`scripts/**` 변경 push, 수동 실행(`workflow_dispatch`).
-- 생성물 커밋 메시지에는 `[skip ci]`가 붙어 품질 워크플로를 다시 돌리지 않습니다.
+- 생성물은 `automation/blog-sync` 브랜치의 PR로 올립니다. `main`에는 직접 push하지 않으며, 검토·필수 검사 후 사람이 병합하면 GitHub Pages에 반영됩니다. 수동 실행도 `main`에서만 동작합니다.
+- 변경이 없으면 새 PR을 만들지 않고, 열린 동기화 PR이 있으면 같은 PR을 갱신합니다. 자동화 전용 브랜치이므로 직접 수정하지 마세요. 생성물이 이미 `main`과 같아지면 기존 PR은 자동으로 닫힙니다.
+- 저장소의 **Settings → Actions → General → Workflow permissions → Allow GitHub Actions to create and approve pull requests**가 켜져 있어야 합니다. 워크플로는 실행 중인 `GITHUB_TOKEN`에만 `contents: write`, `pull-requests: write`를 요청합니다. 별도 PAT는 필요하지 않으며, 브랜치 보호와 필수 검사를 유지합니다.
+- 생성물 커밋에는 CI 생략 표시를 넣지 않습니다. `GITHUB_TOKEN`이 만든 PR의 품질 검사가 승인 대기이면 저장소 쓰기 권한자가 **Approve workflows to run**을 선택합니다. [GitHub의 자동화 PR 검사 동작](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow)을 참고하세요.
 - 로컬 실행: `npm ci && npm run blog:build` (오프라인: `npm run blog:build:offline`, 최신 여부 검사: `npm run blog:check`).
 - 메인 페이지 `05 글` 섹션은 `blog/data/posts.js`에서 최신 3개를 읽어 보여줍니다.
 - 글 페이지 CSP는 외부 이미지(`img-src https:`)와 YouTube 임베드만 추가로 허용하며, 외부 스크립트는 여전히 차단됩니다.
