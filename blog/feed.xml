@@ -5,8 +5,69 @@
     <link>https://taylorheo.github.io/blog/</link>
     <description>데이터 엔지니어 허영대의 기술 블로그. velog 글과 이 사이트에 직접 올린 글을 함께 모았습니다.</description>
     <language>ko</language>
-    <lastBuildDate>Mon, 24 Jun 2024 13:16:49 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2026 10:20:28 GMT</lastBuildDate>
     <atom:link href="https://taylorheo.github.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Amazon Redshift Serverless 운영 환경 도입 시 유의사항]]></title>
+      <link>https://taylorheo.github.io/blog/Amazon-Redshift-Serverless-%EC%9A%B4%EC%98%81-%ED%99%98%EA%B2%BD-%EB%8F%84%EC%9E%85-%EC%8B%9C-%EC%9C%A0%EC%9D%98%EC%82%AC%ED%95%AD/</link>
+      <guid isPermaLink="false">velog:Amazon-Redshift-Serverless-운영-환경-도입-시-유의사항</guid>
+      <pubDate>Sat, 10 Oct 2026 10:20:28 GMT</pubDate>
+      <category><![CDATA[Amazon Redshift]]></category><category><![CDATA[aws]]></category><category><![CDATA[data engineering]]></category><category><![CDATA[serverless]]></category>
+      <description><![CDATA[Amazon Redshift Serverless를 운영 환경에 도입하면서 몇 가지 시행착오를 겪었습니다. 도입을 검토하시는 분들께 도움이 되길 바라며, 네트워크 구성, 비용 산정, 데이터 공유 권한, 접근 제어 솔루션 연동에서 확인해야 할 사항을 정리했습니다.
+
+1. Enhanced VPC Routing 사용 여부에 따라 VPC 구성을 조정해야 할 수 있습...]]></description>
+      <content:encoded><![CDATA[<p>Amazon Redshift Serverless를 운영 환경에 도입하면서 몇 가지 시행착오를 겪었습니다. 도입을 검토하시는 분들께 도움이 되길 바라며, 네트워크 구성, 비용 산정, 데이터 공유 권한, 접근 제어 솔루션 연동에서 확인해야 할 사항을 정리했습니다.</p>
+<h2 id="1-enhanced-vpc-routing-사용-여부에-따라-vpc-구성을-조정해야-할-수-있습니다"><a class="post__anchor" href="#1-enhanced-vpc-routing-사용-여부에-따라-vpc-구성을-조정해야-할-수-있습니다" aria-label="1. Enhanced VPC Routing 사용 여부에 따라 VPC 구성을 조정해야 할 수 있습니다 섹션 링크">#</a>1. Enhanced VPC Routing 사용 여부에 따라 VPC 구성을 조정해야 할 수 있습니다</h2>
+<p>Amazon Redshift Serverless에서는 Redshift Managed Storage(RMS)뿐 아니라 컴퓨팅 리소스도 AWS가 관리합니다. 따라서 기존 프로비저닝 클러스터와 같은 방식으로 네트워크를 설계하기보다, Serverless의 네트워크 요구사항을 먼저 확인하는 것이 좋습니다.</p>
+<p>업종별 규제나 사내 보안 정책에 따라 Enhanced VPC Routing(EVR)을 활성화해야 할 수 있습니다. 예를 들어 AWS Security Hub CSPM의 <code>RedshiftServerless.1</code> 통제를 준수해야 하는 환경에서는 EVR을 활성화해야 합니다.</p>
+<p>EVR 사용 여부에 따라 필요한 가용 영역(Availability Zone, AZ)과 서브넷 수도 달라집니다.</p>
+<ul>
+<li><strong>EVR을 사용하지 않는 경우:</strong> 최소 2개 AZ에 걸친 2개 서브넷이 필요합니다.</li>
+<li><strong>EVR을 사용하는 경우:</strong> 최소 3개 AZ에 걸친 3개 서브넷이 필요합니다.</li>
+</ul>
+<p>현재 VPC를 2개 AZ로만 운영하고 있다면, EVR을 사용하기 위해 다른 AZ에 서브넷을 추가해야 할 수 있습니다. 이 조건을 초기 설계에 반영해두면 도입 과정에서 네트워크 구성을 다시 조정하는 일을 줄일 수 있습니다.</p>
+<p>또한 EVR을 사용하면 작업 그룹(Workgroup)의 생성·확장에 필요한 ENI와 여유 IP 주소를 고려해야 합니다. 필요한 IP 주소 수는 RPU 용량과 변경 작업에 따라 달라지므로, 기본 용량뿐 아니라 향후 확장 계획까지 고려해 서브넷에 충분한 여유를 확보해야 합니다.</p>
+<p>참고 문서:</p>
+<ul>
+<li><a href="https://docs.aws.amazon.com/securityhub/latest/userguide/redshiftserverless-controls.html#redshiftserverless-1" target="_blank" rel="noopener noreferrer">Security Hub CSPM: RedshiftServerless.1</a></li>
+<li><a href="https://docs.aws.amazon.com/ko_kr/redshift/latest/mgmt/serverless-usage-considerations.html" target="_blank" rel="noopener noreferrer">Redshift Serverless 사용 시 고려사항</a></li>
+</ul>
+<h2 id="2-rms-용량에-따라-최소-rpu가-달라져-예상보다-비용이-높아질-수-있습니다"><a class="post__anchor" href="#2-rms-용량에-따라-최소-rpu가-달라져-예상보다-비용이-높아질-수-있습니다" aria-label="2. RMS 용량에 따라 최소 RPU가 달라져 예상보다 비용이 높아질 수 있습니다 섹션 링크">#</a>2. RMS 용량에 따라 최소 RPU가 달라져 예상보다 비용이 높아질 수 있습니다</h2>
+<p>RPU-hours를 기준으로 월간 또는 연간 컴퓨팅 비용을 산정할 때는 예상 RMS 용량도 함께 확인해야 합니다. 저장 데이터의 크기에 따라 설정할 수 있는 최소 기본 용량(Base RPU)이 달라지기 때문입니다.</p>
+<div class="post__table"><table><thead><tr><th>RMS 사용량</th><th>설정 가능한 최소 Base RPU</th></tr></thead><tbody><tr><td>32TB 이하</td><td>4 RPU</td></tr><tr><td>32TB 초과 ~ 128TB 이하</td><td>8 RPU</td></tr><tr><td>128TB 초과</td><td>32 RPU</td></tr></tbody></table></div>
+<p>단, 4 RPU 구성은 지원되는 AWS 리전에서만 선택할 수 있으므로, 실제 도입할 리전의 지원 여부도 확인해야 합니다.</p>
+<p>쿼리 부하가 크지 않더라도 저장 데이터가 많으면 낮은 Base RPU를 선택할 수 없습니다. 따라서 비용 계획에서는 쿼리 실행 시간과 예상 RPU 사용량에 더해, 현재 데이터 크기와 향후 증가량도 함께 고려해야 합니다.</p>
+<p>참고 문서: <a href="https://docs.aws.amazon.com/ko_kr/redshift/latest/mgmt/serverless-capacity.html" target="_blank" rel="noopener noreferrer">Redshift Serverless 컴퓨팅 용량</a></p>
+<h2 id="3-datashare는-편리하지만-공유-권한을-신중하게-관리해야-합니다"><a class="post__anchor" href="#3-datashare는-편리하지만-공유-권한을-신중하게-관리해야-합니다" aria-label="3. Datashare는 편리하지만 공유 권한을 신중하게 관리해야 합니다 섹션 링크">#</a>3. Datashare는 편리하지만 공유 권한을 신중하게 관리해야 합니다</h2>
+<p>Datashare를 사용하면 같은 AWS 계정뿐 아니라 다른 계정에도 데이터를 공유할 수 있습니다. 데이터를 별도로 복사하지 않아도 되므로 중복을 줄일 수 있지만, 공유 권한을 넓게 부여하면 의도하지 않은 계정에 데이터가 노출될 수 있습니다.</p>
+<p>계정 간 공유에서는 데이터베이스 권한과 IAM 권한을 함께 살펴봐야 합니다.</p>
+<ul>
+<li><strong>프로듀서 측:</strong> <code>CREATE DATASHARE</code>로 공유를 구성하고, 공유 객체와 대상 계정에 필요한 권한을 부여한 뒤 <code>redshift:AuthorizeDataShare</code> 권한으로 계정 간 공유를 승인합니다.</li>
+<li><strong>컨슈머 측:</strong> <code>redshift:AssociateDataShareConsumer</code> 권한으로 공유를 연결하고, 필요한 데이터베이스 권한을 가진 사용자가 <code>CREATE DATABASE ... FROM DATASHARE ...</code>로 공유 데이터를 조회할 데이터베이스를 구성합니다.</li>
+</ul>
+<p>이 권한들이 폭넓게 부여되어 있으면 외부 계정과의 데이터 공유를 쉽게 구성할 수 있습니다. 공유를 생성하는 권한뿐 아니라 외부 계정에 대한 승인 권한과 공유 대상도 함께 통제해야 합니다.</p>
+<p>또한 Amazon Macie의 민감정보 탐지는 Amazon S3 데이터를 대상으로 하므로, Redshift Datashare를 통한 데이터 공유를 직접 탐지하는 수단으로 볼 수 없습니다. 공유 현황은 <code>SVV_DATASHARES</code> 같은 시스템 뷰로 확인하고, 공유 승인·연결 등의 API 활동은 CloudTrail로 추적할 수 있도록 구성하는 것이 좋습니다.</p>
+<p>참고 문서:</p>
+<ul>
+<li><a href="https://docs.aws.amazon.com/redshift/latest/dg/across-account.html" target="_blank" rel="noopener noreferrer">AWS 계정 간 데이터 공유</a></li>
+<li><a href="https://docs.aws.amazon.com/redshift/latest/dg/iam-policy.html" target="_blank" rel="noopener noreferrer">데이터 공유 API의 IAM 접근 제어</a></li>
+<li><a href="https://docs.aws.amazon.com/redshift/latest/dg/r_SVV_DATASHARES.html" target="_blank" rel="noopener noreferrer">SVV_DATASHARES</a></li>
+<li><a href="https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html" target="_blank" rel="noopener noreferrer">Amazon Macie 개요</a></li>
+</ul>
+<h2 id="4-접근-제어-솔루션에-따라-호환성-문제나-불필요한-과금이-발생할-수-있습니다"><a class="post__anchor" href="#4-접근-제어-솔루션에-따라-호환성-문제나-불필요한-과금이-발생할-수-있습니다" aria-label="4. 접근 제어 솔루션에 따라 호환성 문제나 불필요한 과금이 발생할 수 있습니다 섹션 링크">#</a>4. 접근 제어 솔루션에 따라 호환성 문제나 불필요한 과금이 발생할 수 있습니다</h2>
+<p>기업에서 사용하는 데이터베이스 접근 제어 솔루션은 연결 상태를 확인하거나 메타데이터를 수집하기 위해 주기적으로 쿼리를 실행할 수 있습니다.</p>
+<p>Redshift Serverless의 온디맨드 컴퓨팅 요금은 초 단위로 계산되지만, 최소 과금 단위는 60초입니다. 따라서 헬스 체크나 상태 확인 쿼리가 컴퓨팅 리소스를 활성화하면, 실제 업무 쿼리가 없어도 비용이 발생할 수 있습니다. 다만 모든 확인 쿼리가 매번 별도의 60초 과금을 발생시키는 것은 아니므로, 쿼리 종류와 실행 간격에 따른 실제 사용량을 확인해야 합니다.</p>
+<p>도입 전에는 사내 솔루션이 어떤 쿼리를 얼마나 자주 실행하는지 확인하고, 불필요한 주기적 쿼리는 비활성화하거나 실행 간격을 조정하는 것이 좋습니다.</p>
+<p>Datashare로 구성한 외부 데이터베이스와의 호환성도 확인해야 합니다. 프로듀서의 시스템 스키마가 그대로 공유되는 것은 아니므로, 접근 제어 솔루션이 프로듀서와 동일한 시스템 스키마나 메타데이터 조회 방식을 전제로 동작한다면 오류가 발생할 수 있습니다. 실제 사용하는 솔루션에서 공유 데이터베이스의 메타데이터 조회와 접근 제어가 정상적으로 동작하는지 사전에 검증하는 것이 좋습니다.</p>
+<p>참고 문서:</p>
+<ul>
+<li><a href="https://aws.amazon.com/redshift/pricing/" target="_blank" rel="noopener noreferrer">Amazon Redshift 요금</a></li>
+<li><a href="https://docs.aws.amazon.com/redshift/latest/dg/considerations-datashare-general.html" target="_blank" rel="noopener noreferrer">데이터 공유의 일반 고려사항 및 메타데이터 조회</a></li>
+</ul>
+<hr>
+<p>원문: <a href="https://www.linkedin.com/pulse/amazon-redshift-serverless-%EC%9A%B4%EC%98%81-%ED%99%98%EA%B2%BD-%EB%8F%84%EC%9E%85%EC%8B%9C-%EC%9C%A0%EC%9D%98%EC%82%AC%ED%95%AD-youngdae-heo-tu0nc/" target="_blank" rel="noopener noreferrer">LinkedIn — Amazon Redshift Serverless 운영 환경 도입시 유의사항</a></p>
+]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Apache Airflow Custom Operator Template]]></title>
       <link>https://taylorheo.github.io/blog/Apache-Airflow-Custom-Operator-Template/</link>

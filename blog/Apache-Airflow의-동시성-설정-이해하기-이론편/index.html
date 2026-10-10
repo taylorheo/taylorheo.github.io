@@ -32,7 +32,7 @@
 <link rel="stylesheet" href="../../explorer.css?v=10">
 <link rel="stylesheet" href="../../blog/blog.css?v=1">
 
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Apache Airflow의 동시성 설정 이해하기","description":"최근 필자의 팀에서 운영하던 Airflow가 갑작스럽게 병렬 처리되는 Task가 급격하게 증가하며 오랜 시간 대기 상태에 빠져 기존에 수행되던 파이프라인에 장애가 발생하기 시작했다. 그렇다면 동시성에 영향을 주는 요소는 무엇이 있을까?","datePublished":"2023-02-05T15:17:23.294Z","dateModified":"2026-10-06T07:42:27.739Z","inLanguage":"ko","author":{"@type":"Person","name":"Youngdae Heo","url":"https://taylorheo.github.io"},"image":"https://velog.velcdn.com/images/graphy-young/post/5b520245-068e-494b-a862-8c0597b830e4/image.png","mainEntityOfPage":"https://taylorheo.github.io/blog/Apache-Airflow%EC%9D%98-%EB%8F%99%EC%8B%9C%EC%84%B1-%EC%84%A4%EC%A0%95-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-%EC%9D%B4%EB%A1%A0%ED%8E%B8/","url":"https://velog.io/@graphy-young/Apache-Airflow%EC%9D%98-%EB%8F%99%EC%8B%9C%EC%84%B1-%EC%84%A4%EC%A0%95-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-%EC%9D%B4%EB%A1%A0%ED%8E%B8","keywords":"Apache Airflow, data engineering, workflow"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Apache Airflow의 동시성 설정 이해하기","description":"최근 필자의 팀에서 운영하던 Airflow가 갑작스럽게 병렬 처리되는 Task가 급격하게 증가하며 오랜 시간 대기 상태에 빠져 기존에 수행되던 파이프라인에 장애가 발생하기 시작했다. 그렇다면 동시성에 영향을 주는 요소는 무엇이 있을까?","datePublished":"2023-02-05T15:17:23.294Z","dateModified":"2026-10-08T14:29:19.506Z","inLanguage":"ko","author":{"@type":"Person","name":"Youngdae Heo","url":"https://taylorheo.github.io"},"image":"https://velog.velcdn.com/images/graphy-young/post/5b520245-068e-494b-a862-8c0597b830e4/image.png","mainEntityOfPage":"https://taylorheo.github.io/blog/Apache-Airflow%EC%9D%98-%EB%8F%99%EC%8B%9C%EC%84%B1-%EC%84%A4%EC%A0%95-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-%EC%9D%B4%EB%A1%A0%ED%8E%B8/","url":"https://velog.io/@graphy-young/Apache-Airflow%EC%9D%98-%EB%8F%99%EC%8B%9C%EC%84%B1-%EC%84%A4%EC%A0%95-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-%EC%9D%B4%EB%A1%A0%ED%8E%B8","keywords":"Apache Airflow, data engineering, workflow"}</script>
 </head>
 <body class="blog-body">
 
@@ -98,7 +98,7 @@
         <span class="post__source post__source--velog">velog</span>
         <span class="post__meta-sep" aria-hidden="true">·</span>
         <time datetime="2023-02-05T15:17:23.294Z" data-date-ko="2023.02.06" data-date-en="2023-02-06">2023.02.06</time>
-        <span class="post__meta-sep" aria-hidden="true">·</span><span><span data-i18n="blog.updated">수정</span> <time datetime="2026-10-06T07:42:27.739Z" data-date-ko="2026.10.06" data-date-en="2026-10-06">2026.10.06</time></span>
+        <span class="post__meta-sep" aria-hidden="true">·</span><span><span data-i18n="blog.updated">수정</span> <time datetime="2026-10-08T14:29:19.506Z" data-date-ko="2026.10.08" data-date-en="2026-10-08">2026.10.08</time></span>
         <span class="post__meta-sep" aria-hidden="true">·</span>
         <span><span data-reading="4">4</span><span data-i18n="blog.minutes">분 읽기</span></span>
       </div>
