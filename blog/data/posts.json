@@ -1,6 +1,6 @@
 {
   "site": "https://taylorheo.github.io",
-  "count": 5,
+  "count": 6,
   "tags": {
     "Apache Airflow": 3,
     "data engineering": 3,
@@ -15,6 +15,21 @@
     "linux": 1
   },
   "posts": [
+    {
+      "slug": "Amazon-Redshift-Serverless-운영-환경-도입-시-유의사항",
+      "source": "velog",
+      "title": "Amazon Redshift Serverless 운영 환경 도입 시 유의사항",
+      "description": "올해 금융권 규제 환경에서 Amazon Redshift Serverless를 운영 환경에 도입하면서 겪은 시행착오를 통해 미리 고려하면 좋을만한 내용을 간단히 정리했습니다. 도입을 검토하시는 분들께 도움이 되길 바라며, 네트워크 구성, 비용 산정, 데이터 공유 권한, 접근 제어 솔루션…",
+      "date": "2026-10-10T10:20:28.000Z",
+      "updated": null,
+      "tags": [],
+      "series": null,
+      "thumbnail": null,
+      "readingMinutes": 7,
+      "lang": "ko",
+      "url": "/blog/Amazon-Redshift-Serverless-%EC%9A%B4%EC%98%81-%ED%99%98%EA%B2%BD-%EB%8F%84%EC%9E%85-%EC%8B%9C-%EC%9C%A0%EC%9D%98%EC%82%AC%ED%95%AD/",
+      "canonical": "https://velog.io/@graphy-young/Amazon-Redshift-Serverless-%EC%9A%B4%EC%98%81-%ED%99%98%EA%B2%BD-%EB%8F%84%EC%9E%85-%EC%8B%9C-%EC%9C%A0%EC%9D%98%EC%82%AC%ED%95%AD"
+    },
     {
       "slug": "Apache-Airflow-Custom-Operator-Template",
       "source": "velog",
